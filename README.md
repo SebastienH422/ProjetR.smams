@@ -52,4 +52,7 @@
 ## 2) base_emp_inno
 ### &nbsp;&nbsp;a) Variables numériques : n_patents, n_offers, avg_wage 
 
+Page à laquelle on accède en cliquant sur "III Analyse de données"
+# $$\text{Analyse de données}$$
 
+<span style="font-size: 20px;">Grâce aux analyses statistiques que nous avons effectuées précédemment, nous cherchons à reporter des relations entre l'innovation des entrprises et la demande de compétences en data science.</span><br>
