@@ -26,6 +26,8 @@
 ### &nbsp;&nbsp;2) Offres d'emploi
 ## III. Analyse de données
 
+Page à laquelle on accède en cliquant sur "I. Présentation du projet : 
+# $$\text{Présentation du projet}$$
 
 #Page à laquelle on accède en cliquant sur "1) Brevets" : 
 # $$\text{Nos statistiques descriptives}$$
