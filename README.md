@@ -68,5 +68,27 @@ Une fois le "nettoyage" et le traitement des données effectués, nous essaieron
 
 Page à laquelle on accède en cliquant sur "III Analyse de données"
 # $$\text{Analyse de données}$$
+<span style="font-size: 20px;">Grâce aux analyses statistiques que nous avons effectuées précédemment, nous cherchons à reporter des relations entre l'innovation des entreprises et la demande de compétences en data science.<br>
+Pour cela nous répondrons aux questions suivantes : <br>
+&nbsp;&nbsp; - LES QUESTIONS
+</span><br>
 
-<span style="font-size: 20px;">Grâce aux analyses statistiques que nous avons effectuées précédemment, nous cherchons à reporter des relations entre l'innovation des entrprises et la demande de compétences en data science.</span><br>
+1) graphiques du nb de brevets déposé par chaque entreprise
+2) graphiques du salaire moyen proposé par chaque entreprise 
+3) graphique nb d'offres demploi par entreprise (comme ça on compare graphiques 1, 2 et 3)
+4) mêmes graphiques que 1, 2 et 3 mais par rapport aux secteurs d'activité pas des entreprises
+5) mêmes graphiques que 1, 2 et 3 mais par rapport aux codes IPCs pas des entreprises
+6) ds combien d'offres apparaissent chaques compétences --> on saura quelle est la compétence la plus recherchée
+7) y a-t-il des compétences associées avec plus d’innovation des entreprises
+8) stimations économétriques simples
+• autres graphiques:
+‣ word cloud des compétences, pondérées par le salaire
+‣ word cloud des compétences, pondérées par les brevets
+‣ etc !
+
+
+
+
+
+
+
