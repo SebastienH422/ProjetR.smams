@@ -1,18 +1,19 @@
 library(data.table)
 library(stringr)
+source("smams_src_utilities.R")
 
 # Importation des données
 # --> Création de `offres` contenant les données suivantes:
 #     entreprise, secteur, experience_requise, competences_requises, salaire, departement
 
-data = data.table(read.csv(file = "emp_offers_fmt.tsv",
+data = data.table(read.csv(file = "DATA/emp_offers_fmt.tsv",
                   head = TRUE,
                   sep = ","))
 names(data)
 # Champs: "intitule_poste" "entreprise" "type_emploi" "secteur" "experience_requise" "competences_requises""poste_desc" "salaire"              "departement"      
 
 offres = data[, c("entreprise", "secteur", # On récupère les données qui nous intéressent
-              "experience_requise", "competences_requises", "salaire", "departement")]
+                  "experience_requise", "competences_requises", "salaire", "departement")]
 
 # Création de la database
 base_emp = data.table(id_firm = character(0), firm_name = character(0), n_offres = integer(0), 
@@ -20,31 +21,14 @@ base_emp = data.table(id_firm = character(0), firm_name = character(0), n_offres
                       avg_wage = numeric(0), addre_dept_main = character(0))
 
 # Remplissage de la database
-add_line = function(line){
-  name = line['entreprise'] # Nom de l'entreprise
+#
+add_line = function(line, data_base) {
+  name = line$entreprise # Nom de l'entreprise
   name_norm = stringi::stri_trans_general(tolower(name), "Latin-ASCII") # Sans accent ni majuscule
   name_red = substring(name_norm, 1, min(4, nchar(name_norm))) # 4 premiers caractères
-  if (name_red in base_emp){
-    base_emp[n_offres, id_firm = name_red] = base_emp[n_offres, id_firm = name_red] + 1
-    base_emp[sector_main, id_firm = name_red] = paste(base_emp[sector_main, id_firm = name_red], line$sector_main, sep = '//')
-    base_emp[avg_req_exp, id_firm = name_red] = base_emp[avg_req_exp, id_firm = name_red] + line$avg_req_exp
-    base_emp[top_skill_req, id_firm = name_red] = paste(base_emp[top_skill_req, id_firm = name_red], line$top_skill_req, sep = '//')
-    base_emp[avg_wage, id_firm = name_red] = base_emp[avg_wage, id_firm = name_red] + line$avg_wage
-    base_emp[addre_dept_main, id_firm = name_red] = paste(base_emp[addre_dept_main, id_firm = name_red], line$addre_dept_main, sep = '//')
-  }else{
-    base_emp = rbind(base_emp, list(name_red, name, 1, line$sector_main, line$avg_req_exp, line$top_skill_req, line$avg_wage, line$addre_dept_main))
-  }
-  return (line)
-}
-
-# Fonction add_line corrigée
-add_line <- function(line) {
-  name <- line$entreprise # Nom de l'entreprise
-  name_norm <- stringi::stri_trans_general(tolower(name), "Latin-ASCII") # Sans accent ni majuscule
-  name_red <- substring(name_norm, 1, min(4, nchar(name_norm))) # 4 premiers caractères
   
-  if (name_red %in% base_emp$id_firm) {
-    base_emp[id_firm == name_red, `:=`(
+  if (name_red %in% data_base$id_firm) {
+    data_base[id_firm == name_red, `:=`(
       n_offres = n_offres + 1,
       sector_main = paste(sector_main, line$secteur, sep = ','),
       avg_req_exp = avg_req_exp + line$experience_requise,
@@ -53,7 +37,7 @@ add_line <- function(line) {
       addre_dept_main = addre_dept_main
     )]
   } else {
-    base_emp <<- rbind(base_emp, list(
+    data_base <<- rbind(data_base, list(
       name_red, name, 1, line$secteur, line$experience_requise, line$competences_requises, line$salaire, line$departement
     ))
   }
@@ -61,7 +45,7 @@ add_line <- function(line) {
 }
 
 for (i in 1:dim(offres)[1]){
-  add_line(offres[i])
+  add_line(offres[i], base_emp)
 }
 
 offres[1]
@@ -69,12 +53,11 @@ dim(base_emp)
 head(base_emp)$sector_main
 
 
-offres[, add_line(.SD), by = 1:nrow(offres_red)]
+offres[, add_line(.SD, base_emp), by = 1:nrow(offres)]
 base_emp
 
-
-
-
+# Utiliser apply pour appliquer la fonction add_line sur chaque ligne de offres
+apply(offres, 1, function(line) add_line(as.list(line), base_emp))
 
 
 
