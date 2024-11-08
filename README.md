@@ -1,5 +1,5 @@
 # ProjetR.smams
-# Page d'aaceuil  : 
+# Page d'aceuil  : 
 <div style="background-color: #ffb787; margin-top: 20px; padding: 20px; position: relative;">
     <p>&nbsp;</p> <!-- Un espace vide -->
     <p>&nbsp;</p> <!-- Un espace vide -->
