@@ -1,0 +1,129 @@
+library(data.table)
+
+library(ggplot2)
+library(gridExtra)
+library(dplyr)
+
+dt_offres = data.table(firm_name = c("A", "B", "C"), secteur = c("Mathématiques", "Informatiques", "Biologie"), competence = c("Patience", "Tolérence", "Intelligence") , nb_apparition = c(3,18,10), addr_dept_main = c(35, 64, 93), salaire = c(60000, 50000, 75000), exp= c(3, 2, 5))
+dt_offres
+
+dt_brevets = data.table(firm_name = c("A", "B", "C"), n_patents = c(25,32,17), addr_dept_main = c(35, 64, 93), secteur = c("Mathématiques", "Informatiques", "Biologie"))
+dt_brevets
+
+
+#graphiques du nb de brevets déposé par chaque entreprise
+
+dt_brevets$addr_dept_main <- as.factor(dt_brevets$addr_dept_main)
+
+G1 = ggplot(data = dt_brevets) + 
+  geom_bar(
+    mapping = aes(x = firm_name, y = n_patents , fill = addr_dept_main),
+    stat = "identity",               # Nécessaire pour que `y` soit utilisé comme valeur
+  ) +
+  geom_text(
+    aes(x = firm_name, y = n_patents , label = n_patents , group = addr_dept_main), 
+    position = position_dodge(width = 0.9), # Positionner les étiquettes avec les barres
+    vjust = -0.3,                          # Ajuster la position verticale des étiquettes
+    size = 3                               # Taille du texte
+  ) +
+  labs(
+    x = "Entreprises",
+    y = "Nombre de brevets déposés",
+    fill = "Département"
+  )
+G1  
+
+#graphiques du salaire moyen proposé par chaque entreprise
+
+# Trier les données par ordre croissant de salaire
+dt_offres_sorted <- dt_offres %>%
+  arrange(salaire) %>%
+  mutate(firm_name = factor(firm_name, levels = unique(firm_name)))
+
+# Créer le graphique
+G2 = ggplot(data = dt_offres_sorted, aes(x = firm_name, y = salaire)) +
+  geom_col(fill = "skyblue", colour = "black") + 
+  labs(
+    title = "Salaires moyens par entreprise",
+    x = "Entreprises",
+    y = "Salaire en euros"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) # Rotation des étiquettes pour plus de lisibilité
+
+G2
+
+#graphique nb d'offres demploi par entreprise (comme ça on compare graphiques 1, 2 et 3)
+
+G3 = ggplot(data = dt_offres) + 
+  geom_bar(
+    mapping = aes(x = firm_name, y = nb_apparition),
+    stat = "identity",               # Nécessaire pour que `y` soit utilisé comme valeur
+  ) +
+  labs(
+    x = "Entreprises",
+    y = "Nombre d''offres proposées",
+  )
+G3  
+
+#mêmes graphiques que 1, 2 et 3 mais par rapport aux secteurs d'activité pas des entreprises
+
+dt_offres = data.table(firm_name = c("A", "B", "C","D"), secteur = c("Mathématiques", "Informatiques", "Biologie", "Mathématiques"), competence = c("Patience", "Tolérence", "Intelligence","Sexytude") , nb_apparition = c(3,18,10,7), addr_dept_main = c(35, 64, 93,91), salaire = c(60000, 50000, 75000,65000), exp= c(3, 2, 5,3))
+dt_offres
+
+dt_brevets = data.table(firm_name = c("A", "B", "C","D"), n_patents = c(25,32,17,12), addr_dept_main = c(35, 64, 93,91), secteur = c("Mathématiques", "Informatiques", "Biologie","Mathématiques"))
+dt_brevets
+
+#graphiques du nb de brevets déposés par secteur
+
+dt_brevets_agg <- dt_brevets[, .(total_brevets = sum(n_patents)), by = secteur]
+
+# Afficher les données agrégées pour vérifier
+print(dt_brevets_agg)
+
+
+G4 = ggplot(data = dt_brevets_agg, aes(x = "", y = total_brevets, fill = secteur)) +
+  geom_bar(stat = "identity", colour = "black", width = 1) +  # Crée les barres du camembert
+  coord_polar(theta = "y") +  # Transforme en camembert
+  labs(
+    title = "Nombre total de brevets déposés par secteur",
+    x = NULL,  # Enlève l'étiquette de l'axe x
+    y = NULL   # Enlève l'étiquette de l'axe y
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_blank(),  # Enlever les étiquettes des axes
+    axis.title.x = element_blank(),
+    axis.title.y = element_blank()
+  ) +
+  # Ajouter la légende
+  scale_fill_manual(values = c("Mathématiques" = "#A8D0E6", 
+                               "Informatiques" = "#F4A7B9", 
+                               "Biologie" = "#A8E6CF")) +  # Exemple de couleurs, ajustez si nécessaire
+  theme(legend.title = element_blank())  # Masquer le titre de la légende
+G4
+
+#graphiques du salaire moyen proposé par secteur 
+# Calculer le salaire moyen par secteur
+dt_salaire_moyen = dt_offres[, .(salaire_moyen = mean(salaire)), by = secteur]
+G5 = ggplot(dt_salaire_moyen, aes(x = secteur, y = salaire_moyen, fill = secteur)) +
+  geom_bar(stat = "identity") +
+  theme_minimal() +
+  labs(title = "Salaire moyen proposé par secteur", 
+       x = "Secteur", 
+       y = "Salaire moyen (€)") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+G5
+
+#graphique du nb d'offres demploi par secteur
+# Calculer le nombre total d'offres par secteur (en additionnant les apparitions)
+dt_offres_par_secteur = dt_offres[, .(total_offres = sum(nb_apparition)), by = secteur]
+
+# Créer le graphique
+G6 = ggplot(dt_offres_par_secteur, aes(x = "", y = total_offres, fill = secteur)) +
+  geom_bar(stat = "identity", width = 1) +  # Créer les barres
+  coord_polar(theta = "y") +  # Transformer en camembert
+  theme_minimal() +
+  labs(title = "Répartition des offres d'emploi par secteur") +
+  theme(axis.title.x = element_blank(), axis.title.y = element_blank(), axis.text.x = element_blank())
+G6
