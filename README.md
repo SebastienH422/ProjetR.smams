@@ -28,6 +28,18 @@
 
 Page à laquelle on accède en cliquant sur "I. Présentation du projet : 
 # $$\text{Présentation du projet}$$
+<span style="font-size: 20px;">L'ojectif de ce projet est de comprendre le lien entre la performance d’innovation des entreprises (mesurée par les dépots de brevets) et leur demande de compétences.<br>
+Pour cela nous allons traiter plusieurs jeux de données à l'aide du logiciel RStudio. <br><br>
+Une fois le "nettoyage" et le traitement des données effectués, nous essaieront de répondre à différentes questions telles que : <br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - quelle entreprise a déposé le plus de brevets ? <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - dans quel secteur retrouve-t-on le plus de brevets ? <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - dans quel département y a-t-il le plus d'entreprises qui ont déposé des brevets ? <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - quel secteur d'activité recrute le plus ? <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - dans quel département retrouve-t-on le plus d'offres d'emploi ? <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - quelle entreprise recrute le plus de data scientists ? <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - quelle entreprise demande le plus de compétences en machine learning ? <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - quelle entreprise rémunère le mieux ? <br>
+</i></span><br>
 
 #Page à laquelle on accède en cliquant sur "1) Brevets" : 
 # $$\text{Nos statistiques descriptives}$$
