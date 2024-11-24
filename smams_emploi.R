@@ -12,69 +12,84 @@ data = data.table(read.csv(file = "DATA/emp_offers_fmt.tsv",
 names(data)
 # Champs: "intitule_poste" "entreprise" "type_emploi" "secteur" "experience_requise" "competences_requises""poste_desc" "salaire"              "departement"      
 
-offres = data[, c("entreprise", "secteur", # On récupère les données qui nous intéressent
+base_emp = data[, c("entreprise", "secteur", # On récupère les données qui nous intéressent
                   "experience_requise", "competences_requises", "salaire", "departement")]
 
+base_emp$id_firm = apply(X = base_emp,
+                         MARGIN = 1,
+                         FUN = get_id_firm)
+base_emp$firm_name = base_emp$entreprise
+base_emp$n_offres = rep(1, dim(base_emp)[1])
+base_emp$sector_name
+base_emp$avg_req_exp
+base_emp$top_skill_req
+base_emp$avg_wage
+base_emp$addre_dept_main = base_emp$departement
+
 # Création de la database
-base_emp = data.table(id_firm = character(0), firm_name = character(0), n_offres = integer(0), 
-                      sector_main = character(0), avg_req_exp = numeric(0), top_skill_req = character(0), 
-                      avg_wage = numeric(0), addre_dept_main = character(0))
+# base_emp = data.table(id_firm = character(0), firm_name = character(0), n_offres = integer(0), 
+#                       sector_main = character(0), avg_req_exp = numeric(0), top_skill_req = character(0), 
+#                       avg_wage = numeric(0), addre_dept_main = character(0))
 
-# Remplissage de la database
+# Modification du nom
 #
-add_line = function(line, data_base) {
-  name = line$entreprise # Nom de l'entreprise
-  name_norm = stringi::stri_trans_general(tolower(name), "Latin-ASCII") # Sans accent ni majuscule
-  name_red = substring(name_norm, 1, min(4, nchar(name_norm))) # 4 premiers caractères
-  
-  if (name_red %in% data_base$id_firm) {
-    data_base[id_firm == name_red, `:=`(
-      n_offres = n_offres + 1,
-      sector_main = paste(sector_main, line$secteur, sep = ','),
-      avg_req_exp = avg_req_exp + line$experience_requise,
-      top_skill_req = paste(top_skill_req, line$competences_requises, sep = ','),
-      avg_wage = paste(avg_wage, line$salaire, sep = ','),
-      addre_dept_main = addre_dept_main
-    )]
+get_id_firm = function(line) {
+  if (!is.null(line['entreprise'])) {
+    name = line['entreprise'] # Nom de l'entreprise
+    name_norm = stringi::stri_trans_general(tolower(name), "Latin-ASCII") # Sans accent ni majuscule
+    return (substring(name_norm, 1, min(4, nchar(name_norm)))) # 4 premiers caractères
   } else {
-    data_base <<- rbind(data_base, list(
-      name_red, name, 1, line$secteur, line$experience_requise, line$competences_requises, line$salaire, line$departement
-    ))
+    stop("La colonne 'entreprise' est manquante dans l'objet 'line'")
   }
-  return(line)
 }
 
-for (i in 1:dim(offres)[1]){
-  add_line(offres[i], base_emp)
+# Transformation du salaire en numérique
+#
+get_wage = function(line) {
+  if (!is.null(line['salaire'])) {
+    if (line['salaire'] == "") return (0)
+    else {
+      print(line[['salaire']])
+    }
+  } else {
+    stop("La colonne 'salaire' est manquante dans l'objet 'line'")
+  }
 }
 
-offres[1]
-dim(base_emp)
-head(base_emp)$sector_main
+x = apply(X = base_emp,
+          MARGIN = 1,
+          FUN = get_wage)
+# de SSS € à SSS € par an/mois/jour
+# à partir de SSS € par an/mois/jour
+# SSS € par an/mois/jour
+# jusqu'à SSS € par ...
+# Salaire : Non spécifié
+# Salaire : 45K à 55K €
+# Salaire : 50K à 70K € par mois (PAR MOIS !!!!)
 
+au_format = function(line){
+  salaire = line['salaire']
 
-offres[, add_line(.SD, base_emp), by = 1:nrow(offres)]
-base_emp
-
-# Utiliser apply pour appliquer la fonction add_line sur chaque ligne de offres
-apply(offres, 1, function(line) add_line(as.list(line), base_emp))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  if (substring(salaire, 1, 3) == "de "){
+    num = gsub("[^0-9]", "", salaire)
+    begin = substring(num, 1, 5)
+    end = substring(num, 6, 10)
+    return ((as.integer(begin) + as.integer(end)) / 2)
+  } else if (substring(salaire, 1, 12) == 'à partir de ' ||
+             substring(salaire, 1, 5) == 'jusqu') {
+    return (as.integer(gsub("[^0-9]", "", salaire)))
+  } else if (substring(salaire, 1, 7) == "Salaire") {
+    return (salaire)
+  } else if (salaire == "") {
+    return (0)
+  } else {
+    print(line[['salaire']])
+  }
+}
+x = apply(X = base_emp,
+          MARGIN = 1,
+          FUN = au_format)
+?gsub
 
 
 
