@@ -1,6 +1,6 @@
 ########################################### Dont forget to uncomment #################################
 # install.packages("data.table")
-# library(data.table)
+library(data.table)
 
 # 2.3.2. Sources de données (3 data frames)
 # ipc_clean_data, epo_app_reg_clean_data, en_ipc_clean_data
@@ -8,7 +8,7 @@
 
 # 202202_EPO_App_reg_small.txt
 
-epo_app_reg_all_data = fread(file.path(getwd(), "projetR/Data/202202_EPO_App_reg_small.txt"), 
+epo_app_reg_all_data = fread(file.path(getwd(), "Data/202202_EPO_App_reg_small.txt"), 
                       sep = ",", 
                       na.strings = c("", "NA"), 
                       fill = TRUE)
@@ -21,7 +21,7 @@ epo_app_reg_clean_data # DataTable propre de 202202_EPO_App_reg_small.txt
 
 ## 202202_EPO_IPC_small.txt
 
-epo_ipc_all_data = fread(file.path(getwd(), "projetR/Data/202202_EPO_IPC_small.txt"), 
+epo_ipc_all_data = fread(file.path(getwd(), "Data/202202_EPO_IPC_small.txt"), 
                          sep = ",", 
                          na.strings = c("", "NA"), 
                          fill = TRUE)
@@ -33,7 +33,7 @@ epo_ipc_clean_data # DataTable propre de 202202_EPO_IPC_small.txt
 
 ## EN_ipc_section_*_title_list_20120101.txt
 
-all_en_ipc_files = list.files(path = file.path(getwd(), "projetR/Data"),
+all_en_ipc_files = list.files(path = file.path(getwd(), "Data"),
                            pattern = "EN_ipc_section_.*_title_list_20120101.txt",
                            full.names = TRUE)
 all_en_ipc_files
@@ -71,6 +71,8 @@ clean_column_description <- function(df) {
   desc <- gsub("\\s{2,}", " ", desc)
   # Trim leading and trailing whitespace
   desc <- trimws(desc)
+  # Capitalize the first letter
+  desc <- paste0(toupper(substring(desc, 1, 1)), substring(desc, 2))
   return(desc)
 }
 

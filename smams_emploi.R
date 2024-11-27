@@ -10,7 +10,7 @@ library(stringr)
 # --> Création de `offres` contenant les données suivantes:
 #     entreprise, secteur, experience_requise, competences_requises, salaire, departement
 #
-data = data.table(read.csv(file = "DATA/emp_offers_fmt.tsv", # Importation
+data = data.table(read.csv(file = "Data/emp_offers_fmt.tsv", # Importation
                   head = TRUE,
                   sep = ","))
 names(data) # Récupération des champs
