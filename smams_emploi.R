@@ -31,31 +31,33 @@ base_emp$addre_dept_main = base_emp$departement
 
 # TODO
 # Fonctions pour construire les colonnes de base_emp
-#     get_exp_req: Retourner l'expérience requise en liste de string contenant les expériences
-#     get_wage: Transformer les salaires en nombre, 
-#               faire la moyenne lorsqu'il s'agit d'une fourchette, 
-#               retourner le salaire
-#     get_skills: Scinder le string des compétences en liste de string des compétences
-#                 retourner la liste de string des compétences
-#     get_sector: Scinder le string des secteurs en liste de string des secteurs
-#                 retourner la liste de string des secteurs
+#     get_exp_req: IN: exp <string> nombre d'expérience sous les différents formats qui apparraissent dans experience_requise
+#                  OUT: <list of string> Expériences requises, une expérience par string
+#     get_wage: IN: wages <string> Salaire ou fourchette de salaire sous les différents formats qui apparraissent dans salaire
+#               OUT: <float> Salaire ou salaire moyen s'il s'agit d'une fourchette
+#     get_skills: IN: skills <string> Compétences requises
+#                 OUT: <list of string> Une compétence requise par string
+#     get_sector: IN: sectors <string> Secteurs d'activités
+#                 OUT: <list of string> Un secteur d'activité par string
 # 
 # Fonctions à appliquer pour l'aggregation
-#     set_firm_name: IN: Liste des noms (string)
-#                    OUT: Le premier nom, ou celui qui revient le plus souvent
-#     set_sector_name: IN: Liste de listes de secteurs (string, même format que le retour de get_sector)
-#                          n: nombre de secteurs voulus à la fin
+#     set_firm_name: IN: names <list of string> Noms des entreprises
+#                    OUT: <string> Le premier nom, ou celui qui revient le plus souvent
+#     set_sector_name: IN: sectors_lists <list of list of string> Liste de liste des secteurs d'activités
+#                          n <int> nombre de secteurs voulus
 #                      OUT: String des n secteurs qui reviennent le plus souvent
 #                      TODO: Fusionner les listes, 
-#                            trier par ordre d'apparition, 
-#                            prendre les n valeurs qui apparraissent le plus souvent
-#     set_top_skill_req: IN: Liste de liste des compétences (string, même format que le retour de get_skills)
-#                            n: nombre de compétences voulus à la fin
+#                            trier les secteurs par ordre d'apparition, 
+#                            prendre les n valeurs qui apparaissent le plus souvent,
+#                            fusionner les n valeurs dans un seul string à retourner
+#     set_top_skill_req: IN: skils_lists <list of list of string> Liste de liste des compétences
+#                            n <int> nombre de compétences voulues 
 #                        OUT: String des n compétences qui reviennent le plus souvent
 #                        TODO: Fusionner les listes, 
-#                              trier par ordre d'apparition, 
-#                              prendre les n valeurs qui apparraissent le plus souvent
-#     set_addre_dept_main: IN: Liste de int des départements
+#                              trier les compétences par ordre d'apparition, 
+#                              prendre les n valeurs qui apparaissent le plus souvent,
+#                              fusionner les n valeurs dans un seul string à retourner
+#     set_addre_dept_main: IN: dep <list of int> Liste de int des départements
 #                          OUT: int du département qui revient le plus souvent
 #
 # Aggregation:
