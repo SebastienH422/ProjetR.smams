@@ -1,14 +1,10 @@
 # _____________________________________________________________________________________________________________________________
 # _____________________________________________________________________________________________________________________________
-# Partie emploi
-#
-# Reste à faire:
-#     get_skills: IN: skills <string> Compétences requises
-#                 OUT: <list of string> Une compétence requise par string
-#     get_sector: IN: sectors <string> Secteurs d'activités
-#                 OUT: <list of string> Un secteur d'activité par string
-
 # _____________________________________________________________________________________________________________________________
+# Partie emploi
+# _____________________________________________________________________________________________________________________________
+# _____________________________________________________________________________________________________________________________
+#
 # Fonctions annexes
 
 # Function to clean up and process the competences list
@@ -17,20 +13,49 @@ clean_competences = function(skills_text) {
   cleaned_text = str_trim(gsub("^,|,$", "", skills_text))
   return(cleaned_text)
 }
+
+# _____________________________________________________________________________________________________________________________
 # _____________________________________________________________________________________________________________________________
 # Fonctions pour construire les colonnes de base_emp
-#                  
-get_exp_req = function(exp){
-  # IN: exp <string> nombre d'expérience sous les différents formats qui apparraissent dans experience_requise
-  # OUT: <list of string> Expériences requises, une expérience par string
-  return(str_split(string = stringi::stri_trans_general(tolower(exp), "Latin-ASCII"),
+# _____________________________________________________________________________________________________________________________
+# --> Used for top_skill_req         
+get_skills_req = function(line){ 
+  # IN: skills <string> nombre de compétence sous les différents formats qui apparraissent dans competences_requises
+  # OUT: <list of string> compétences requises, une compétence par string
+  if (!is.null(line['competences_requises'])) {
+    skills = line['competences_requises']
+  } else {
+    skills = NaN
+  }
+  return(str_split(string = stringi::stri_trans_general(tolower(skills), "Latin-ASCII"),
+                   pattern = ', '))
+}
+# _____________________________________________________________________________________________________________________________
+# --> Used for sector_name       
+get_sector_name = function(line){ 
+  # IN: sector <string> nombre de compétence sous les différents formats qui apparraissent dans competences_requises
+  # OUT: <list of string> compétences requises, une compétence par string
+  if (!is.null(line['secteur'])) {
+    sector = line['secteur']
+  } else {
+    sector = NaN
+  }
+  return(str_split(string = stringi::stri_trans_general(tolower(sector), "Latin-ASCII"),
                    pattern = ', '))
 }
 
-get_wage = function(wage) {
+# _____________________________________________________________________________________________________________________________
+# Used for avg_wage
+get_wage = function(line) {
   # IN: wage <string> Salaire ou fourchette de salaire sous les différents formats 
   #                          qui apparraissent dans la colonne salaire
   # OUT: <float> Salaire ou salaire moyen s'il s'agit d'une fourchette
+
+  if (!is.null(line['salaire'])) {
+    wage = line['salaire']
+  } else {
+    wage = NaN
+  }
 
   # Check if the wage text is empty or NA
   if (is.na(wage) || wage == "") {
@@ -86,13 +111,12 @@ get_wage = function(wage) {
   
   return(as.numeric(formatted_wage) * mult)
 }
-#     get_skills: IN: skills <string> Compétences requises
-#                 OUT: <list of string> Une compétence requise par string
-#     get_sector: IN: sectors <string> Secteurs d'activités
-#                 OUT: <list of string> Un secteur d'activité par string
-#
+
 # _____________________________________________________________________________________________________________________________
-# Fonctions à appliquer pour l'aggregation 
+# _____________________________________________________________________________________________________________________________
+# Fonctions à appliquer après l'aggregation 
+# _____________________________________________________________________________________________________________________________
+#
 set_firm_name = function(names) {
   # IN: names <list of string> Noms des entreprises
   # OUT: <string> Le premier nom, ou celui qui revient le plus souvent
@@ -112,73 +136,33 @@ set_firm_name = function(names) {
   return(top_names)
 }
 
-get_top_sectors = function(sector_list, n) {
-  # IN: sectors_lists <list of list of string> Liste de liste des secteurs d'activités
+# _____________________________________________________________________________________________________________________________
+#
+get_top_val = function(val_list, n) {
+  # IN: val_lists <list> Liste de valeurs
   #     n <int> nombre de secteurs voulus
-  # OUT: String des n secteurs qui reviennent le plus souvent
+  # OUT: Liste des n valeurs qui reviennent le plus souvent
 
   # Remove any empty or NA values
-  valid_sectors = sector_list[!is.na(sector_list) & sector_list != ""]
+  valid_val = val_list[!is.na(val_list) & val_list != ""]
   
-  # If no valid sectors are found, return NA
-  if (length(valid_sectors) == 0) {
+  # If no valid val are found, return NA
+  if (length(valid_val) == 0) {
     return(NA_character_)
   }
   
-  # Count occurrences of each sector
-  sector_counts = sort(table(valid_sectors), decreasing = TRUE)
+  # Count occurrences of each val
+  val_counts = sort(table(valid_val), decreasing = TRUE)
   
-  # Get the top n most frequent sectors (or fewer if there aren't n)
-  top_sectors = names(sector_counts)[1:min(n, length(sector_counts))]
+  # Get the top n most frequent val (or fewer if there aren't n)
+  top_val = names(val_counts)[1:min(n, length(val_counts))]
   
-  # Concatenate the top sectors into a single string, separated by commas
-  return(paste(top_sectors, collapse = ", "))
+  # Concatenate the top val into a single string, separated by commas
+  return(paste(top_val, collapse = ", "))
 }
 
-get_top_skills = function(skills_list, n) {
-  # IN: skills_lists <list of list of string> Liste de liste des compétences
-  #     n <int> nombre de compétences voulues 
-  # OUT: String des n compétences qui reviennent le plus souvent
-
-  # Clean the competences list and flatten into a single vector
-  cleaned_skills = unlist(str_split(clean_competences(skills_list), ",\\s*"))
-  cleaned_skills = cleaned_skills[cleaned_skills != ""]
-  
-  # If there are no skills, return NA as a character
-  if (length(cleaned_skills) == 0) {
-    return(NA_character_)
-  }
-  
-  # Count occurrences of each skill
-  skill_counts = sort(table(cleaned_skills), decreasing = TRUE)
-  
-  # Get the top skills, limiting to n or fewer
-  top_skills = names(skill_counts)[1:min(n, length(skill_counts))]
-  
-  # Concatenate the top skills into a single string
-  return(paste(top_skills, collapse = ", "))
-}
-
-set_addre_dept_main = function(dep) {
-  # IN: dep <list of int> Liste de int des départements
-  # OUT: int du département qui revient le plus souvent
-  
-  # If there are no departement, return NA
-  if (length(dep) == 0) {
-    return(NA)
-  }
-  
-  # Count occurrences of each departement
-  dep_counts = sort(table(dep), decreasing = TRUE)
-  
-  # Get the top departement
-  top_dep = names(dep_counts)[1]
-  
-  # Concatenate the top departement
-  return(top_dep)
-}
-
-
+# _____________________________________________________________________________________________________________________________
+#
 get_id_firm = function(line) {
   if (!is.null(line['entreprise'])) {
     name = line['entreprise'] # Nom de l'entreprise

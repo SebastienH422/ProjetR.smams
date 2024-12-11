@@ -15,54 +15,65 @@ data = data.table(read.csv(file = "Data/emp_offers_fmt.tsv", # Importation
                   sep = ","))
 names(data) # Récupération des champs
 
-offres = data[, c("entreprise", "secteur", # Création de 'offres'
+base_emp = data[, c("entreprise", "secteur", # Création de 'offres'
               "experience_requise", "competences_requises", "salaire", "departement")]
 
+# Création des nouvelles colonnes de la database
 base_emp$id_firm = apply(X = base_emp,
                          MARGIN = 1,
                          FUN = get_id_firm)
 base_emp$firm_name = base_emp$entreprise
 base_emp$n_offres = rep(1, dim(base_emp)[1])
-base_emp$sector_name = base_emp$secteur
-base_emp$avg_req_exp 
-base_emp$top_skill_req
-base_emp$avg_wage
+base_emp$sector_name = apply(X = base_emp,
+                             MARGIN = 1,
+                             FUN = get_sector_name)
+base_emp$avg_req_exp = base_emp$experience_requise
+base_emp$top_skill_req = apply(X = base_emp,
+                               MARGIN = 1,
+                               FUN = get_skills_req)
+base_emp$avg_wage = apply(X = base_emp,
+                          MARGIN = 1,
+                          FUN = get_wage)
 base_emp$addre_dept_main = base_emp$departement
 
-# TODO
-# Fonctions pour construire les colonnes de base_emp
-#     get_exp_req: IN: exp <string> nombre d'expérience sous les différents formats qui apparraissent dans experience_requise
-#                  OUT: <list of string> Expériences requises, une expérience par string
-#     get_wage: IN: wages <string> Salaire ou fourchette de salaire sous les différents formats qui apparraissent dans salaire
-#               OUT: <float> Salaire ou salaire moyen s'il s'agit d'une fourchette
-#     get_skills: IN: skills <string> Compétences requises
-#                 OUT: <list of string> Une compétence requise par string
-#     get_sector: IN: sectors <string> Secteurs d'activités
-#                 OUT: <list of string> Un secteur d'activité par string
+head(base_emp)
+# Problèmes: sector_name et top_skill_req ont un problème de type, 
+#            wage_avg ne s'applique pas correctement sur les premières lignes
+# A priori, les fonctions sont correctes. A retester avec l'argument 'line', peut-être que le problème vient de là. 
+# J'ai l'impression qu'elles renvoient des vecteurs de vecteurs (de vecteurs ?). 
+
+# Suppression des anciennes colonnes
+# A faire (voir plus bas)
+
+# Aggrégation
+# A faire (voir plus bas)
+
+# Application des fonctions
+# A faire (voir plus bas)
+
+# Nettoyage manuel
+# A faire (voir plus bas)
+
+
+# Schéma à suivre:
 # 
-# Fonctions à appliquer pour l'aggregation
-#     set_firm_name: IN: names <list of string> Noms des entreprises
-#                    OUT: <string> Le premier nom, ou celui qui revient le plus souvent
-#     set_sector_name: IN: sectors_lists <list of list of string> Liste de liste des secteurs d'activités
-#                          n <int> nombre de secteurs voulus
-#                      OUT: String des n secteurs qui reviennent le plus souvent
-#                      TODO: Fusionner les listes, 
-#                            trier les secteurs par ordre d'apparition, 
-#                            prendre les n valeurs qui apparaissent le plus souvent,
-#                            fusionner les n valeurs dans un seul string à retourner
-#     set_top_skill_req: IN: skils_lists <list of list of string> Liste de liste des compétences
-#                            n <int> nombre de compétences voulues 
-#                        OUT: String des n compétences qui reviennent le plus souvent
-#                        TODO: Fusionner les listes, 
-#                              trier les compétences par ordre d'apparition, 
-#                              prendre les n valeurs qui apparaissent le plus souvent,
-#                              fusionner les n valeurs dans un seul string à retourner
-#     set_addre_dept_main: IN: dep <list of int> Liste de int des départements
-#                          OUT: int du département qui revient le plus souvent
+# Appliquer les fonctions : (fait, voir problèmes ci-dessus)
+#   - get_id_firm sur entreprise pour construire la colonne id_firm
+#   - get_skills sur secteur, competences_requises, pour construire les colonnes sector_name, top_skill_req
+#   - get_wage sur salaire pour construire la colonne avg_wage
+# Initialiser:
+#   - firm_name sur entreprise
+#   - n_offres à 1
+#   - avg_req_exp à experience_requise
+#   - addre_dept_main à departement
 #
-# Aggregation:
-# base_emp <- base_emp[{bool pour sélectionner les données},
-#                      {fonctions pour aggréger les données, 
-#                           par exemple sum(n_offers),
-#                           séparées par des virgules},
-#                      by = {identifiant, ici id_firm}]
+# Supprimer les colonnes entreprise, secteur, experience_requise, competences_requises, salaire, departement
+#
+# Aggréger selon id_firm en fusionnant:
+#   - Concaténation des listes sur firm_name, sector_name, top_skill_req, addre_dept_main
+#   - Somme des numerics sur n_offres
+#   - Moyenne des valeurs sur avg_req_exp, avg_wage
+#
+# Appliquer les fonctions:
+#   - get_top_val sur la colonne firm_name, sector_name, top_skill_req, addre_dept_main
+#
