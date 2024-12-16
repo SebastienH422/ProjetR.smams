@@ -150,6 +150,44 @@ get_top_val = function(val_list, n) {
   return(paste(top_val, collapse = ", "))
 }
 
+get_most_frequent = function(val_list) {
+  # IN: val_lists <list> Liste de valeurs (skills)
+  # OUT: Liste des valeurs qui reviennent le plus souvent (>1 apparition),
+  #      ou toutes les valeurs si elles apparaissent seulement une fois
+  
+  # Ensure val_list is treated as a character vector
+  val_list = as.character(val_list)
+  
+  # Split the string values by comma and remove extra spaces
+  valid_val = unlist(strsplit(val_list, ",\\s*"))
+  
+  # Remove any empty or NA values
+  valid_val = valid_val[!is.na(valid_val) & valid_val != ""]
+  
+  # If no valid val are found, return NA
+  if (length(valid_val) == 0) {
+    return(NA_real_)
+  }
+  
+  # Count occurrences of each value
+  val_counts = table(valid_val)
+  
+  # Filter to keep only values that appear more than once
+  frequent_vals = names(val_counts[val_counts > 1])
+  
+  if (length(frequent_vals) > 0) {
+    # Sort frequent values by occurrence
+    frequent_counts = sort(val_counts[frequent_vals], decreasing = TRUE)
+    top_skills = names(frequent_counts)
+  } else {
+    # If all values appear only once, return all values
+    top_skills = names(sort(val_counts, decreasing = TRUE))
+  }
+  
+  # Concatenate the top skills into a single string, separated by commas
+  return(paste(top_skills, collapse = ", "))
+}
+
 # _____________________________________________________________________________________________________________________________
 #
 get_id_firm = function(line) {
