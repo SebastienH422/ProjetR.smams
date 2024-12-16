@@ -46,71 +46,54 @@ get_sector_name = function(line){
 
 # _____________________________________________________________________________________________________________________________
 # Used for avg_wage
-get_wage = function(line) {
+
+get_wage = function(wage) {
   # IN: wage <string> Salaire ou fourchette de salaire sous les différents formats 
   #                          qui apparraissent dans la colonne salaire
   # OUT: <float> Salaire ou salaire moyen s'il s'agit d'une fourchette
 
-  if (!is.null(line['salaire'])) {
-    wage = line['salaire']
-  } else {
-    wage = NaN
-  }
-
-  # Check if the wage text is empty or NA
   if (is.na(wage) || wage == "") {
-    return(NA)  # Return NA for empty or missing salaries
+    return(NA_real_)
   }
   
-  # Remove all spaces between numbers
-  cleaned_wage = gsub(" ", "", wage)
+  # Nettoyer le texte du salaire
+  wage <- gsub(" ", "", wage)        # Supprimer les espaces
+  wage <- gsub(",", ".", wage)       # Convertir les virgules en points
 
-  # Convert commas to periods for consistency
-  cleaned_wage = gsub(",", ".", cleaned_wage)
-  
-  # If the wage ends with "000", multiply by 1000
-  wage_value = 1
-  if (grepl("000", cleaned_wage) || grepl("K", cleaned_wage)) {
-    wage_value = as.numeric(cleaned_wage) * 1000
-  } else {
-    wage_value = as.numeric(cleaned_wage)
+  # Détecter les multiplicateurs et normaliser
+  multiplier <- 1
+  if (grepl("K", wage, ignore.case = TRUE)) {
+    multiplier <- 1000
+    wage <- gsub("[Kk]", "", wage)
+  } else if (grepl("000", wage)) {
+    wage <- gsub("000", "", wage)
+    multiplier <- 1000
   }
   
-  # Extract all numbers from the wage string
-  numbers = as.numeric(unlist(str_extract_all(cleaned_wage, "\\d+\\.?\\d*")))
-  
-  # If no numbers are found, return NA
-  if (length(numbers) == 0) {
-    return(NA)
-  }
+  # Extraire les nombres
+  numbers <- as.numeric(unlist(str_extract_all(wage, "\\d+\\.?\\d*")))
 
-  mult = 1
-  if (str_detect(wage, "k") || str_detect(wage, "K")) {
-    mult = 1000
+  if (length(numbers) == 0 || any(is.na(numbers))) {
+    return(NA_real_)
   }
   
-  # Calculate the average of the numbers if there are multiple
-  avg_wage = if (length(numbers) > 1) mean(numbers) else numbers[1]
+  # Calculer la moyenne en cas de fourchette
+  avg_wage <- mean(numbers) * multiplier
   
-  # Apply multipliers based on keywords only if the text is not NA or empty
-  if (!is.na(wage) && wage != "") {
-    if (str_detect(wage, "\\bjour\\b")) {
-      avg_wage = avg_wage * 365  # Multiply by 365 for "jour"
-    } else if (str_detect(wage, "\\bmois\\b")) {
-      avg_wage = avg_wage * 12   # Multiply by 12 for "mois"
-    } else if (str_detect(wage, "\\bsemaine\\b")) {
-      avg_wage = avg_wage * 52   # Multiply by 52 for "semaine"
-    }
+  # Ajuster pour les périodes (jour, mois, semaine)
+  if (str_detect(wage, "jour")) {
+    avg_wage <- avg_wage * 365
+  } else if (str_detect(wage, "mois")) {
+    avg_wage <- avg_wage * 12
+  } else if (str_detect(wage, "semaine")) {
+    avg_wage <- avg_wage * 52
   }
   
-  if (avg_wage == floor(avg_wage)) {
-    formatted_wage = format(avg_wage, nsmall = 0)  # No decimal places
-  } else {
-    formatted_wage = format(round(avg_wage, 2), nsmall = 2)  # Two decimal places
-  }
-  
-  return(as.numeric(formatted_wage) * mult)
+
+  # Retourner avec 2 décimales
+  return(round(avg_wage, 2))
 }
+
 
 # _____________________________________________________________________________________________________________________________
 # _____________________________________________________________________________________________________________________________
@@ -142,9 +125,15 @@ get_top_val = function(val_list, n) {
   # IN: val_lists <list> Liste de valeurs
   #     n <int> nombre de secteurs voulus
   # OUT: Liste des n valeurs qui reviennent le plus souvent
-
+  
+  # Ensure val_list is treated as a character vector
+  val_list = as.character(val_list)
+  
+  # Split the string values by comma and remove extra spaces
+  valid_val = unlist(strsplit(val_list, ",\\s*"))
+  
   # Remove any empty or NA values
-  valid_val = val_list[!is.na(val_list) & val_list != ""]
+  valid_val = valid_val[!is.na(valid_val) & valid_val != ""]
   
   # If no valid val are found, return NA
   if (length(valid_val) == 0) {
@@ -166,8 +155,21 @@ get_top_val = function(val_list, n) {
 get_id_firm = function(line) {
   if (!is.null(line['entreprise'])) {
     name = line['entreprise'] # Nom de l'entreprise
-    name_norm = stringi::stri_trans_general(tolower(name), "Latin-ASCII") # Sans accent ni majuscule
-    return (substring(name_norm, 1, min(4, nchar(name_norm)))) # 4 premiers caractères
+    
+    # Les mots suivant apparraissent souvent comme premier mot dans le nom d'entreprise, ils ne sont pas suffisant pour identifier l'entreprise, on les ignore pour construire l'identificateur id_firm_name
+    to_ignore = c('groupe', 'la', 'caisse', 'le', 'groupement', 'air', 'the', 'centre', 'direction', 'departement')
+    name = tolower(name)
+
+    name = stringi::stri_trans_general(tolower(name), "Latin-ASCII")
+
+
+    name = gsub(',','',name)
+    k = 0
+    while (word(name, k, k) %in% to_ignore){
+      k = k + 1
+    }
+
+    return (word(name, k, k)) # 4 premiers caractères
   } else {
     stop("La colonne 'entreprise' est manquante dans l'objet 'line'")
   }
