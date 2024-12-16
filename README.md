@@ -1,5 +1,5 @@
 # ProjetR.smams
-# Page d'aceuil  : 
+# Page d'accueil  : 
 <div style="background-color: #ffb787; margin-top: 20px; padding: 20px; position: relative;">
     <p>&nbsp;</p> <!-- Un espace vide -->
     <p>&nbsp;</p> <!-- Un espace vide -->
@@ -10,7 +10,7 @@
     <p>&nbsp;</p> <!-- Un espace vide -->
     <p>&nbsp;</p> <!-- Un espace vide --> 
     <!-- Centrer les prénoms -->
-    <p style="width:100%; text-align:center; font-size:20px; color:#FFF;">HEIN Sébastien - FRAILE Simon - DURRIEUX Ahina - PERIAT Matilin - BOIVENT Maïna</p>
+    <p style="width:100%; text-align:center; font-size:20px; color:#FFF;">HEIN Sébastien - FRAILE Simon - DURRIEU Ahina - PERIAT Matilin - BOIVENT Maïna</p>
     <p style="width:100%; text-align:center; font-size:20px; color:#FFF;">Professeur : Laurent R. Bergé</p>
     <p>&nbsp;</p> <!-- Un espace vide -->
     <p>&nbsp;</p> <!-- Un espace vide -->
