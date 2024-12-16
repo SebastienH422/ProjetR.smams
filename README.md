@@ -21,7 +21,7 @@
 
 # $$\text{Sommaire}$$
 ## I. Présentation du projet
-## II. Nos statistiques descriptives
+## II. Statistiques descriptives
 ### &nbsp;&nbsp;1) Brevets
 ### &nbsp;&nbsp;2) Offres d'emploi
 ## III. Analyse de données
@@ -42,7 +42,7 @@ Une fois le "nettoyage" et le traitement des données effectués, nous essaieron
 </i></span><br>
 
 #Page à laquelle on accède en cliquant sur "1) Brevets" : 
-# $$\text{Nos statistiques descriptives}$$
+# $$\text{Statistiques descriptives}$$
 
 <span style="font-size: 20px;">Pour les variables numériques nous repporterons les statistiques suivantes : <i>minimum, maximum, médiane, moyenne, écart-type, nombre de manquant. </i></span><br>
 <span style="font-size: 20px;">Pour les variables chaîne de caractères nous repporterons : <i> les 5 valeurs qui ont leplus grand nombre de brevets </i> et <i> les 5 valeurs qui ont le plus haut salaire.</i></span>
@@ -53,7 +53,7 @@ Une fois le "nettoyage" et le traitement des données effectués, nous essaieron
 
 
 #Page à laquelle on accède en cliquant sur "2) Offres d'emploi" : 
-# $$\text{Nos statistiques descriptives}$$
+# $$\text{Statistiques descriptives}$$
 
 <span style="font-size: 20px;">Pour les variables numériques nous repporterons les statistiques suivantes : <i>minimum, maximum, médiane, moyenne, écart-type, nombre de manquant. </i></span><br>
 <span style="font-size: 20px;">Pour les variables chaîne de caractères nous repporterons : <i> les 5 valeurs qui ont leplus grand nombre de brevets </i> et <i> les 5 valeurs qui ont le plus haut salaire.</i></span>
