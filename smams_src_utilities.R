@@ -212,3 +212,4 @@ get_id_firm = function(line) {
     stop("La colonne 'entreprise' est manquante dans l'objet 'line'")
   }
 }
+#matilin gay
