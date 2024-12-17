@@ -137,17 +137,16 @@ Les 5 départements ayant le salaire moyen le plus élevé :
 ## 3) Base de données de l'innovation dans les entreprises (base_emp_inno)
 ### &nbsp;&nbsp;a) Variables numériques : n_patents, n_offers, avg_wage 
 
-!!!!!!!!!!!!!!!!!!!!!!! A FAIRE AVEC "stat.rmd" dans ma branche, a la fin !!!!!!!!!!!!!!!!!!!!!!! 
 
 <br>
 
 Le nombre de brevets déposés par entreprise :
 - minimum : 1 brevet,
-- médiane : 1 brevet,
-- maximum : 5311 brevets,
-- moyenne : 12 brevets,
-- écart-type : 141,
-- nombre de manquants : il y a  valeurs manquantes.
+- médiane : 4 brevets,
+- maximum : 18803 brevets,
+- moyenne : 38 brevets,
+- écart-type : 474,
+- nombre de manquants : il y a 523 valeurs manquantes.
 
 
 <br>
@@ -158,7 +157,7 @@ Le nombre d'offres déposées par entreprise :
 - maximum : 68 offres,
 - moyenne : 5 offres,
 - écart-type : 9,
-- nombre de manquants : il y a  valeurs manquantes.
+- nombre de manquants : il y a 8600 valeurs manquantes.
 
 
 <br>
@@ -170,7 +169,7 @@ Le salaire moyen en €/an par entreprise :
 - maximum : 560066,
 - moyenne : 60111,
 - écart-type : 63384,
-- nombre de manquants : il y a  valeurs manquantes.
+- nombre de manquants : il y a 9096 valeurs manquantes.
 
 
 <br>
