@@ -1,7 +1,7 @@
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
-################ par rapport à avant, j'ai mis choose_non_na() à la place de sum() ou (mean) pour les variables numériques
+################ par rapport à avant, j'ai mis choose_non_na() à la place de sum() ou mean() pour les variables numériques
 ################ car sinon on avait 0 au lieu de NA
 ################ ça a l'air de marcher, au niveau des stat j'ai tout pareil que dans les tables séparées, à part la moyenne du nombre de brevets (je comprends pas pk)
 ###################################################################################################
