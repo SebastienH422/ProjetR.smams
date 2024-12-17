@@ -869,6 +869,33 @@ wordcloud(words = mots,
 
 
 
+#ipc main code et nb de brevets 
+```{r}
+
+base_emp_inno = fread("Data/base_emp_inno.csv")
+
+
+ggplot(base_emp_inno, aes(x = ipc_main_code, y = n_patents, fill = ipc_main_code)) +
+  geom_bar(stat = "identity") +
+  scale_fill_viridis_d(
+    breaks = unique(base_emp_inno$ipc_main_code[base_emp_inno$n_patents > 1250]),  # Filtrer la légende
+    na.translate = FALSE
+  ) +
+  labs(
+    title = "Nombre de brevets par code IPC principal",
+    x = "Code IPC principal",
+    y = "Nombre de brevets",
+    fill = "Code IPC (nb brevets > 1250)"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_blank(),
+    axis.ticks.x = element_blank()
+  )
+
+
+
+```
 
 
 
