@@ -1,212 +1,50 @@
+
+
+# Libraries
+source("smams_src_utilities.R")
 library(data.table)
 library(stringr)
-source("smams_src_utilities.R")
-
+getwd()
+setwd('/net/cremi/mboivent/Bureau/espaces/travail/S7/R/projet/ProjetR.smams-main')
 # Importation des données
+# Champs: intitule_poste entreprise type_emploi secteur experience_requise competences_requises poste_desc salaire departement"
+#
 # --> Création de `offres` contenant les données suivantes:
 #     entreprise, secteur, experience_requise, competences_requises, salaire, departement
-
-data = data.table(read.csv(file = "DATA/emp_offers_fmt.tsv",
-                  head = TRUE,
-                  sep = ","))
-names(data)
-# Champs: "intitule_poste" "entreprise" "type_emploi" "secteur" "experience_requise" "competences_requises""poste_desc" "salaire"              "departement"      
-
-base_emp = data[, c("entreprise", "secteur", # On récupère les données qui nous intéressent
-                  "experience_requise", "competences_requises", "salaire", "departement")]
-
-base_emp$id_firm = apply(X = base_emp,
-                         MARGIN = 1,
-                         FUN = get_id_firm)
-base_emp$firm_name = base_emp$entreprise
-base_emp$n_offres = rep(1, dim(base_emp)[1])
-base_emp$sector_name
-base_emp$avg_req_exp
-base_emp$top_skill_req
-base_emp$avg_wage
-base_emp$addre_dept_main = base_emp$departement
-
-# Création de la database
-# base_emp = data.table(id_firm = character(0), firm_name = character(0), n_offres = integer(0), 
-#                       sector_main = character(0), avg_req_exp = numeric(0), top_skill_req = character(0), 
-#                       avg_wage = numeric(0), addre_dept_main = character(0))
-
-# Modification du nom
 #
-get_id_firm = function(line) {
-  if (!is.null(line['entreprise'])) {
-    name = line['entreprise'] # Nom de l'entreprise
-    name_norm = stringi::stri_trans_general(tolower(name), "Latin-ASCII") # Sans accent ni majuscule
-    return (substring(name_norm, 1, min(4, nchar(name_norm)))) # 4 premiers caractères
-  } else {
-    stop("La colonne 'entreprise' est manquante dans l'objet 'line'")
-  }
-}
+data = data.table(read.csv(file = "Data/emp_offers_fmt.tsv", # Importation
+                           head = TRUE,
+                           sep = ","))
 
-# Transformation du salaire en numérique
-#
-get_wage = function(line) {
-  if (!is.null(line['salaire'])) {
-    if (line['salaire'] == "") return (0)
-    else {
-      print(line[['salaire']])
-    }
-  } else {
-    stop("La colonne 'salaire' est manquante dans l'objet 'line'")
-  }
-}
+# changement
+offres = data[, .(entreprise, secteur, experience_requise, competences_requises, salaire, departement)]
 
-x = apply(X = base_emp,
-          MARGIN = 1,
-          FUN = get_wage)
-# de SSS € à SSS € par an/mois/jour
-# à partir de SSS € par an/mois/jour
-# SSS € par an/mois/jour
-# jusqu'à SSS € par ...
-# Salaire : Non spécifié
-# Salaire : 45K à 55K €
-# Salaire : 50K à 70K € par mois (PAR MOIS !!!!)
+# Apply the salary processing function
+offres[, avg_wage := sapply(salaire, get_wage)]
 
-au_format = function(line){
-  salaire = line['salaire']
+# Clean competences_requises column before grouping
+offres[, competences_requises := sapply(competences_requises, clean_competences)]
+offres$id_firm_name = gsub(',','',iconv(tolower(word(offres$entreprise,1)), to = "ASCII//TRANSLIT"))
+# Group by firm_name, and calculate all other columns
+base_emp = offres[, .(
+  firm_name = set_firm_name(entreprise),                      # Firm name
+  n_offres = .N,                                              # Number of offers
+  sector_main = as.character(get_most_frequent(secteur)), # Most frequent sectors
+  avg_req_exp = round(sum(experience_requise, na.rm = TRUE) / sum(!is.na(experience_requise)), 1), # Average experience, round 1
+  # avg_wage = 0,
+  avg_wage = mean(avg_wage, na.rm = TRUE),                     # Average annual salary
+  addr_dept_main = get_top_val(departement, 1),  # Most common department
+  top_skill_req = as.character(get_most_frequent(competences_requises))  # Most frequent skills
+), by = id_firm_name]
 
-  if (substring(salaire, 1, 3) == "de "){
-    num = gsub("[^0-9]", "", salaire)
-    begin = substring(num, 1, 5)
-    end = substring(num, 6, 10)
-    return ((as.integer(begin) + as.integer(end)) / 2)
-  } else if (substring(salaire, 1, 12) == 'à partir de ' ||
-             substring(salaire, 1, 5) == 'jusqu') {
-    return (as.integer(gsub("[^0-9]", "", salaire)))
-  } else if (substring(salaire, 1, 7) == "Salaire") {
-    return (salaire)
-  } else if (salaire == "") {
-    return (0)
-  } else {
-    print(line[['salaire']])
-  }
-}
-x = apply(X = base_emp,
-          MARGIN = 1,
-          FUN = au_format)
-?gsub
 
+# Remove the "id_firm_name" column
+base_emp[, id_firm_name := NULL]
 
+base_emp = base_emp[firm_name != ""]
 
+View(base_emp)
 
+# export en fichier csv
 
-# Récupération des compétences
-# --> Création de competences contenant chaque compétences utilisées dans le champs 
-#     competences_requises. Les doublons sont supprimés.
-head(offres)
-separateur = function(x){ # Fonction qui sera appliquée sur 
-  str_split(string = x, # chaque élément de la colonnes competences_requises
-            pattern = ",")
-}
-competences = unique(sapply(X = offres$competences_requises, # Application de separateur
-                     FUN = separateur)) # On utilise unique() pour enlever les doublons
-competences[0:10]
-
-# Suppression des valeurs qui se ressemblent
-semblable = function(x, y){
-  # Détecte si x et y sont semblables en tronquant x et y
-  limInf = 0.2
-  limSup = 0.7
-  
-  n_x = as.integer(x)
-  inf = as.integer(n_x * limInf)
-  sup = as.integer(n_x * limSup) + 1
-  
-  return str_sub(x, inf, sup) == str_sub(y, inf, sup)
-}
-
-est_semblable = function(liste_string){
-  # Renvoie une liste de booléen 
-  liste_minuscule = tolower(liste_string)
-  sapply(X = liste_string,
-         FUN = function(x) sapply(X = liste_string,
-                                  FUN = function(y) semblable(x, y)))
-  
-}
-
-test = "Hello World"
-as.integer(nchar(test) * 0.7)
-str_sub(test, 2, 11)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+fwrite(base_emp, "Data/base_emp.csv")
