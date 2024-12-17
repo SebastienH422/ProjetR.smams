@@ -1,65 +1,46 @@
-# ProjetR.smams
-# Page d'accueil  : 
-<div style="background-color: #ffb787; margin-top: 20px; padding: 20px; position: relative;">
-    <p>&nbsp;</p> <!-- Un espace vide -->
-    <p>&nbsp;</p> <!-- Un espace vide -->
-    <p style="color:#FFF; background:#ffb787; padding:12px; font-size:20px; font-style:italic; text-align:center;">
-        <span style="font-size:48px; font-style:normal;"><b>Remédiation R : Rendu de projet</b></span><br>
-    </p>
-    <p>&nbsp;</p> <!-- Un espace vide -->
-    <p>&nbsp;</p> <!-- Un espace vide -->
-    <p>&nbsp;</p> <!-- Un espace vide --> 
-    <!-- Centrer les prénoms -->
-    <p style="width:100%; text-align:center; font-size:20px; color:#FFF;">HEIN Sébastien - FRAILE Simon - DURRIEU Ahina - PERIAT Matilin - BOIVENT Maïna</p>
-    <p style="width:100%; text-align:center; font-size:20px; color:#FFF;">Professeur : Laurent R. Bergé</p>
-    <p>&nbsp;</p> <!-- Un espace vide -->
-    <p>&nbsp;</p> <!-- Un espace vide -->
-    <p>&nbsp;</p> <!-- Un espace vide -->
-    <p>&nbsp;</p> <!-- Un espace vide -->
-    <span style="position: absolute; bottom: 25px; right: 25px; font-size:20px; color:#FFF;">Automne 2024</span>
-</div>
 
+
+
+# **Remédiation R : Rendu de Projet**  
+
+<br>
+<br>
 
 <blockquote>
-<h2><b>Remédiation R : Rendu de projet</b></h2>
 <p><b>HEIN Sébastien - FRAILE Simon - DURRIEU Ahina - PERIAT Matilin - BOIVENT Maïna</b></p>
 <p><b>Professeur : Laurent R. Bergé</b></p>
 <p><b>Automne 2024</b></p>
 </blockquote>
 
-
-
-+---------------------------------------------+
-|     **Remédiation R : Rendu de projet**     |
-|                                             |
-| HEIN Sébastien - FRAILE Simon               |
-| DURRIEU Ahina - PERIAT Matilin - BOIVENT Maïna |
-|                                             |
-| Professeur : Laurent R. Bergé               |
-|                                             |
-| Automne 2024                                |
-+---------------------------------------------+
+<br>
+<br>
 
 
 
+## **Présentation du projet**  
+
+<span style="font-size: 14px;">L'ojectif de ce projet est de mettre en évidence des liens potentiels entre la performance d’innovation des entreprises (mesurée par les dépots de brevets), leur demande de compétences et le salaire moyen proposé pour leurs offres d'emploi.<br>
+Pour cela nous allons traiter plusieurs jeux de données à l'aide du logiciel RStudio. <br><br>
+Une fois le "nettoyage" et le traitement des données effectués, nous essaieront de répondre à différentes questions telles que : <br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - quelle entreprise a déposé le plus de brevets ? <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - dans quel secteur retrouve-t-on le plus de brevets ? <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - dans quel département y a-t-il le plus d'entreprises qui ont déposé des brevets ? <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - quel secteur d'activité recrute le plus ? <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - dans quel département retrouve-t-on le plus d'offres d'emploi ? <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - quelle entreprise recrute le plus de data scientists ? <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - quelle entreprise demande le plus de compétences en machine learning ? <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - quelle entreprise rémunère le mieux ? <br>
+</i></span><br>
 
 
----
-
-> ### **Remédiation R : Rendu de projet**  
-> **HEIN Sébastien - FRAILE Simon - DURRIEU Ahina - PERIAT Matilin - BOIVENT Maïna**  
-> **Professeur : Laurent R. Bergé**  
-> **Automne 2024**  
-
----
+<br>
 
 
 
+## **Sommaire**  
 
-# $$\text{Sommaire}$$
-## I. Présentation du projet
-## II. Statistiques descriptives
-### &nbsp;&nbsp;1) base_brevets
-### &nbsp;&nbsp;2) base_emp
-### &nbsp;&nbsp;2) base_emp_inno
-## III. Analyse de données
+1. [**Statistiques descriptives**](statistiques.md)  
+   - Base des brevets (base_brevets)  
+   - Base des entreprises (base_emp)  
+   - Base de l'innovation dans les entreprises (base_emp_inno)  
+2. [**Analyse de données**](analyse.md)  
