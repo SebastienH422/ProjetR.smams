@@ -29,6 +29,20 @@
 
 
 
++---------------------------------------------+
+|     **Remédiation R : Rendu de projet**     |
+|                                             |
+| HEIN Sébastien - FRAILE Simon               |
+| DURRIEU Ahina - PERIAT Matilin - BOIVENT Maïna |
+|                                             |
+| Professeur : Laurent R. Bergé               |
+|                                             |
+| Automne 2024                                |
++---------------------------------------------+
+
+
+
+
 # $$\text{Sommaire}$$
 ## I. Présentation du projet
 ## II. Statistiques descriptives
