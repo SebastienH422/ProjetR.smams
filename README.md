@@ -19,6 +19,16 @@
     <span style="position: absolute; bottom: 25px; right: 25px; font-size:20px; color:#FFF;">Automne 2024</span>
 </div>
 
+
+<blockquote>
+<h2><b>Remédiation R : Rendu de projet</b></h2>
+<p><b>HEIN Sébastien - FRAILE Simon - DURRIEU Ahina - PERIAT Matilin - BOIVENT Maïna</b></p>
+<p><b>Professeur : Laurent R. Bergé</b></p>
+<p><b>Automne 2024</b></p>
+</blockquote>
+
+
+
 # $$\text{Sommaire}$$
 ## I. Présentation du projet
 ## II. Statistiques descriptives
