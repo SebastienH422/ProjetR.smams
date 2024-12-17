@@ -1,0 +1,407 @@
+---
+title: "statistiques_desciptives"
+output: html_document
+date: "2024-12-17"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+
+base_emp = fread("Data/base_emp.csv")
+base_brevets = fread("Data/base_brevets.csv")
+base_emp_inno = fread("Data/base_emp_inno.csv")
+
+```
+
+
+# base brevets
+
+
+## numerique
+
+### n_patents
+
+```{r}
+summary(base_brevets$n_patents)
+
+```
+
+- min : 1
+
+- mediane : 1
+
+- max : 5311
+
+- moyenne : 11.73
+
+```{r}
+
+sd(base_brevets$n_patents)
+```
+
+
+- ecart-type : 140.6467
+
+
+```{r}
+
+sum(is.na(base_brevets$n_patents))
+```
+
+- nombre de manquants : 0
+
+
+
+## caractère
+
+```{r}
+library(dplyr)
+```
+
+
+### firm_name
+
+```{r}
+top_entreprises <- base_brevets %>%
+  group_by(firm_name) %>%
+  summarise(total_brevets = sum(n_patents)) %>%
+  arrange(desc(total_brevets)) %>%
+  head(5)
+print(top_entreprises)
+
+```
+
+
+
+Les 5 entreprises ayant le plus de brevets : 
+- commissariat
+- universite
+- centre
+- alcatel
+- valeo
+
+
+### ipc_main_desc
+
+```{r}
+top_ipc <- base_brevets %>%
+  group_by(ipc_main_desc) %>%
+  summarise(total_brevets = sum(n_patents)) %>%
+  arrange(desc(total_brevets)) %>%
+  head(5)
+print(top_ipc)
+```
+
+
+### ipc_main_code
+
+(la même chose qu'au dessus, si jamais on a besoin des codes, jsp).
+
+```{r}
+top_ipc_code <- base_brevets %>%
+  group_by(ipc_main_code) %>%
+  summarise(total_brevets = sum(n_patents)) %>%
+  arrange(desc(total_brevets)) %>%
+  head(5)
+print(top_ipc_code)
+```
+
+
+
+
+### addr_city_main
+
+```{r}
+top_villes <- base_brevets %>%
+  group_by(addr_city_main) %>%
+  summarise(total_brevets = sum(n_patents)) %>%
+  arrange(desc(total_brevets)) %>%
+  head(5)
+print(top_villes)
+
+```
+
+Les 5 villes ayant le plus de brevets : 
+- Paris
+- Boulogne Billancourt
+- Nancy
+- Velizy Villacoublay
+- Amiens
+
+
+
+### addr_dept_main
+
+
+```{r}
+top_dept <- base_brevets %>%
+  group_by(addr_dept_main) %>%
+  summarise(total_brevets = sum(n_patents)) %>%
+  arrange(desc(total_brevets)) %>%
+  head(5)
+print(top_dept)
+
+```
+Les 5 departements ayant le plus de brevets : 
+- 75 : Paris
+- 92 : Hauts-de-Seine
+- 78 : Yvelines
+- 54 : Meurthe-et-Moselle
+- 80 : Somme
+
+
+
+# base emp
+
+
+## numerique
+
+### n_offres
+
+```{r}
+summary(base_emp$n_offres)
+
+```
+
+- min : 1
+
+- mediane : 2
+
+- max : 68
+
+- moyenne : 4.519
+
+```{r}
+
+sd(base_emp$n_offres)
+```
+
+
+- ecart-type : 8.72
+
+
+```{r}
+
+sum(is.na(base_emp$n_offres))
+```
+
+- nombre de manquants : 0
+
+
+
+### avg_wage
+
+```{r}
+summary(base_emp$avg_wage)
+
+```
+
+- min : 218
+
+- mediane : 46000
+
+- max : 560066
+
+- moyenne : 60111
+
+```{r}
+sd(base_emp$avg_wage, na.rm = TRUE)
+```
+
+
+- ecart-type : 63384.12
+
+
+```{r}
+
+sum(is.na(base_emp$avg_wage))
+```
+
+- nombre de manquants : 496
+
+
+
+## caractère
+
+
+### firm_name
+
+```{r}
+top_entreprises <- base_emp %>%
+  group_by(firm_name) %>%
+  summarise(total_wage = sum(avg_wage)) %>%
+  arrange(desc(total_wage)) %>%
+  head(5)
+print(top_entreprises)
+
+```
+
+Les 5 entreprises ayant le plus haut salaire moyen : 
+- La Relève
+- Repro-IT
+- VO2 GROUP
+- Wekey
+- SURICATE IT
+
+
+### sector_main
+
+```{r}
+top_sectors <- base_emp %>%
+  group_by(sector_main) %>%
+  summarise(total_wage = sum(avg_wage, na.rm = TRUE)) %>%
+  arrange(desc(total_wage)) %>%
+  head(5)
+print(top_sectors)
+
+```
+
+
+### addr_dept_main
+
+
+```{r}
+
+top_dept <- base_emp %>%
+  group_by(addr_dept_main) %>%
+  summarise(total_wage = sum(avg_wage, na.rm = TRUE)) %>%
+  arrange(desc(total_wage)) %>%
+  head(6)
+print(top_dept)
+
+```
+
+Les 5 départements ayant le plus haut salaire moyen : 
+- 75 : Paris
+- 59 : Nord
+- 92 : Hauts-de-Seine
+- 44 : Loire-Atlantique
+- 69 : Rhône
+
+
+
+
+
+# base_emp_inno
+
+
+## numerique
+
+### n_patents
+
+```{r}
+summary(base_emp_inno$n_patents)
+
+```
+
+#############################################################################################################
+#############################################################################################################
+#############################################################################################################
+
+ATTENTION IL Y A DES 0 A LA PLACE DE NA
+
+#############################################################################################################
+#############################################################################################################
+#############################################################################################################
+
+
+
+- min : 1
+
+- mediane : 6.5
+
+- max : 5140
+
+- moyenne : 199.94
+
+```{r}
+
+sd(base_emp_inno$n_patents)
+```
+
+
+- ecart-type : 662.64
+
+
+```{r}
+
+sum(is.na(base_emp_inno$n_patents))
+```
+
+- nombre de manquants : 0
+
+##############################################################################################################
+On a perdu énormément d'infos. Dans base_emp_inno il ne reste que les entreprises communes aux deux bases base_emp et base_brevets, car on a aucun manquant sur le nombre de brevets et le nombre d'offres. 
+Il faut revoir absolument le merge car "Ne perdez pas d’information ni sur les entreprises qui brevetent, ni sur les entreprises qui proposent des offres d’emploi."
+
+
+
+
+
+### n_offres
+
+```{r}
+summary(base_emp_inno$n_offres)
+
+```
+
+- min : 1
+
+- mediane : 2
+
+- max : 46
+
+- moyenne : 5.743
+
+```{r}
+
+sd(base_emp_inno$n_offres)
+```
+
+
+- ecart-type : 9.457
+
+
+```{r}
+
+sum(is.na(base_emp_inno$n_offres))
+```
+
+- nombre de manquants : 0
+
+
+
+### avg_wage
+
+```{r}
+summary(base_emp_inno$avg_wage)
+
+```
+
+- min : 2136
+
+- mediane : 43803
+
+- max : 560066
+
+- moyenne : 64267
+
+```{r}
+
+sd(base_emp_inno$avg_wage, na.rm = TRUE)
+```
+
+
+- ecart-type : 63384.12
+
+
+```{r}
+
+sum(is.na(base_emp_inno$avg_wage))
+```
+
+- nombre de manquants : 118
+
