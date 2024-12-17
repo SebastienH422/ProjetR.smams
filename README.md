@@ -40,7 +40,7 @@ Une fois le "nettoyage" et le traitement des données effectués, nous essaieron
 ## **Sommaire**  
 
 1. [**Statistiques descriptives**](statistiques.md)  
-   - Base des brevets (base_brevets)  
-   - Base des entreprises (base_emp)  
-   - Base de l'innovation dans les entreprises (base_emp_inno)  
+   - Base de données des brevets (base_brevets)  
+   - Base de données des entreprises (base_emp)  
+   - Base de données de l'innovation dans les entreprises (base_emp_inno)  
 2. [**Analyse de données**](analyse.md)  
