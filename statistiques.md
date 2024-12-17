@@ -7,7 +7,7 @@ Pour les variables chaîne de caractères nous repporterons : <i> les cinq valeu
 <br><br>
 
 
-## 1) base_brevets
+## 1) Base des brevets (base_brevets)
 ### &nbsp;&nbsp;a) Variable numérique : n_patents
 
 <br>
@@ -67,7 +67,7 @@ Les 5 départements ayant le plus de brevets sont :
 
 <br><br>
 
-## 2) base_emp
+## 2) Base des entreprises (base_emp)
 ### &nbsp;&nbsp;a) Variables numériques : n_offres, avg_wage
 
 <br>
@@ -134,5 +134,43 @@ Les 5 départements ayant le salaire moyen le plus élevé :
 <br>
 
 
-## 3) base_emp_inno
+## 3) Base de l'innovation dans les entreprises (base_emp_inno)
 ### &nbsp;&nbsp;a) Variables numériques : n_patents, n_offers, avg_wage 
+
+<br>
+
+Le nombre de brevets déposés par entreprise :
+- minimum : 1 brevet,
+- médiane : 1 brevet,
+- maximum : 5311 brevets,
+- moyenne : 12 brevets,
+- écart-type : 141,
+- nombre de manquants : il y a  valeurs manquantes.
+
+
+<br>
+
+Le nombre d'offres déposées par entreprise :
+- minimum : 1 offre,
+- médiane : 2 offres,
+- maximum : 68 offres,
+- moyenne : 5 offres,
+- écart-type : 9,
+- nombre de manquants : il y a  valeurs manquantes.
+
+
+<br>
+
+
+Le salaire moyen en €/an par entreprise :
+- minimum : 218,
+- médiane : 46000,
+- maximum : 560066,
+- moyenne : 60111,
+- écart-type : 63384,
+- nombre de manquants : il y a  valeurs manquantes.
+
+
+<br>
+<br>
+
