@@ -7,7 +7,7 @@ Pour les variables chaîne de caractères nous repporterons : <i> les cinq valeu
 <br><br>
 
 
-## 1) Base des brevets (base_brevets)
+## 1) Base de données des brevets (base_brevets)
 ### &nbsp;&nbsp;a) Variable numérique : n_patents
 
 <br>
@@ -67,7 +67,7 @@ Les 5 départements ayant le plus de brevets sont :
 
 <br><br>
 
-## 2) Base des entreprises (base_emp)
+## 2) Base de données des entreprises (base_emp)
 ### &nbsp;&nbsp;a) Variables numériques : n_offres, avg_wage
 
 <br>
@@ -134,7 +134,7 @@ Les 5 départements ayant le salaire moyen le plus élevé :
 <br>
 
 
-## 3) Base de l'innovation dans les entreprises (base_emp_inno)
+## 3) Base de données de l'innovation dans les entreprises (base_emp_inno)
 ### &nbsp;&nbsp;a) Variables numériques : n_patents, n_offers, avg_wage 
 
 <br>
