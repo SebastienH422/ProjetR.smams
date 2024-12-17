@@ -236,12 +236,20 @@ print(matrice_resultante)
 mots <- matrice_resultante[, 1]  # Première colonne : mots
 ponderations <- as.numeric(matrice_resultante[, 2])  # Deuxième colonne : pondérations
 
+# Définir vos propres couleurs
+couleur_claire <- "#75a7e0"  # Vert clair (par exemple)
+couleur_foncee <- "#0c54fa"  # Vert foncé (par exemple)
+
+# Créer une palette de dégradé entre ces deux couleurs
+palette_personnalisee <- colorRampPalette(c(couleur_claire, couleur_foncee))
+
 # Créer le Word Cloud
 wordcloud(words = mots, 
           freq = ponderations, 
-          min.freq = 1,  # Fréquence minimale
-          random.order = FALSE,  # Organiser les mots par fréquence
-          colors = brewer.pal(8, "Dark2"))  # Palette de couleurs
+          min.freq = 1,                     # Fréquence minimale
+          scale = c(3, 0.5),                # Réduire la taille max et min des mots
+          random.order = FALSE,             # Les mots les plus fréquents sont centrés
+          colors = palette_personnalisee(5)) # Générer 8 nuances entre vos deux couleurs
 
 ```
 
@@ -349,12 +357,20 @@ print(matrice_resultante)
 mots <- matrice_resultante[, 1]  # Première colonne : mots
 ponderations <- as.numeric(matrice_resultante[, 2])  # Deuxième colonne : pondérations
 
+# Définir vos propres couleurs
+couleur_claire <- "#75a7e0"  # Vert clair (par exemple)
+couleur_foncee <- "#0c54fa"  # Vert foncé (par exemple)
+
+# Créer une palette de dégradé entre ces deux couleurs
+palette_personnalisee <- colorRampPalette(c(couleur_claire, couleur_foncee))
+
 # Créer le Word Cloud
 wordcloud(words = mots, 
           freq = ponderations, 
-          min.freq = 1,  # Fréquence minimale
-          random.order = FALSE,  # Organiser les mots par fréquence
-          colors = brewer.pal(8, "Dark2"))  # Palette de couleurs
+          min.freq = 1,                     # Fréquence minimale
+          scale = c(3, 0.5),                # Réduire la taille max et min des mots
+          random.order = FALSE,             # Les mots les plus fréquents sont centrés
+          colors = palette_personnalisee(5)) # Générer 8 nuances entre vos deux couleurs
 ```
 
 
@@ -462,13 +478,20 @@ print(matrice_resultante)
 mots <- matrice_resultante[, 1]  # Première colonne : mots
 ponderations <- as.numeric(matrice_resultante[, 2])  # Deuxième colonne : pondérations
 
+# Définir vos propres couleurs
+couleur_claire <- "#97bf95"  # Vert clair (par exemple)
+couleur_foncee <- "#1b5e20"  # Vert foncé (par exemple)
+
+# Créer une palette de dégradé entre ces deux couleurs
+palette_personnalisee <- colorRampPalette(c(couleur_claire, couleur_foncee))
+
 # Créer le Word Cloud
 wordcloud(words = mots, 
           freq = ponderations, 
-          min.freq = 1,  # Fréquence minimale
-          random.order = FALSE,  # Organiser les mots par fréquence
-          colors = brewer.pal(8, "Dark2"))  # Palette de couleurs
-
+          min.freq = 1,                     # Fréquence minimale
+          scale = c(3, 0.5),                # Réduire la taille max et min des mots
+          random.order = FALSE,             # Les mots les plus fréquents sont centrés
+          colors = palette_personnalisee(8)) # Générer 8 nuances entre vos deux couleurs
 
 ```
 
@@ -578,12 +601,21 @@ print(matrice_resultante)
 mots <- matrice_resultante[, 1]  # Première colonne : mots
 ponderations <- as.numeric(matrice_resultante[, 2])  # Deuxième colonne : pondérations
 
+# Définir vos propres couleurs
+couleur_claire <- "#97bf95"  # Vert clair (par exemple)
+couleur_foncee <- "#1b5e20"  # Vert foncé (par exemple)
+
+# Créer une palette de dégradé entre ces deux couleurs
+palette_personnalisee <- colorRampPalette(c(couleur_claire, couleur_foncee))
+
 # Créer le Word Cloud
 wordcloud(words = mots, 
           freq = ponderations, 
-          min.freq = 1,  # Fréquence minimale
-          random.order = FALSE,  # Organiser les mots par fréquence
-          colors = brewer.pal(8, "Dark2"))  # Palette de couleurs
+          min.freq = 1,                     # Fréquence minimale
+          scale = c(3, 0.5),                # Réduire la taille max et min des mots
+          random.order = FALSE,             # Les mots les plus fréquents sont centrés
+          colors = palette_personnalisee(8) # Générer 8 nuances entre vos deux couleurs
+)
 
 ```
 
