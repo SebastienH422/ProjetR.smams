@@ -14,10 +14,10 @@ Pour les variables chaîne de caractères nous repporterons : <i> les cinq valeu
 
 Le nombre de brevets déposés par entreprise :
 - minimum : 1 brevet,
-- médiane : 1 brevet,
-- maximum : 5311 brevets,
+- médiane : 4 brevets,
+- maximum : 18803 brevets,
 - moyenne : 12 brevets,
-- écart-type : 141,
+- écart-type : 474,
 - nombre de manquants : il n'y a pas de valeurs manquantes.
 
 
@@ -31,11 +31,11 @@ Le nombre de brevets déposés par entreprise :
 <br>
 
 Les 5 entreprises ayant déposé le plus de brevets sont :
-1. commissariat,
-2. universite,
-3. centre,
-4. alcatel,
-5. valeo.
+1. Commissariat A L'Energie Atomique - CEA,
+2. Université de Lorraine,
+3. Centre National de la Recherche Scientifique (CNRS),
+4. Valeo Embrayages,
+5. Alcatel Lucent.
 
 <br>
 
@@ -50,8 +50,8 @@ Les 5 descriptions de codes IPC ayant le plus de brevets sont :
 
 Les 5 villes ayant le plus de brevets sont :
 1. Paris,
-2. Boulogne Billancourt,
-3. Nancy,
+2. Nancy,
+3. Boulogne Billancourt,
 4. Velizy Villacoublay,
 5. Amiens.
 
@@ -136,6 +136,8 @@ Les 5 départements ayant le salaire moyen le plus élevé :
 
 ## 3) Base de données de l'innovation dans les entreprises (base_emp_inno)
 ### &nbsp;&nbsp;a) Variables numériques : n_patents, n_offers, avg_wage 
+
+!!!!!!!!!!!!!!!!!!!!!!! A FAIRE AVEC "stat.rmd" dans ma branche, a la fin !!!!!!!!!!!!!!!!!!!!!!! 
 
 <br>
 
