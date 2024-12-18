@@ -1,5 +1,8 @@
 # import des data table
 
+# TODO
+# Mettre NA sur n_offres, n_pattents, avg_exp_req
+
 source("smams_src_utilities.R")
 library(data.table)
 library(stringr)
@@ -14,7 +17,7 @@ base_brevets$id_firm_name = gsub(',','',iconv(tolower(word(base_brevets$firm_nam
 
 # Merge
 base_emp_inno = merge(base_emp, base_brevets, all = TRUE)
-
+View(base_emp_inno)
 # _____________________________________________________________________________________________________________________________
 # _____________________________________________________________________________________________________________________________
 # _____________________________________________________________________________________________________________________________
@@ -58,12 +61,12 @@ base_emp_inno <- base_emp_inno[, {
   list(
     firm_name = first(firm_name),  
     addr_dept_main = as.character(choose_non_na(addr_dept_main)),
-    n_offres = sum(n_offres, na.rm = TRUE),
+    n_offres = choose_non_na(n_offres),# ifelse(isna(sum(n_offres, na.rm = TRUE)), NA_integer_, sum(n_offres, na.rm = TRUE)),
     sector_main = as.character(choose_non_na(sector_main)),
-    avg_req_exp = mean(avg_req_exp, na.rm = TRUE),
-    avg_wage = mean(avg_wage, na.rm = TRUE),
+    avg_req_exp = choose_non_na(avg_req_exp),
+    avg_wage = choose_non_na(avg_wage),
     top_skill_req = as.character(choose_non_na(top_skill_req)),
-    n_patents = sum(n_patents, na.rm = TRUE),
+    n_patents = choose_non_na(n_patents),
     ipc_main_code = as.character(choose_non_na(ipc_main_code)),
     ipc_main_desc = as.character(choose_non_na(ipc_main_desc)),
     ipc_second_code = as.character(choose_non_na(ipc_second_code)),

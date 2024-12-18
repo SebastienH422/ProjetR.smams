@@ -166,7 +166,7 @@ get_most_frequent = function(val_list) {
   
   # If no valid val are found, return NA
   if (length(valid_val) == 0) {
-    return(NA_real_)
+    return(NA_character_)
   }
   
   # Count occurrences of each value
@@ -178,14 +178,17 @@ get_most_frequent = function(val_list) {
   if (length(frequent_vals) > 0) {
     # Sort frequent values by occurrence
     frequent_counts = sort(val_counts[frequent_vals], decreasing = TRUE)
-    top_skills = names(frequent_counts)
+    top_values = names(frequent_counts)
   } else {
     # If all values appear only once, return all values
-    top_skills = names(sort(val_counts, decreasing = TRUE))
+    top_values = names(sort(val_counts, decreasing = TRUE))
   }
+
+  # Limit top_values to two values maximum
+  top_values = top_values[1:min(2, length(top_values))]
   
-  # Concatenate the top skills into a single string, separated by commas
-  return(paste(top_skills, collapse = ", "))
+  # Concatenate the top values into a single string, separated by commas
+  return(paste(top_values, collapse = ", "))
 }
 
 # _____________________________________________________________________________________________________________________________
