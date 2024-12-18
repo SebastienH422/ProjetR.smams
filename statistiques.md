@@ -123,11 +123,11 @@ Les 5 secteurs ayant le salaire moyen le plus élevé :
 <br>
 
 Les 5 départements ayant le salaire moyen le plus élevé :
-1. 75 : Paris,
-2. 59 : Nord,
-3. 92 : Hauts-de-Seine,
-4. 44 : Loire-Atlantique,
-5. 69 : Rhône.
+1. 79 : Deux-Sèvres,
+2. 75 : Paris,
+3. 78 : Yvelines,
+4. 45 : Loiret,
+5. 31 : Haute-Garonne.
 
 
 <br>
