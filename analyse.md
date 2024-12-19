@@ -113,7 +113,7 @@ Ce graphique ne prend cependant pas en compte la plupart des entreprises, pour l
 <br> 
 
 <p align="center">
-  <img src="ipc_n_patents_good_sans_legende.png" alt="Description de l'image" width="80%" />
+  <img src="ipc_n_patents_good_sans_l.png" alt="Description de l'image" width="80%" />
 </p>
 
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; **Nombre de brevets déposés par code IPC**
