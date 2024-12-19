@@ -1,0 +1,33 @@
+base_emp_inno = fread("Data/base_emp_inno.csv")
+base_emp_inno_filtered <- base_emp_inno
+View(base_emp_inno_filtered)
+base_emp_inno_filtered[,brevet_categorie := cut(
+  n_patents,
+  breaks = c(-Inf, 5, 10, 15, Inf),
+  labels = c("Faible < 5", "Moyen < 10", "Élevé < 15", "Très élevé > 15"),
+  include.lowest = TRUE
+)]
+
+#base_emp_inno[is.na(n_patents), brevet_categorie := "(NA)"] 
+
+ggplot(base_emp_inno_filtered, aes(x = factor(addr_dept_main), y = avg_wage, fill = brevet_categorie)) +
+  geom_col() +
+  scale_fill_manual(
+    values = c(
+      "Faible < 5" = "#e8a2fa",  
+      "Moyen < 10" = "#c471d1",  
+      "Élevé < 15" = "#8543e0",  
+      "Très élevé > 15" = "#314bde"
+      #"(NA)" = "#d3d3d3"
+    )
+  ) +  # Palette pour catégories
+  labs(
+    title = "Distribution des salaires par département et niveau d'innovation",
+    x = "Département principal",
+    y = "Salaire proposé",
+    fill = "Nombre de brevets"
+  ) +
+  theme_minimal() + 
+  theme(
+    axis.text.x = element_text(size = 3)  # Ajuster la taille du texte de l'axe des abscisses
+  )
