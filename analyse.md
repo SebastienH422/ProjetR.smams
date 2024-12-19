@@ -29,7 +29,7 @@ Comparaison :
 Les brevets mettent davantage l'accent sur l'impact collectif ou comportemental, tandis que les salaires mettent en valeur des compétences directement monétisables et techniques. 
 
 Conclusion
-Les compétences techniques comme le "Deep Learning" et les outils cloud sont cruciaux à la fois pour innover et pour obtenir un salaire élevé. Cependant, l'innovation semble exiger un équilibre entre soft skills (autonomie, communication) et techniques, tandis que le salaire est davantage lié à une spécialisation technique pointue.
+- Les compétences techniques comme le "Deep Learning" et les outils cloud sont cruciaux à la fois pour innover et pour obtenir un salaire élevé. Cependant, l'innovation semble exiger un équilibre entre soft skills (autonomie, communication) et techniques, tandis que le salaire est davantage lié à une spécialisation technique pointue.
 Pour maximiser à la fois innovation et rémunération, une combinaison de compétences techniques avancées (ex. Python, Deep Learning, statistique) et de compétences comportementales (ex. communication, collaboration) est essentielle. Cela met en avant l'importance d'un profil hybride capable de créer de la valeur dans les deux dimensions.
 
 
