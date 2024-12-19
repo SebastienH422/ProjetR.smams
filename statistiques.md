@@ -3,7 +3,7 @@
 
 <br><br>
 Pour les variables numériques, nous repporterons les statistiques suivantes : <i>minimum, médiane, maximum, moyenne, écart-type, nombre de manquants. </i><br>
-Pour les variables chaîne de caractères nous repporterons : <i> les cinq valeurs qui ont le plus grand nombre de brevets </i> ou <i> les cinq valeurs qui ont le plus haut salaire.</i>
+Pour les variables chaîne de caractères nous repporterons : <i> les cinq valeurs qui ont le plus grand nombre de brevets </i> ou <i> les cinq valeurs qui ont le salaire moyen le plus élevé.</i>
 <br><br>
 
 
