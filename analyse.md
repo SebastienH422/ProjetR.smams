@@ -122,6 +122,20 @@ Conclusion
 Les compétences techniques comme le "Deep Learning" et les outils cloud sont cruciaux à la fois pour innover et pour obtenir un salaire élevé. Cependant, l'innovation semble exiger un équilibre entre soft skills (autonomie, communication) et techniques, tandis que le salaire est davantage lié à une spécialisation technique pointue.
 Pour maximiser à la fois innovation et rémunération, une combinaison de compétences techniques avancées (ex. Python, Deep Learning, statistique) et de compétences comportementales (ex. communication, collaboration) est essentielle. Cela met en avant l'importance d'un profil hybride capable de créer de la valeur dans les deux dimensions.
 
+WORDCLOUDS BLEUS :  Secteurs pondérés par l'innovation ; Secteurs pondérés par le salaire 
+
+Analyse du premier wordcloud (secteurs pondérés par les salaires)
+- Pour ce premier wordcloud, les secteurs "Transport" et "Logistique" dominent largement, ils sont donc identifiés comme offrant des salaires compétitifs.
+En effet, les secteurs liés à la gestion et à la chaîne d'approvisionnement (logistique, transport, distribution) sont mis en avant, démontrant une forte valorisation salariale. Cela peut être dû à la demande croissante pour ces secteurs dans une économie mondialisée.
+
+Analyse du deuxième wordcloud (secteurs pondérés par les brevets - innovation)
+- Pour ce deuxième wordcloud nous remarquons une plus grande diversité au sujet des secteurs mis en avant. Les termes "Industrie Auto", "Industrie Aéronautique", "Mécanique (Meca)" et "Aérospatial" ressortent comme les leaders en innovation. Nous observons également des secteurs comme "Chimie", "Biotechnologie" et "Secteur Informatique", qui sont bien représentés, reflétant leur forte orientation vers la recherche et le développement. Nous pouvons en conclure que les secteurs industriels et technologiques sont les moteurs de l'innovation, où l'effort en R&D conduit à la production de brevets.
+
+Conclusion
+- Le premier wordcloud met davantage l'accent sur des secteurs orientés vers les services (ex. Logistique, Services aux entreprises).
+tandis que le deuxième wordcloud valorise des secteurs orientés vers l'industrie et la technologie (ex. Aérospatial, Biotechnologie, Mécanique).
+Le transport et la logistique, dominants pour les salaires, sont beaucoup moins représentés en termes d'innovation, tandis que des secteurs comme l'automobile et l'aéronautique sont les leaders en innovation mais moins proéminents en termes de salaires.
+- Pour un professionnel ou une entreprise, investir dans l'innovation dans des secteurs technologiques est clé pour rester compétitif sur le long terme. Cependant, les secteurs logistiques et de transport peuvent offrir des opportunités financières immédiates. Un équilibre entre innovation et valeur économique peut être trouvé dans des secteurs comme l'aéronautique, qui figurent dans les deux dimensions.
 
 
 
