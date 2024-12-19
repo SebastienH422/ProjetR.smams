@@ -5,18 +5,7 @@ plein de graphiques trop beaux
 
 
 
-WORDCLOUDS VERTS :
-
-Compétences pondérées par l'innovation ; Compétences pondérées par le salaire 
-Ce qui saute aux yeux en observant ces deux wordclouds est le fait que, quelle que soit la pondération choisie, la compétence la plus mise en avant reste la même : "équipe". Cette compétence renvoie à la capacité d'une personne à collaborer efficacement au sein d'un groupe, à contribuer à des objectifs communs et à interagir harmonieusement avec ses collègues. Cela souligne que, malgré la diversité des compétences techniques ou comportementales recherchées, la capacité à travailler en équipe est un fondement incontournable dans les environnements professionnels. Que ce soit pour atteindre des objectifs financiers (salaires élevés) ou pour repousser les limites de l'innovation, la collaboration reste le pivot des dynamiques organisationnelles modernes.
-
-En ce qui concerne le wordcloud des compétences pondérées par les salaires, nous remarquons que peu de compétences se démarquent particulièrement, à l'exception de "équipe". Cela peut s’expliquer par plusieurs raisons. Premièrement, la diversité des postes analysés implique une répartition assez homogène des compétences, reflétant une large variété de besoins. Deuxièmement, il est possible que la quantité limitée de données salariales disponibles ait influencé la qualité de la pondération, réduisant ainsi la visibilité d'autres compétences importantes.
-
-Pour le wordcloud des compétences pondérées par l'innovation, nous observons que certaines compétences émergent nettement plus, notamment des aptitudes générales comme "Communication" et "Autonome", qui constituent les bases du travail collaboratif, mais aussi des compétences techniques plus pointues, telles que "Deep Learning", "Python", ou encore "Anglais". Cela met en évidence que, pour innover, une expertise technique avancée est indispensable, en complément des compétences interpersonnelles. Ces résultats reflètent l'importance cruciale des outils technologiques et des compétences en intelligence artificielle dans les processus d'innovation.
-
-Conclusion générale : Les analyses montrent que, pour obtenir des salaires élevés, les employeurs recherchent un équilibre entre compétences techniques (comme Python, SQL, ou Deep Learning) et comportementales (telles que collaboration et autonomie). Cela reflète la nécessité pour les professionnels d’être à la fois techniquement compétents et capables de s’intégrer efficacement dans des environnements collaboratifs. En revanche, en ce qui concerne l’innovation, ce sont principalement les compétences techniques spécialisées, notamment dans les domaines de l’intelligence artificielle et du traitement des données, qui font la différence. Cependant, dans les deux contextes, la compétence "équipe" reste centrale, confirmant qu’une collaboration efficace est à la fois un moteur d’innovation et un levier pour atteindre des performances économiques élevées.
-
-Version short : 
+WORDCLOUDS VERTS :Compétences pondérées par l'innovation ; Compétences pondérées par le salaire 
 
 - En observant ces deux wordclouds, il est frappant de constater que, quelle que soit la pondération choisie, la compétence "équipe" est la plus mise en avant. Cette aptitude à collaborer efficacement au sein d’un groupe est essentielle dans tous les contextes professionnels. Elle constitue un socle commun, tant pour atteindre des objectifs financiers (salaires élevés) que pour encourager l’innovation. La collaboration reste donc une compétence clé, transcendant les exigences techniques ou comportementales.
 
@@ -30,37 +19,87 @@ WORDCLOUDS BLEUS :  Secteurs pondérés par l'innovation ; Secteurs pondérés p
 
 Wordcloud des secteurs pondérés par les salaires :
 
-    Les secteurs Services aux entreprises et Secteur informatique se démarquent fortement, ce qui reflète leur contribution majeure à l’économie et leur capacité à offrir des salaires compétitifs.
-    La diversité des autres secteurs suggère une large répartition des opportunités bien rémunérées dans différents domaines, mais peu de secteurs émergent de façon marquée. Cela peu encore une fois être dû au manque de données disponibles pour notre étude. 
+- Les secteurs Services aux entreprises et Secteur informatique se démarquent fortement, ce qui reflète leur contribution majeure à l’économie et leur capacité à offrir des salaires compétitifs.
+La diversité des autres secteurs suggère une large répartition des opportunités bien rémunérées dans différents domaines, mais peu de secteurs émergent de façon marquée. Cela peu encore une fois être dû au manque de données disponibles pour notre étude. 
 
 Wordcloud des secteurs pondérés par l’innovation :
 
-    Les secteurs techniques et industriels comme Aéronautique, Industrie auto, Mécanique, et Aérospatial dominent. Cela illustre leur rôle central dans les dépôts de brevets et les activités de R&D.
-    Le secteur informatique reste visible, bien que moins dominant que les secteurs industriels, mettant en évidence un rôle mixte entre innovation et support aux autres industries.
+- Les secteurs techniques et industriels comme Aéronautique, Industrie auto, Mécanique, et Aérospatial dominent. Cela illustre leur rôle central dans les dépôts de brevets et les activités de R&D.
+Le secteur informatique reste visible, bien que moins dominant que les secteurs industriels, mettant en évidence un rôle mixte entre innovation et support aux autres industries.
 
 Conclusion :
 
-    Pour les salaires, les secteurs des services et de l’informatique se distinguent.
-    Pour l’innovation, les secteurs industriels et technologiques sont prépondérants, soulignant l’importance des activités manufacturières et de haute technologie dans le développement de nouveaux brevets.
+- Pour les salaires, les secteurs des services et de l’informatique se distinguent.
+Pour l’innovation, les secteurs industriels et technologiques sont prépondérants, soulignant l’importance des activités manufacturières et de haute technologie dans le développement de nouveaux brevets.
 
 
+GRAPHIQUES EN BARRE AU SUJET DES VILLES : 
 
 
+Constat général : Les deux graphiques montrent des disparités significatives entre les villes en termes de salaires moyens et d’innovation (pondérée par le nombre de brevets). Paris se démarque dans les deux contextes, mais est exclue du graphique des brevets pour permettre une meilleure lecture des autres villes.
+
+Top 30 des villes par salaires moyens :
+
+- Chartrettes occupe une position exceptionnelle, avec un salaire moyen bien au-dessus des autres villes. Cependant, comme à l'habitude, les données concernant les salaires étant peu présentent, il faut conserver un esprit critique envers ces résultats.
+Les villes comme Paris, Saint-Pal-de-Mons, et Ornans suivent, soulignant un équilibre entre zones urbaines et rurales.
+Les données révèlent une distribution géographique variée, avec des villes de différentes tailles représentées.
+
+Top 30 des villes les plus innovantes :
+
+- Les villes industrielles ou fortement technologiques comme Nancy, Boulogne-Billancourt, et Vélizy-Villacoublay dominent, avec un grand nombre de brevets déposés.
+On note une forte représentation des villes proches de grands centres économiques ou technologiques (par exemple, Grenoble pour la recherche technologique, Amiens pour les industries).
+Contrairement au graphique des salaires, l’innovation semble davantage concentrée dans des zones spécifiques, souvent liées à des écosystèmes industriels.
+
+Conclusion :
+
+- Les villes offrant les salaires moyens les plus élevés ne sont pas toujours les plus innovantes, suggérant que l’innovation et la rémunération ne sont pas systématiquement corrélées.
+Les salaires élevés sont répartis de manière plus homogène entre les différentes régions, tandis que l’innovation est concentrée dans des pôles technologiques et industriels bien définis.
+
+CONCERNANT LES CODES IPC (3 GRAPHIQUES) : 
+
+1. Salaires moyens par code IPC
+- Les catégories A (Nécessités courantes de la vie), H (Électricité), et D (Textiles, papier) affichent des salaires moyens largement plus élevés que pour les autres catégories.
+Les secteurs comme E (Constructions fixes) et F (Mécanique, éclairage, chauffage), bien que représentant des domaines techniques importants, montrent des salaires plus modestes.
+Cela indique que les métiers liés aux domaines essentiels ou technologiques avancés (comme l’électricité) offrent de meilleures rémunérations.
+
+2. Répartition des offres d’emploi par code IPC
+- La répartition montre une forte concentration des offres dans les catégories A (Nécessités courantes de la vie) et H (Électricité), reflétant leur poids économique.
+Les catégories comme D (Textiles, papier) et E (Constructions fixes) ont une faible part des offres, suggérant une spécialisation plus limitée ou une demande réduite.
+Ce graphique ne prend cependant pas en compte la plupart des entreprises pour lesquelles nous n'avions pas de données sur les codes IPC, cela représente plus de 50% des entreprises. 
+
+3. Nombre de brevets par code IPC
+- Les brevets sont largement dominés par les catégories A (Nécessités courantes de la vie), H (Électricité), et B (Techniques industrielles, transports).
+- Ces catégories reflètent des domaines où l’innovation est particulièrement active, répondant à des besoins fondamentaux (catégorie A) ou soutenant des secteurs technologiques et industriels clés (catégories B et H).
+- La catégorie G (Physique) et d'autres domaines techniques suivent, mais avec un volume de brevets moindre comparé aux trois catégories dominantes.
+- Les catégories A et H se démarquent non seulement par leur volume élevé de brevets, mais également par leurs salaires moyens très élevés, montrant une forte valorisation de ces secteurs sur le marché du travail. En revanche, la catégorie B, bien qu’innovante, ne figure pas parmi les secteurs offrant les rémunérations les plus élevées.
+
+Conclusion
+
+L’analyse des salaires, des offres d’emploi et des brevets par code IPC met en lumière des dynamiques intéressantes :
+- Les catégories A (Nécessités courantes de la vie) et H (Électricité) se distinguent comme des secteurs particulièrement valorisés, combinant des salaires moyens très élevés, une forte demande sur le marché de l’emploi, et un volume important de brevets. Cela reflète leur double rôle économique, à la fois dans la satisfaction des besoins essentiels et dans les avancées technologiques.
+- La catégorie B (Techniques industrielles, transports), bien qu’innovante avec un grand nombre de brevets, n’offre pas des rémunérations aussi élevées, suggérant une valorisation plus technologique qu’économique sur le marché.
+- Les catégories E (Constructions fixes) et F (Mécanique, éclairage, chauffage), pourtant fondamentales dans les infrastructures et l’industrie, montrent une présence plus modeste en termes de salaires et d’offres d’emploi, ce qui peut s’expliquer par une spécialisation plus restreinte ou une dynamique de marché différente.
+- Enfin, la proportion importante d’entreprises sans données IPC (plus de 50 %) souligne une limite dans l’analyse des offres d’emploi, mais n’affecte pas les tendances générales observées dans les secteurs bien représentés.
 
 
+GRAPHIQUE DISTRIBUTION DES SALAIRES PAR DEPARTEMENT ET NIVEAU D'INNOVATION (VIOLET) :
 
+Précautions et limites des données :
+- Une grande partie des départements est catégorisée sous NA (en gris) pour le niveau d’innovation, ce qui signifie l’absence de données sur les brevets pour ces zones. De même, certains départements n'ont aucune donnée sur les salaires. Ces absences rendent l’interprétation globale plus complexe et peuvent fausser les résultats.
+- Certains départements qui montrent une forte proportion de catégories très élevées (en bleu foncé) en innovation peuvent également avoir une présence significative de catégories faibles (en rose), ce qui souligne une hétérogénéité interne dans l’activité économique et les opportunités.
 
+Lien entre innovation et salaire :
+- Les départements avec un niveau d’innovation très élevé (bleu foncé) tendent à proposer les salaires les plus élevés, parfois supérieurs à 250 000 €/an. Cependant, cette tendance n’exclut pas la coexistence de salaires plus faibles dans ces mêmes départements.
+- Les départements classés dans des catégories faible ou moyen d’innovation (rose et violet) présentent une distribution de salaires concentrée en dessous de 100 000 €/an, reflétant une moindre valorisation ou diversification économique.
 
+Disparités entre départements :
+- Certains départements se démarquent par des salaires élevés et un niveau d’innovation important, suggérant des pôles industriels ou technologiques concentrés. Cependant, de nombreux départements ont des données partielles ou absentes (NA), ce qui rend difficile une comparaison complète et représentative.
 
+Complexité de l’analyse des données :
+- Ce graphique illustre bien les défis liés au traitement et à l’analyse de données économiques : les données manquantes ou incomplètes (que ce soit sur les brevets ou les salaires) compliquent la mise en lumière de tendances générales. De plus, la coexistence de différents niveaux d’innovation et de salaires dans un même département souligne la difficulté d’obtenir une image homogène et précise.
 
-
-
-
-
-
-
-
-
+Conclusion
+- Bien que le graphique montre une tendance claire liant innovation et salaires élevés, les nombreuses données manquantes et la grande variabilité entre les départements rendent l’analyse plus complexe. Ce cas met en avant l’importance d’un travail rigoureux de collecte et d’interprétation pour minimiser les biais et mieux comprendre les dynamiques entre innovation, économie locale, et rémunération.
 
 
 
