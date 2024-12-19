@@ -27,8 +27,8 @@ Analyse du deuxième wordcloud (secteurs pondérés par les brevets - innovation
 
 Conclusion : 
 - Le premier wordcloud met davantage l'accent sur des secteurs orientés vers les services (ex. Logistique, Services aux entreprises), tandis que le deuxième wordcloud valorise des secteurs orientés vers l'industrie et la technologie (ex. Aérospatial, Biotechnologie, Mécanique). \
-Le transport et la logistique, dominants pour les salaires, sont beaucoup moins représentés en termes d'innovation, tandis que des secteurs comme l'automobile et l'aéronautique sont les leaders en innovation mais moins proéminents en termes de salaires.
-- Pour un professionnel ou une entreprise, investir dans l'innovation dans des secteurs technologiques est clé pour rester compétitif sur le long terme. Cependant, les secteurs logistiques et de transport peuvent offrir des opportunités financières immédiates. Un équilibre entre innovation et valeur économique peut être trouvé dans des secteurs comme l'aéronautique, qui figurent dans les deux dimensions.
+Le transport et la logistique, offrant de meilleurs salaires, sont beaucoup moins représentés en termes d'innovation, tandis que des secteurs comme l'automobile et l'aéronautique sont les leaders en innovation mais moins proéminents en terme de salaires.
+- Pour un professionnel ou une entreprise, investir dans l'innovation dans des secteurs technologiques est clé pour rester compétitif sur le long terme. Cependant, les secteurs de la logistique et du transport peuvent offrir des opportunités financières immédiates. Un équilibre entre innovation et valeur économique peut être trouvé dans des secteurs comme l'aéronautique, qui figurent dans les deux dimensions.
 
 <br><br><br>
 
@@ -57,7 +57,7 @@ Analyse du deuxième wordcloud (compétences pondérées par le salaire moyen) :
 
 Comparaison : 
 - En prenant en compte les deux wordclouds nous pouvons relever que les compétences en Deep Learning et autonomie apparaissent dans les deux, confirmant leur importance à la fois pour l'innovation et pour les salaires élevés. Les compétences en collaboration d'équipe et communication sont également partagées, soulignant leur transversalité. Ces compétences semblent donc primordiales que ce soit pour atteindre des salaires conséquents ou bien performer dans l'innovation.
-- Cependant, il y a tout de même des différences notables puisque, le wordcloud pondérés par les brevets mets plus d'accent sur des qualités générales comme "Autonome" et "équipe" tandis que dans le wordcloud pondéré par les salaires il y a une forte mise en avant de "Statistique", "Python" et des outils liés aux bases de données et au cloud, des compétences plus techniques et spécialisées.
+- Cependant, il y a tout de même des différences notables puisque, le wordcloud pondérés par les brevets mets davantage l'accent sur des qualités générales comme "Autonome" et "équipe" tandis que dans le wordcloud pondéré par les salaires il y a une forte mise en avant de "Statistique", "Python" et des outils liés aux bases de données et au cloud, des compétences plus techniques et spécialisées.
 Les brevets mettent davantage l'accent sur l'impact collectif ou comportemental, tandis que les salaires mettent en valeur des compétences directement monétisables et techniques. 
 
 <br>
