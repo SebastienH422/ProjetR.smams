@@ -53,22 +53,15 @@ L’analyse des salaires, des offres d’emploi et des brevets par code IPC met 
 
 GRAPHIQUE DISTRIBUTION DES SALAIRES PAR DEPARTEMENT ET NIVEAU D'INNOVATION (VIOLET) :
 
-Précautions et limites des données :
-- Une grande partie des départements est catégorisée sous NA (en gris) pour le niveau d’innovation, ce qui signifie l’absence de données sur les brevets pour ces zones. De même, certains départements n'ont aucune donnée sur les salaires. Ces absences rendent l’interprétation globale plus complexe et peuvent fausser les résultats.
-- Certains départements qui montrent une forte proportion de catégories très élevées (en bleu foncé) en innovation peuvent également avoir une présence significative de catégories faibles (en rose), ce qui souligne une hétérogénéité interne dans l’activité économique et les opportunités.
+- Dans ce graphique nous pouvons voir que les salaires varient considérablement selon les départements, mais Paris (75) domine largement avec un salaire moyen supérieur à 120 000 euros par an, en moyenne.
+D'autres départements, tels que Lyon (69) et probablement des métropoles dynamiques comme Toulouse (31), se démarquent par des salaires compétitifs, bien qu'ils restent loin de Paris.
+- Les départements avec un grand nombre de brevets (bleu) ne montrent pas systématiquement des salaires plus élevés que ceux ayant un niveau d'innovation faible (rose clair). Certains départements ayant peu de brevets affichent des salaires moyens compétitifs, suggérant que d'autres facteurs influencent davantage la rémunération (économie locale, type d'industrie, structure des emplois, etc.).
+- Il est important de souligner que Paris (75), étant la capitale de la France, est un cas unique avec une concentration importante d'entreprises et d'opportunités à haute rémunération.
+- Lyon (69) et d'autres départements dynamiques présentent également une combinaison favorable d'opportunités d'emploi bien rémunérées.
 
-Lien entre innovation et salaire :
-- Les départements avec un niveau d’innovation très élevé (bleu foncé) tendent à proposer les salaires les plus élevés, parfois supérieurs à 250 000 €/an. Cependant, cette tendance n’exclut pas la coexistence de salaires plus faibles dans ces mêmes départements.
-- Les départements classés dans des catégories faible ou moyen d’innovation (rose et violet) présentent une distribution de salaires concentrée en dessous de 100 000 €/an, reflétant une moindre valorisation ou diversification économique.
+- Ce graphique met en évidence qu'il ne semble pas avoir de corrélation directe et systématique entre le niveau d'innovation (mesuré par les brevets) et les salaires. Cependant, il est important de préciser que parmis les données que nous avons traiter il manquait régulièrement des informations concernant les salaires et les nombres de brevets déposés ce qui peut limiter l'apparition de corrélation entre ces données. 
 
-Disparités entre départements :
-- Certains départements se démarquent par des salaires élevés et un niveau d’innovation important, suggérant des pôles industriels ou technologiques concentrés. Cependant, de nombreux départements ont des données partielles ou absentes (NA), ce qui rend difficile une comparaison complète et représentative.
-
-Complexité de l’analyse des données :
-- Ce graphique illustre bien les défis liés au traitement et à l’analyse de données économiques : les données manquantes ou incomplètes (que ce soit sur les brevets ou les salaires) compliquent la mise en lumière de tendances générales. De plus, la coexistence de différents niveaux d’innovation et de salaires dans un même département souligne la difficulté d’obtenir une image homogène et précise.
-
-Conclusion
-- Bien que le graphique montre une tendance claire liant innovation et salaires élevés, les nombreuses données manquantes et la grande variabilité entre les départements rendent l’analyse plus complexe. Ce cas met en avant l’importance d’un travail rigoureux de collecte et d’interprétation pour minimiser les biais et mieux comprendre les dynamiques entre innovation, économie locale, et rémunération.
+- Ici, les différences salariales semblent être davantage liées à la concentration économique, à la structure des industries locales, et à la taille du marché de l'emploi (avec Paris en tête, suivi de Lyon). L'innovation, bien qu'importante, ne joue pas un rôle central et pourrait être un facteur parmi d'autres, elle ne suffit pas pour expliquer les écarts salariaux significatifs observés dans ce graphique.
 
 
 WORDCLOUDS VERTS : Compétences pondérées par l'innovation ; Compétences pondérées par le salaire 
