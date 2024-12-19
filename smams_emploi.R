@@ -28,18 +28,30 @@ data = data.table(read.csv(file = "Data/emp_offers_fmt.tsv", # Importation
 ############################
 ### Filtrage des données ###
 ############################
+
 # On conserve uniquement les champs suivant:
 # entreprise, secteur, experience_requise, competences_requises, salaire, departement
-
 offres = data[, .(entreprise, secteur, experience_requise, competences_requises, salaire, departement)]
-
-offres$id_firm_name = gsub(',','',iconv(tolower(word(offres$entreprise,1)), to = "ASCII//TRANSLIT"))
-
-
 # Apply the salary processing function
 offres[, avg_wage := sapply(salaire, get_wage)]
 # Clean competences_requises column before grouping
 offres[, competences_requises := sapply(competences_requises, clean_competences)]
+
+# _________________________________________________________________________________________________________________________________
+###########################
+### Modification du nom ###
+###########################
+#
+# On crée la colonne firm_name contenant le nom de l'entreprise,
+# ainsi que id_firm_name permettant de rassembler les entreprises entre elles 
+# Par exemple, 'Peugeot' et 'Peugeot SA' sont les mêmes entreprises. Dans id_firm_name, la valeur sera 'peugeot' pour les deux.
+offres$id_firm_name = gsub(',','',iconv(tolower(word(offres$entreprise,1)), to = "ASCII//TRANSLIT"))
+
+
+# _________________________________________________________________________________________________________________________________
+###############################
+### Création de base_emploi ###
+###############################
 
 # Group by firm_name, and calculate all other columns
 base_emp = offres[, .(
@@ -54,11 +66,17 @@ base_emp = offres[, .(
 
 # Remove the "id_firm_name" column
 base_emp[, id_firm_name := NULL]
-
+# On garde uniquement les entreprises avec un nom
 base_emp = base_emp[firm_name != ""]
 
-View(base_emp)
-
-# export en fichier csv
+#___________________________________________________________________________________________________________________________________
+#############################################
+### Ecriture de la base de données en csv ###
+#############################################
 
 fwrite(base_emp, "Data/base_emp.csv")
+
+#___________________________________________________________________________________________________________________________________
+###########
+### FIN ###
+###########

@@ -1,0 +1,622 @@
+<separation>
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////// BREVET //////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+<\separation>
+
+#
+# Simon Fraile, Matilin Periat, Ahina Durrieu, Maina Boivent, Sébastien Hein
+#
+# File smams_brevet.R
+# 
+# Creation of the base_brevets database
+#
+# Required files in the DATA folder:
+# - 202202_EPO_App_reg_small.txt
+# - 202202_EPO_IPC_small.txt
+# - EN_ipc_section_A_title_list_20120101.txt
+# - EN_ipc_section_B_title_list_20120101.txt
+# - EN_ipc_section_C_title_list_20120101.txt
+# - EN_ipc_section_D_title_list_20120101.txt
+# - EN_ipc_section_E_title_list_20120101.txt
+# - EN_ipc_section_F_title_list_20120101.txt
+# - EN_ipc_section_G_title_list_20120101.txt
+# - EN_ipc_section_H_title_list_20120101.txt
+#
+#
+###########################
+### Importing libraries ###
+###########################
+
+library(data.table)
+library(stringr)
+
+# _________________________________________________________________________________________________________________________________
+######################
+### Importing data ###
+######################
+
+brevets = data.table(read.csv(file = "Data/202202_EPO_App_reg_small.txt",
+                              head = TRUE,
+                              sep = ","))
+
+ipc = data.table(read.csv(file = "Data/202202_EPO_IPC_small.txt",
+                          head = TRUE,
+                          sep = ","))
+
+# Remove unnecessary columns
+brevets[, c("app_nbr", "pub_nbr", "person_id", "address", "reg_code", "reg_share", "app_share") := NULL]
+ipc[, app_year := NULL]
+
+# Format postal codes to department numbers
+brevets[, postal_code := as.integer(substr(postal_code, 1, 2))]
+
+# _________________________________________________________________________________________________________________________________
+######################
+### Data filtering ###
+######################
+
+# 1st filter: Keep only French companies
+brevets = brevets[ctry_code == "FR"]
+# Same for ipc data
+ipc = ipc[appln_id %in% brevets[, appln_id]]  
+# Remove the ctry_code column
+brevets[, ctry_code := NULL]
+
+# 2nd filter: Keep only patents filed between 2010 and 2020
+ipc = ipc[prio_year >= 2010 & prio_year <= 2020]
+# Same for patents
+brevets = brevets[appln_id %in% ipc[, appln_id]]
+# No longer need the prio_year variable
+ipc[, prio_year := NULL]
+
+# 3rd filter: Keep only the first 4 characters of ipc
+ipc$IPC = substr(ipc$IPC, 1, 4)
+
+# _________________________________________________________________________________________________________________________________
+#########################
+### Name modification ###
+#########################
+#
+# Create the firm_name column containing the company name,
+# and id_firm_name to group companies together
+# For example, 'Peugeot' and 'Peugeot SA' are the same company. In id_firm_name, the value will be 'peugeot' for both.
+brevets$firm_name = brevets$app_name
+# Keep only the first word, in lowercase, remove accents, commas, and other symbols
+brevets$id_firm_name = gsub(',','',iconv(tolower(word(brevets$app_name,1)), to = "ASCII//TRANSLIT"))
+brevets[, app_name := NULL]
+
+# _________________________________________________________________________________________________________________________________
+#############################
+### Creating base_brevets ###
+#############################
+
+# Merge the two data tables
+base_brevets = merge(brevets, ipc, by='appln_id')
+# Initialize the number of patents to 1
+base_brevets[, n_patents := 1]
+
+#___________________________________________________________________________________________________________________________________
+##################
+### Adding ipc ###
+##################
+
+# Add ipc_main_code and ipc_second_code columns
+base_brevets[, c("ipc_main_code", "ipc_second_code") := {
+  top_ipc <- find_top_ipc(IPC)
+  list(top_ipc[1], ifelse(length(top_ipc) > 1, top_ipc[2], NA))
+}, by = id_firm_name]
+
+base_brevets[, IPC := NULL]
+
+#___________________________________________________________________________________________________________________________________
+###################
+### Aggregation ###
+###################
+
+# Aggregate by id_firm_name to consider that company names like 'Peugeot SA' and 'peugeot'
+# describe the same companies
+base_brevets = base_brevets[, .(
+  firm_name = first(firm_name),
+  n_patents = sum(n_patents),
+  ipc_main_code = first(ipc_main_code),
+  ipc_second_code = first(ipc_second_code),
+  addr_city_main = first(city),
+  addr_dept_main = first(postal_code)
+), by = id_firm_name]
+
+# No longer need id_firm_name
+base_brevets[, id_firm_name := NULL]
+
+#___________________________________________________________________________________________________________________________________
+###############################
+### Adding ipc descriptions ###
+###############################
+
+# Names of ipc description files
+lettres = LETTERS[1:8] # vector with A,B,..,H
+fichiers = paste0("Data/EN_ipc_section_", lettres, "_title_list_20120101.txt") # IPC descriptions
+
+# Import files
+desc_separe = lapply(fichiers, function(f){
+  data.table(read.csv(file = f, head = TRUE, sep = "\t"))
+})
+names(desc_separe) = LETTERS[1:8]
+
+# Determine ipc_main_desc. Need to:
+# - isolate the first letter of each ipc code,
+# - look up the associated description in desc_separe$'X',
+# - add it to the ipc_main_desc variable.
+#
+# Do the same for ipc_second_desc
+
+# Extract the first letter of each ipc_main_code
+base_brevets[, first_letter_main := substr(ipc_main_code, 1, 1)]
+base_brevets[, first_letter_second := substr(ipc_second_code, 1, 1)]
+View(base_brevets)
+# For each first letter, join with the corresponding data table
+for (letter in LETTERS[1:8]) {
+  # Get the name of the second column
+  desc_col = names(desc_separe[[letter]])[2]
+  
+  base_brevets[first_letter_main == letter, 
+               ipc_main_desc := desc_separe[[letter]][.(ipc_main_code), get(desc_col), on=letter]]
+  base_brevets[first_letter_second == letter, 
+               ipc_second_desc := desc_separe[[letter]][.(ipc_second_code), get(desc_col), on=letter]]
+}
+
+# Remove the temporary first_letter column
+base_brevets[, c('first_letter_main', 'first_letter_second') := NULL]
+
+
+#___________________________________________________________________________________________________________________________________
+###################################
+### Writing the database to csv ###
+###################################
+
+fwrite(base_brevets, "Data/base_brevets.csv") 
+
+#___________________________________________________________________________________________________________________________________
+###########
+### END ###
+###########
+
+<separation>
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////// EMPLOI //////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+<\separation>
+
+#
+# Simon Fraile, Matilin Periat, Ahina Durrieu, Maina Boivent, Sébastien Hein
+#
+# File smams_emploi.R
+# 
+# Creation of the base_emp database
+#
+# Required files in the DATA folder:
+# - emp_offers_fmt.tsv
+#
+#
+###########################
+### Importing libraries ###
+###########################
+source("smams_src_utilities.R")
+library(data.table)
+library(stringr)
+
+# _________________________________________________________________________________________________________________________________
+######################
+### Importing data ###
+######################
+data = data.table(read.csv(file = "Data/emp_offers_fmt.tsv", # Import
+                           head = TRUE,
+                           sep = ","))
+
+# _________________________________________________________________________________________________________________________________
+######################
+### Data filtering ###
+######################
+
+# Keep only the following fields:
+# entreprise, secteur, experience_requise, competences_requises, salaire, departement
+offres = data[, .(entreprise, secteur, experience_requise, competences_requises, salaire, departement)]
+# Apply the salary processing function
+offres[, avg_wage := sapply(salaire, get_wage)]
+# Clean competences_requises column before grouping
+offres[, competences_requises := sapply(competences_requises, clean_competences)]
+
+# _________________________________________________________________________________________________________________________________
+#########################
+### Name modification ###
+#########################
+#
+# Create the firm_name column containing the company name,
+# and id_firm_name to group companies together
+# For example, 'Peugeot' and 'Peugeot SA' are the same company. In id_firm_name, the value will be 'peugeot' for both.
+offres$id_firm_name = gsub(',','',iconv(tolower(word(offres$entreprise,1)), to = "ASCII//TRANSLIT"))
+
+
+# _________________________________________________________________________________________________________________________________
+############################
+### Creating base_emploi ###
+############################
+
+# Group by firm_name, and calculate all other columns
+base_emp = offres[, .(
+  firm_name = get_top_val(entreprise, 1),                      # Firm name
+  n_offres = .N,                                              # Number of offers
+  sector_main = as.character(get_most_frequent(secteur)), # Most frequent sectors
+  avg_req_exp = ifelse(is.na(mean(experience_requise, na.rm = TRUE)), NA, mean(experience_requise, na.rm = TRUE)), # Average experience, round 1
+  avg_wage = ifelse(is.nan(mean(avg_wage, na.rm = TRUE)), NA_real_, mean(avg_wage, na.rm = TRUE)), # Average annual salary
+  addr_dept_main = get_top_val(departement, 1),  # Most common department
+  top_skill_req = get_most_frequent(competences_requises)  # Most frequent skills
+), by = id_firm_name]
+
+# Remove the "id_firm_name" column
+base_emp[, id_firm_name := NULL]
+# Keep only companies with a name
+base_emp = base_emp[firm_name != ""]
+
+#___________________________________________________________________________________________________________________________________
+###################################
+### Writing the database to csv ###
+###################################
+
+fwrite(base_emp, "Data/base_emp.csv")
+
+#___________________________________________________________________________________________________________________________________
+###########
+### END ###
+###########
+
+<separation>
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////// MATCH ///////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+<\separation>
+
+#
+# Simon Fraile, Matilin Periat, Ahina Durrieu, Maina Boivent, Sébastien Hein
+#
+# File smams_emploi.R
+# 
+# Creation of the base_emp database
+#
+# Required files in the DATA folder:
+# - base_brevets.csv
+# - base_emp.csv
+#
+###########################
+### Importing libraries ###
+###########################
+source("smams_src_utilities.R")
+library(data.table)
+library(stringr)
+
+# _________________________________________________________________________________________________________________________________
+######################
+### Importing data ###
+######################
+base_emp = fread("Data/base_emp.csv")
+base_brevets = fread("Data/base_brevets.csv")
+
+
+# _________________________________________________________________________________________________________________________________
+#############
+### Merge ###
+#############
+
+# Create id_firm_name in both data tables
+base_emp$id_firm_name = gsub(',','',iconv(tolower(word(base_emp$firm_name,1)), to = "ASCII//TRANSLIT"))
+base_brevets$id_firm_name = gsub(',','',iconv(tolower(word(base_brevets$firm_name,1)), to = "ASCII//TRANSLIT"))
+
+# Merge
+base_emp_inno = merge(base_emp, base_brevets, all = TRUE)
+
+
+# _________________________________________________________________________________________________________________________________
+###################
+### Aggregation ###
+###################
+
+base_emp_inno <- base_emp_inno[, {
+  
+  list(
+    firm_name = first(firm_name),  
+    addr_dept_main = as.character(choose_non_na(addr_dept_main)),
+    n_offres = choose_non_na(n_offres),
+    sector_main = as.character(choose_non_na(sector_main)),
+    avg_req_exp = choose_non_na(avg_req_exp),
+    avg_wage = choose_non_na(avg_wage),
+    top_skill_req = as.character(choose_non_na(top_skill_req)),
+    n_patents = choose_non_na(n_patents),
+    ipc_main_code = as.character(choose_non_na(ipc_main_code)),
+    ipc_main_desc = as.character(choose_non_na(ipc_main_desc)),
+    ipc_second_code = as.character(choose_non_na(ipc_second_code)),
+    ipc_second_desc = as.character(choose_non_na(ipc_second_desc)),
+    addr_city_main = as.character(choose_non_na(addr_city_main))
+  )
+}, by = id_firm_name]
+
+# Remove the "id_firm_name" column
+base_emp_inno[, id_firm_name := NULL] 
+
+
+#___________________________________________________________________________________________________________________________________
+###################################
+### Writing the database to csv ###
+###################################
+
+fwrite(base_emp_inno, "Data/base_emp_inno.csv")
+
+#___________________________________________________________________________________________________________________________________
+###########
+### END ###
+###########
+
+<separation>
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////// SRC ///////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+<\separation>
+
+# _____________________________________________________________________________________________________________________________
+# _____________________________________________________________________________________________________________________________
+# _____________________________________________________________________________________________________________________________
+# Employment section
+# _____________________________________________________________________________________________________________________________
+# _____________________________________________________________________________________________________________________________
+#
+# Auxiliary functions
+
+# Function to clean up and process the competences list
+clean_competences = function(skills_text) {
+  # Remove leading and trailing commas and whitespace
+  cleaned_text = str_trim(gsub("^,|,$", "", skills_text))
+  return(cleaned_text)
+}
+
+# _____________________________________________________________________________________________________________________________
+# _____________________________________________________________________________________________________________________________
+# Functions to build base_emp columns
+# _____________________________________________________________________________________________________________________________
+# --> Used for top_skill_req         
+get_skills_req = function(line){ 
+  # IN: skills <string> number of skills in various formats found in competences_requises
+  # OUT: <list of string> required skills, one skill per string
+  if (!is.null(line['competences_requises'])) {
+    skills = line['competences_requises']
+  } else {
+    skills = NaN
+  }
+  return(str_split(string = stringi::stri_trans_general(tolower(skills), "Latin-ASCII"),
+                   pattern = ', '))
+}
+# _____________________________________________________________________________________________________________________________
+# --> Used for sector_name       
+get_sector_name = function(line){ 
+  # IN: sector <string> number of sectors in various formats found in competences_requises
+  # OUT: <list of string> required sectors, one sector per string
+  if (!is.null(line['secteur'])) {
+    sector = line['secteur']
+  } else {
+    sector = NaN
+  }
+  return(str_split(string = stringi::stri_trans_general(tolower(sector), "Latin-ASCII"),
+                   pattern = ', '))
+}
+
+# _____________________________________________________________________________________________________________________________
+# Used for avg_wage
+
+get_wage = function(wage) {
+  # IN: wage <string> Salary or salary range in various formats found in the salaire column
+  # OUT: <float> Salary or average salary if it's a range
+
+  if (is.na(wage) || wage == "") {
+    return(NA_real_)
+  }
+  
+  # Clean the salary text
+  wage <- gsub(" ", "", wage)        # Remove spaces
+  wage <- gsub(",", ".", wage)       # Convert commas to dots
+
+  # Detect multipliers and normalize
+  multiplier <- 1
+  if (grepl("K", wage, ignore.case = TRUE)) {
+    multiplier <- 1000
+    wage <- gsub("[Kk]", "", wage)
+  } else if (grepl("000", wage)) {
+    wage <- gsub("000", "", wage)
+    multiplier <- 1000
+  }
+  
+  # Extract numbers
+  numbers <- as.numeric(unlist(str_extract_all(wage, "\\d+\\.?\\d*")))
+
+  if (length(numbers) == 0 || any(is.na(numbers))) {
+    return(NA_real_)
+  }
+  
+  # Calculate the average if it's a range
+  avg_wage <- mean(numbers) * multiplier
+  
+  # Adjust for periods (day, month, week)
+  if (str_detect(wage, "jour")) {
+    avg_wage <- avg_wage * 365
+  } else if (str_detect(wage, "mois")) {
+    avg_wage <- avg_wage * 12
+  } else if (str_detect(wage, "semaine")) {
+    avg_wage <- avg_wage * 52
+  }
+  
+
+  # Return with 2 decimals
+  return(round(avg_wage, 2))
+}
+
+
+# _____________________________________________________________________________________________________________________________
+# _____________________________________________________________________________________________________________________________
+# Functions to apply after aggregation 
+# _____________________________________________________________________________________________________________________________
+#
+set_firm_name = function(names) {
+  # IN: names <list of string> Company names
+  # OUT: <string> The first name, or the most frequent one
+  
+  # If there are no names, return NA
+  if (length(names) == 0) {
+    return(NA)
+  }
+  
+  # Count occurrences of each name
+  names_counts = sort(table(names), decreasing = TRUE)
+  
+  # Get the top name
+  top_names = names(names_counts)[1]
+  
+  # Concatenate the top name
+  return(top_names)
+}
+
+# _____________________________________________________________________________________________________________________________
+#
+get_top_val = function(val_list, n) {
+  # IN: val_lists <list> List of values
+  #     n <int> number of desired sectors
+  # OUT: List of the n most frequent values
+  
+  # Ensure val_list is treated as a character vector
+  val_list = as.character(val_list)
+  
+  # Split the string values by comma and remove extra spaces
+  valid_val = unlist(strsplit(val_list, ",\\s*"))
+  
+  # Remove any empty or NA values
+  valid_val = valid_val[!is.na(valid_val) & valid_val != ""]
+  
+  # If no valid val are found, return NA
+  if (length(valid_val) == 0) {
+    return(NA_character_)
+  }
+  
+  # Count occurrences of each val
+  val_counts = sort(table(valid_val), decreasing = TRUE)
+  
+  # Get the top n most frequent val (or fewer if there aren't n)
+  top_val = names(val_counts)[1:min(n, length(val_counts))]
+  
+  # Concatenate the top val into a single string, separated by commas
+  return(paste(top_val, collapse = ", "))
+}
+
+get_most_frequent = function(val_list) {
+  # IN: val_lists <list> List of values (skills)
+  # OUT: List of the most frequent values (>1 occurrence),
+  #      or all values if they appear only once
+  
+  # Ensure val_list is treated as a character vector
+  val_list = as.character(val_list)
+  
+  # Split the string values by comma and remove extra spaces
+  valid_val = unlist(strsplit(val_list, ",\\s*"))
+  
+  # Remove any empty or NA values
+  valid_val = valid_val[!is.na(valid_val) & valid_val != ""]
+  
+  # If no valid val are found, return NA
+  if (length(valid_val) == 0) {
+    return(NA_character_)
+  }
+  
+  # Count occurrences of each value
+  val_counts = table(valid_val)
+  
+  # Filter to keep only values that appear more than once
+  frequent_vals = names(val_counts[val_counts > 1])
+  
+  if (length(frequent_vals) > 0) {
+    # Sort frequent values by occurrence
+    frequent_counts = sort(val_counts[frequent_vals], decreasing = TRUE)
+    top_values = names(frequent_counts)
+  } else {
+    # If all values appear only once, return all values
+    top_values = names(sort(val_counts, decreasing = TRUE))
+  }
+
+  # Limit top_values to two values maximum
+  top_values = top_values[1:min(2, length(top_values))]
+  
+  # Concatenate the top values into a single string, separated by commas
+  return(paste(top_values, collapse = ", "))
+}
+
+# _____________________________________________________________________________________________________________________________
+#
+get_id_firm = function(line) {
+  if (!is.null(line['entreprise'])) {
+    name = line['entreprise'] # Company name
+    
+    # The following words often appear as the first word in the company name, they are not sufficient to identify the company, we ignore them to build the id_firm_name identifier
+    to_ignore = c('groupe', 'la', 'caisse', 'le', 'groupement', 'air', 'the', 'centre', 'direction', 'departement')
+    name = tolower(name)
+
+    name = stringi::stri_trans_general(tolower(name), "Latin-ASCII")
+
+
+    name = gsub(',','',name)
+    k = 0
+    while (word(name, k, k) %in% to_ignore){
+      k = k + 1
+    }
+
+    return (word(name, k, k)) # First 4 characters
+  } else {
+    stop("The 'entreprise' column is missing in the 'line' object")
+  }
+}
+
+# _____________________________________________________________________________________________________________________________
+# _____________________________________________________________________________________________________________________________
+# _____________________________________________________________________________________________________________________________
+# Patent section
+# _____________________________________________________________________________________________________________________________
+# _____________________________________________________________________________________________________________________________
+#
+find_top_ipc <- function(ipc_codes) {
+  ipc_counts <- sort(table(ipc_codes), decreasing = TRUE)
+  top_ipc <- names(ipc_counts)[1:2]
+  return(top_ipc)
+}
+
+# _____________________________________________________________________________________________________________________________
+# _____________________________________________________________________________________________________________________________
+# _____________________________________________________________________________________________________________________________
+# Match section
+# _____________________________________________________________________________________________________________________________
+# _____________________________________________________________________________________________________________________________
+#
+
+# _____________________________________________________________________________________________________________________________
+# Helper function to choose a non-NA value, or randomly if multiple non-NA values
+#
+  choose_non_na = function(x) {
+    # Ensure x is a vector of the same type
+    x <- as.vector(x)
+    x_unique <- unique(x[!is.na(x)])
+    if(length(x_unique) == 0) return(x[1])  # Return NA of the correct type
+    if(length(x_unique) == 1) return(x_unique[1])
+    return(sample(x_unique, 1))
+  }
+
+<\dossier>

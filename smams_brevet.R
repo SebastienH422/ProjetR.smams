@@ -71,7 +71,7 @@ ipc$IPC = substr(ipc$IPC, 1 ,4)
 ###########################
 ### Modification du nom ###
 ###########################
-
+#
 # On crée la colonne firm_name contenant le nom de l'entreprise,
 # ainsi que id_firm_name permettant de rassembler les entreprises entre elles 
 # Par exemple, 'Peugeot' et 'Peugeot SA' sont les mêmes entreprises. Dans id_firm_name, la valeur sera 'peugeot' pour les deux.
@@ -170,5 +170,7 @@ base_brevets[, c('first_letter_main', 'first_letter_second') := NULL]
 
 fwrite(base_brevets, "Data/base_brevets.csv") 
 
-### -- 
-## FIN
+#___________________________________________________________________________________________________________________________________
+###########
+### FIN ###
+###########
