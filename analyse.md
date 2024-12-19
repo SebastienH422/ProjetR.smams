@@ -1,6 +1,28 @@
  # **Analyse des données**
 
-WORDCLOUDS BLEUS :  Secteurs pondérés par l'innovation ; Secteurs pondérés par le salaire 
+<p align="center">
+  <img src="graphiques/WordBleu_brevets_petit.png" alt="Secteurs pondérés par l'innovation" width="45%" />
+  <img src="graphiques/WordBleu_salaire_petit.png" alt="Secteurs pondérés par le salaire moyen" width="45%" />
+</p>
+
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; **Secteurs pondérés par l'innovation** &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; **Secteurs pondérés par le salaire moyen**
+
+<p align="center">
+  <div style="display: inline-block; text-align: center; margin: 10px;">
+    <img src="graphiques/WordBleu_brevets_petit.png" alt="Image 1" width="30%" />
+    <br>
+    <b>Secteurs pondérés par l'innovation</b>
+  </div>
+  <div style="display: inline-block; text-align: center; margin: 10px;">
+    <img src="graphiques/WordBleu_salaire.png" alt="Image 2" width="30%" />
+    <br>
+    <b>Secteurs pondérés par le salaire moyen</b>
+  </div>
+</p>
+
+
+
+
 
 Analyse du premier wordcloud (secteurs pondérés par les salaires)
 - Pour ce premier wordcloud, les secteurs "Transport" et "Logistique" dominent largement, ils sont donc identifiés comme offrant des salaires compétitifs.
