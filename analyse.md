@@ -1,5 +1,9 @@
  # **Analyse des données**
 
+## Analyse des données concernant les secteurs d'activité des entreprises
+
+<br>
+
 <p align="center">
   <img src="graphiques/WordBleu_salaire_petit.png" alt="Secteurs pondérés par le salaire moyen" width="45%" />
   <img src="graphiques/WordBleu_brevets_petit.png" alt="Secteurs pondérés par l'innovation" width="45%" />
@@ -28,6 +32,9 @@ Le transport et la logistique, dominants pour les salaires, sont beaucoup moins 
 
 <br><br><br>
 
+## Analyse des données concernant les compétences demandées dans les offres d'emploi
+
+<br>
 
 <p align="center">
   <img src="graphiques/wordVert_Competences_Brevets_petit.png" alt="Compétences pondérées par l'innovation" width="45%" />
@@ -53,12 +60,19 @@ Comparaison :
 - Cependant, il y a tout de même des différences notables puisque, le wordcloud pondérés par les brevets mets plus d'accent sur des qualités générales comme "Autonome" et "équipe" tandis que dans le wordcloud pondéré par les salaires il y a une forte mise en avant de "Statistique", "Python" et des outils liés aux bases de données et au cloud, des compétences plus techniques et spécialisées.
 Les brevets mettent davantage l'accent sur l'impact collectif ou comportemental, tandis que les salaires mettent en valeur des compétences directement monétisables et techniques. 
 
+<br>
+
 Conclusion
 - Les compétences techniques comme le "Deep Learning" et les outils cloud sont cruciaux à la fois pour innover et pour obtenir un salaire élevé. Cependant, l'innovation semble exiger un équilibre entre soft skills (autonomie, communication) et techniques, tandis que le salaire est davantage lié à une spécialisation technique pointue.
 Pour maximiser à la fois innovation et rémunération, une combinaison de compétences techniques avancées (ex. Python, Deep Learning, statistique) et de compétences comportementales (ex. communication, collaboration) est essentielle. Cela met en avant l'importance d'un profil hybride capable de créer de la valeur dans les deux dimensions.
 
+<br><br><br>
 
-CONCERNANT LES CODES IPC (3 GRAPHIQUES) : 
+## Analyse des données concernant les codes IPC des brevets
+
+<br>
+
+
 
 1. Salaires moyens par code IPC
 - Les catégories A (Nécessités courantes de la vie), H (Électricité), et D (Textiles, papier) affichent des salaires moyens largement plus élevés que pour les autres catégories.
