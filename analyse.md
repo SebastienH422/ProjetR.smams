@@ -33,23 +33,73 @@ Conclusion :
 Pour l’innovation, les secteurs industriels et technologiques sont prépondérants, soulignant l’importance des activités manufacturières et de haute technologie dans le développement de nouveaux brevets.
 
 
+GRAPHIQUES EN BARRE AU SUJET DES VILLES : 
 
 
+Constat général : Les deux graphiques montrent des disparités significatives entre les villes en termes de salaires moyens et d’innovation (pondérée par le nombre de brevets). Paris se démarque dans les deux contextes, mais est exclue du graphique des brevets pour permettre une meilleure lecture des autres villes.
+
+Top 30 des villes par salaires moyens :
+
+- Chartrettes occupe une position exceptionnelle, avec un salaire moyen bien au-dessus des autres villes. Cependant, comme à l'habitude, les données concernant les salaires étant peu présentent, il faut conserver un esprit critique envers ces résultats.
+Les villes comme Paris, Saint-Pal-de-Mons, et Ornans suivent, soulignant un équilibre entre zones urbaines et rurales.
+Les données révèlent une distribution géographique variée, avec des villes de différentes tailles représentées.
+
+Top 30 des villes les plus innovantes :
+
+- Les villes industrielles ou fortement technologiques comme Nancy, Boulogne-Billancourt, et Vélizy-Villacoublay dominent, avec un grand nombre de brevets déposés.
+On note une forte représentation des villes proches de grands centres économiques ou technologiques (par exemple, Grenoble pour la recherche technologique, Amiens pour les industries).
+Contrairement au graphique des salaires, l’innovation semble davantage concentrée dans des zones spécifiques, souvent liées à des écosystèmes industriels.
+
+Conclusion :
+
+- Les villes offrant les salaires moyens les plus élevés ne sont pas toujours les plus innovantes, suggérant que l’innovation et la rémunération ne sont pas systématiquement corrélées.
+Les salaires élevés sont répartis de manière plus homogène entre les différentes régions, tandis que l’innovation est concentrée dans des pôles technologiques et industriels bien définis.
+
+CONCERNANT LES CODES IPC (3 GRAPHIQUES) : 
+
+1. Salaires moyens par code IPC
+- Les catégories A (Nécessités courantes de la vie), H (Électricité), et D (Textiles, papier) affichent des salaires moyens largement plus élevés que pour les autres catégories.
+Les secteurs comme E (Constructions fixes) et F (Mécanique, éclairage, chauffage), bien que représentant des domaines techniques importants, montrent des salaires plus modestes.
+Cela indique que les métiers liés aux domaines essentiels ou technologiques avancés (comme l’électricité) offrent de meilleures rémunérations.
+
+2. Répartition des offres d’emploi par code IPC
+- La répartition montre une forte concentration des offres dans les catégories A (Nécessités courantes de la vie) et H (Électricité), reflétant leur poids économique.
+Les catégories comme D (Textiles, papier) et E (Constructions fixes) ont une faible part des offres, suggérant une spécialisation plus limitée ou une demande réduite.
+Ce graphique ne prend cependant pas en compte la plupart des entreprises pour lesquelles nous n'avions pas de données sur les codes IPC, cela représente plus de 50% des entreprises. 
+
+3. Nombre de brevets par code IPC
+- Les brevets sont largement dominés par les catégories A (Nécessités courantes de la vie), H (Électricité), et B (Techniques industrielles, transports).
+- Ces catégories reflètent des domaines où l’innovation est particulièrement active, répondant à des besoins fondamentaux (catégorie A) ou soutenant des secteurs technologiques et industriels clés (catégories B et H).
+- La catégorie G (Physique) et d'autres domaines techniques suivent, mais avec un volume de brevets moindre comparé aux trois catégories dominantes.
+- Les catégories A et H se démarquent non seulement par leur volume élevé de brevets, mais également par leurs salaires moyens très élevés, montrant une forte valorisation de ces secteurs sur le marché du travail. En revanche, la catégorie B, bien qu’innovante, ne figure pas parmi les secteurs offrant les rémunérations les plus élevées.
+
+Conclusion
+
+L’analyse des salaires, des offres d’emploi et des brevets par code IPC met en lumière des dynamiques intéressantes :
+- Les catégories A (Nécessités courantes de la vie) et H (Électricité) se distinguent comme des secteurs particulièrement valorisés, combinant des salaires moyens très élevés, une forte demande sur le marché de l’emploi, et un volume important de brevets. Cela reflète leur double rôle économique, à la fois dans la satisfaction des besoins essentiels et dans les avancées technologiques.
+- La catégorie B (Techniques industrielles, transports), bien qu’innovante avec un grand nombre de brevets, n’offre pas des rémunérations aussi élevées, suggérant une valorisation plus technologique qu’économique sur le marché.
+- Les catégories E (Constructions fixes) et F (Mécanique, éclairage, chauffage), pourtant fondamentales dans les infrastructures et l’industrie, montrent une présence plus modeste en termes de salaires et d’offres d’emploi, ce qui peut s’expliquer par une spécialisation plus restreinte ou une dynamique de marché différente.
+- Enfin, la proportion importante d’entreprises sans données IPC (plus de 50 %) souligne une limite dans l’analyse des offres d’emploi, mais n’affecte pas les tendances générales observées dans les secteurs bien représentés.
 
 
+GRAPHIQUE DISTRIBUTION DES SALAIRES PAR DEPARTEMENT ET NIVEAU D'INNOVATION (VIOLET) :
 
+Précautions et limites des données :
+- Une grande partie des départements est catégorisée sous NA (en gris) pour le niveau d’innovation, ce qui signifie l’absence de données sur les brevets pour ces zones. De même, certains départements n'ont aucune donnée sur les salaires. Ces absences rendent l’interprétation globale plus complexe et peuvent fausser les résultats.
+- Certains départements qui montrent une forte proportion de catégories très élevées (en bleu foncé) en innovation peuvent également avoir une présence significative de catégories faibles (en rose), ce qui souligne une hétérogénéité interne dans l’activité économique et les opportunités.
 
+Lien entre innovation et salaire :
+- Les départements avec un niveau d’innovation très élevé (bleu foncé) tendent à proposer les salaires les plus élevés, parfois supérieurs à 250 000 €/an. Cependant, cette tendance n’exclut pas la coexistence de salaires plus faibles dans ces mêmes départements.
+- Les départements classés dans des catégories faible ou moyen d’innovation (rose et violet) présentent une distribution de salaires concentrée en dessous de 100 000 €/an, reflétant une moindre valorisation ou diversification économique.
 
+Disparités entre départements :
+- Certains départements se démarquent par des salaires élevés et un niveau d’innovation important, suggérant des pôles industriels ou technologiques concentrés. Cependant, de nombreux départements ont des données partielles ou absentes (NA), ce qui rend difficile une comparaison complète et représentative.
 
+Complexité de l’analyse des données :
+- Ce graphique illustre bien les défis liés au traitement et à l’analyse de données économiques : les données manquantes ou incomplètes (que ce soit sur les brevets ou les salaires) compliquent la mise en lumière de tendances générales. De plus, la coexistence de différents niveaux d’innovation et de salaires dans un même département souligne la difficulté d’obtenir une image homogène et précise.
 
-
-
-
-
-
-
-
-
+Conclusion
+- Bien que le graphique montre une tendance claire liant innovation et salaires élevés, les nombreuses données manquantes et la grande variabilité entre les départements rendent l’analyse plus complexe. Ce cas met en avant l’importance d’un travail rigoureux de collecte et d’interprétation pour minimiser les biais et mieux comprendre les dynamiques entre innovation, économie locale, et rémunération.
 
 
 
