@@ -1,0 +1,117 @@
+base_emp_inno = fread("Data/base_emp_inno.csv")
+# Définir le nombre de colonnes de la matrice
+n_colonnes <- 10
+
+# Initialiser une matrice vide avec le bon nombre de lignes et colonnes
+matrice <- matrix(NA, nrow = nrow(base_emp_inno), ncol = n_colonnes)
+
+# Remplir la matrice ligne par ligne
+for (i in 1:nrow(base_emp_inno)) {
+  # Extraire les mots en utilisant la virgule comme séparateur
+  mots <- unlist(strsplit(base_emp_inno$top_skill_req[i], split = ",\\s*"))
+  
+  # Vérifier si mots n'est pas vide avant d'affecter les valeurs
+  if (length(mots) > 0) {
+    matrice[i, 1:min(length(mots), n_colonnes)] <- mots[1:min(length(mots), n_colonnes)]
+  }
+}
+
+# Afficher la matrice
+print(matrice)
+# Extraire la première colonne de la matrice
+vecteur_premiere_colonne <- matrice[, 1]
+
+# Afficher le vecteur
+print(vecteur_premiere_colonne)
+
+vecteur_premiere_colonne_sans_na <- vecteur_premiere_colonne[!is.na(vecteur_premiere_colonne)]
+
+# Afficher le vecteur
+print(vecteur_premiere_colonne_sans_na)
+
+# Garder uniquement les valeurs uniques dans le vecteur
+vecteur_premiere_colonne_sans_doublons <- unique(vecteur_premiere_colonne_sans_na)
+
+# Afficher le nouveau vecteur sans doublons
+print(vecteur_premiere_colonne_sans_doublons)
+
+# Créer un vecteur de pondération de la même longueur que le vecteur unique
+ponderation <- rep(1, length(vecteur_premiere_colonne_sans_doublons))
+
+# Afficher le vecteur de pondération
+print(ponderation)
+
+# Ajouter une colonne contenant les firm_name
+matrice <- cbind(matrice, base_emp_inno$firm_name)
+
+# Afficher la nouvelle matrice
+print(matrice)
+
+# Créer une matrice avec deux colonnes
+matrice_resultante <- cbind(
+  vecteur_premiere_colonne_sans_doublons,  # Première colonne
+  rep(0, length(vecteur_premiere_colonne_sans_doublons))  # Deuxième colonne avec des 0
+)
+
+# Afficher la matrice
+print(matrice_resultante)
+
+matrice <- cbind(matrice, base_emp_inno$n_patents)
+
+# Afficher la nouvelle matrice
+print(matrice)
+
+# Première colonne unique sans doublons
+vecteur_premiere_colonne_sans_doublons <- unique(na.omit(as.vector(matrice[, 1:5])))
+
+# Créer matrice_resultante avec des 0 dans la deuxième colonne
+matrice_resultante <- cbind(
+  vecteur_premiere_colonne_sans_doublons,  # Première colonne
+  rep(0, length(vecteur_premiere_colonne_sans_doublons))  # Deuxième colonne initialisée à 0
+)
+
+# Parcourir chaque ligne de la matrice pour additionner les valeurs correspondantes
+for (i in 1:nrow(matrice)) {
+  # Obtenir la valeur à ajouter (dernière colonne de la ligne courante)
+  valeur_a_ajouter <- as.numeric(matrice[i, ncol(matrice)])
+  
+  # Vérifier si la valeur n'est pas NA
+  if (!is.na(valeur_a_ajouter)) {
+    # Parcourir les colonnes 1 à 5 de la ligne courante
+    for (j in 1:(ncol(matrice) - 1)) {
+      mot <- matrice[i, j]
+      # Si le mot n'est pas NA, ajouter la valeur dans matrice_resultante
+      if (!is.na(mot)) {
+        # Trouver l'index de la ligne dans matrice_resultante où le mot se trouve
+        index <- which(matrice_resultante[, 1] == mot)
+        if (length(index) > 0) {
+          # Ajouter la valeur à la deuxième colonne
+          matrice_resultante[index, 2] <- as.numeric(matrice_resultante[index, 2]) + valeur_a_ajouter
+        }
+      }
+    }
+  }
+}
+
+# Afficher la matrice finale
+print(matrice_resultante)
+
+# Extraire les données de la matrice_resultante
+mots <- matrice_resultante[, 1]  # Première colonne : mots
+ponderations <- as.numeric(matrice_resultante[, 2])  # Deuxième colonne : pondérations
+
+# Définir vos propres couleurs
+couleur_claire <- "#97bf95"  # Vert clair (par exemple)
+couleur_foncee <- "#1b5e20"  # Vert foncé (par exemple)
+
+# Créer une palette de dégradé entre ces deux couleurs
+palette_personnalisee <- colorRampPalette(c(couleur_claire, couleur_foncee))
+
+# Créer le Word Cloud
+wordcloud(words = mots, 
+          freq = ponderations, 
+          min.freq = 1,                     # Fréquence minimale
+          scale = c(3, 0.5),                # Réduire la taille max et min des mots
+          random.order = FALSE,             # Les mots les plus fréquents sont centrés
+          colors = palette_personnalisee(8) # Générer 8 nuances entre vos deux couleurs
+)
