@@ -113,11 +113,11 @@ Les 5 entreprises ayant le salaire moyen le plus élevé :
 <br>
 
 Les 5 secteurs ayant le salaire moyen le plus élevé :
-1. prout,
-2. caca,
-3. pipi,
-4. popo,
-5. culotte.
+1. Logistique,
+2. Transport,
+3. BEP,
+4. CAP,
+5. Commerce de gros.
 
 
 <br>
