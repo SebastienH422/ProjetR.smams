@@ -1,5 +1,7 @@
  # **Analyse des données**
 
+<br>
+
 ## Analyse des données concernant les secteurs d'activité des entreprises
 
 <br>
@@ -24,7 +26,7 @@ Analyse du deuxième wordcloud (secteurs pondérés par les brevets - innovation
 
 <br>
 
-Conclusion
+Conclusion : 
 - Le premier wordcloud met davantage l'accent sur des secteurs orientés vers les services (ex. Logistique, Services aux entreprises).
 tandis que le deuxième wordcloud valorise des secteurs orientés vers l'industrie et la technologie (ex. Aérospatial, Biotechnologie, Mécanique).
 Le transport et la logistique, dominants pour les salaires, sont beaucoup moins représentés en termes d'innovation, tandis que des secteurs comme l'automobile et l'aéronautique sont les leaders en innovation mais moins proéminents en termes de salaires.
@@ -45,24 +47,24 @@ Le transport et la logistique, dominants pour les salaires, sont beaucoup moins 
 
 <br> <br>
 
-Analyse du premier wordcloud (compétences pondérées par les brevets - innovation)
+Analyse du premier wordcloud (compétences pondérées par les brevets - innovation) : 
 - Ce wordcloud met en avant des compétences techniques et comportementales qui distinguent l'innovation. L'association de l'autonomie avec la collaboration en équipe montre une importance de l'équilibre entre le travail individuel et collectif pour générer de nouvelles idées. Par ailleurs, la présence de « Deep Learning » et de « modélisation » indique que l'innovation se concentre sur des compétences en intelligence artificielle et en analyse de données, ce qui reflète très bien le contenu de nos données.
 
 <br>
 
-Analyse du deuxième wordcloud (compétences pondérées par le salaire moyen)
+Analyse du deuxième wordcloud (compétences pondérées par le salaire moyen) : 
 - Sur ce wordcloud le terme "Statistique" domine largement, suivi de "Deep Learning", "Python" et "modélisation". Nous en déduisons aisément que les compétences mieux rémunérées se concentrent sur des compétences techniques spécifiques, notamment dans les domaines des données et du cloud.
 
 <br>
 
-Comparaison :
+Comparaison : 
 - En prenant en compte les deux wordclouds nous pouvons relever que les compétences en Deep Learning et autonomie apparaissent dans les deux, confirmant leur importance à la fois pour l'innovation et pour les salaires élevés. Les compétences en collaboration d'équipe et communication sont également partagées, soulignant leur transversalité. Ces compétences semblent donc primordiales que ce soit pour atteindre des salaires conséquents ou bien performer dans l'innovation.
 - Cependant, il y a tout de même des différences notables puisque, le wordcloud pondérés par les brevets mets plus d'accent sur des qualités générales comme "Autonome" et "équipe" tandis que dans le wordcloud pondéré par les salaires il y a une forte mise en avant de "Statistique", "Python" et des outils liés aux bases de données et au cloud, des compétences plus techniques et spécialisées.
 Les brevets mettent davantage l'accent sur l'impact collectif ou comportemental, tandis que les salaires mettent en valeur des compétences directement monétisables et techniques. 
 
 <br>
 
-Conclusion
+Conclusion : 
 - Les compétences techniques comme le "Deep Learning" et les outils cloud sont cruciaux à la fois pour innover et pour obtenir un salaire élevé. Cependant, l'innovation semble exiger un équilibre entre soft skills (autonomie, communication) et techniques, tandis que le salaire est davantage lié à une spécialisation technique pointue.
 Pour maximiser à la fois innovation et rémunération, une combinaison de compétences techniques avancées (ex. Python, Deep Learning, statistique) et de compétences comportementales (ex. communication, collaboration) est essentielle. Cela met en avant l'importance d'un profil hybride capable de créer de la valeur dans les deux dimensions.
 
@@ -72,10 +74,17 @@ Pour maximiser à la fois innovation et rémunération, une combinaison de comp�
 
 <br>
 
+### 1. Salaires moyens par code IPC
 
+<br>
 
-1. Salaires moyens par code IPC
-- Les catégories A (Nécessités courantes de la vie), H (Électricité), et D (Textiles, papier) affichent des salaires moyens largement plus élevés que pour les autres catégories.
+<p align="center">
+  <img src="ipc_salaires.png" alt="Description de l'image" width="80%" />
+</p>
+
+<br>
+
+Les catégories A (Nécessités courantes de la vie), H (Électricité), et D (Textiles, papier) affichent des salaires moyens largement plus élevés que pour les autres catégories.
 Les secteurs comme E (Constructions fixes) et F (Mécanique, éclairage, chauffage), bien que représentant des domaines techniques importants, montrent des salaires plus modestes.
 Cela indique que les métiers liés aux domaines essentiels ou technologiques avancés (comme l’électricité) offrent de meilleures rémunérations.
 
