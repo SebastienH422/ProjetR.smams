@@ -7,8 +7,8 @@
 <br>
 
 <p align="center">
-  <img src="graphiques/WordBleu_salaire_petit.png" alt="Secteurs pondérés par le salaire moyen" width="45%" />
-  <img src="graphiques/WordBleu_brevets_petit.png" alt="Secteurs pondérés par l'innovation" width="45%" />
+  <img src="Images/WordBleu_salaire_petit.png" alt="Secteurs pondérés par le salaire moyen" width="45%" />
+  <img src="Images/WordBleu_brevets_petit.png" alt="Secteurs pondérés par l'innovation" width="45%" />
 </p>
 
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; **Secteurs pondérés par le salaire moyen** &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; **Secteurs pondérés par l'innovation**
@@ -37,8 +37,8 @@ Le transport et la logistique, offrant de meilleurs salaires, sont beaucoup moin
 <br>
 
 <p align="center">
-  <img src="graphiques/wordVert_Competences_Brevets_petit.png" alt="Compétences pondérées par l'innovation" width="45%" />
-  <img src="graphiques/WordVert_salaires_petit.png" alt="Compétences pondérées par le salaire moyen" width="45%" />
+  <img src="Images/wordVert_Competences_Brevets_petit.png" alt="Compétences pondérées par l'innovation" width="45%" />
+  <img src="Images/WordVert_salaires_petit.png" alt="Compétences pondérées par le salaire moyen" width="45%" />
 </p>
 
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; **Compétences pondérés par l'innovation** &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; **Compétences pondérés par le salaire moyen**
@@ -77,7 +77,7 @@ Pour maximiser à la fois innovation et rémunération, une combinaison de comp�
 <br>
 
 <p align="center">
-  <img src="ipc_salaires_sans_legende.png" alt="Description de l'image" width="80%" />
+  <img src="Images/ipc_salaires_sans_legende.png" alt="Description de l'image" width="80%" />
 </p>
 
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; **Salaires moyens des offres d'emploi par code IPC**
@@ -95,7 +95,7 @@ Cela indique que les métiers liés aux domaines essentiels ou technologiques av
 <br>
 
 <p align="center">
-  <img src="ipc_offres_sansNA_60porcent_sans_legende.png" alt="Description de l'image" width="80%" />
+  <img src="Images/ipc_offres_sansNA_60porcent_sans_legende.png" alt="Description de l'image" width="80%" />
 </p>
 
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; **Répartition des offres d'emploi selon le code IPC**
@@ -113,7 +113,7 @@ Ce graphique ne prend cependant pas en compte la plupart des entreprises, pour l
 <br> 
 
 <p align="center">
-  <img src="ipc_n_patents_good_sans_l.png" alt="Description de l'image" width="80%" />
+  <img src="Images/ipc_n_patents_good_sans_l.png" alt="Description de l'image" width="80%" />
 </p>
 
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; **Nombre de brevets déposés par code IPC**
@@ -168,7 +168,7 @@ Les données révèlent une distribution géographique variée, avec des villes 
 <br>
 
 <p align="center">
-  <img src="villes_n_patents_top30_sans_legende.png" alt="Description de l'image" width="80%" />
+  <img src="Images/villes_n_patents_top30_sans_legende.png" alt="Description de l'image" width="80%" />
 </p>
 
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; **Les 30 villes les plus innovantes après Paris**
@@ -193,7 +193,7 @@ Les salaires élevés sont répartis de manière plus homogène entre les diffé
 <br>
 
 <p align="center">
-  <img src="VIOLET(nsm).png" alt="Description de l'image" width="80%" />
+  <img src="Images/VIOLET(nsm).png" alt="Description de l'image" width="80%" />
 </p>
 
 <br>
