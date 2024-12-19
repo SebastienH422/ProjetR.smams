@@ -168,12 +168,10 @@ get_most_frequent = function(val_list) {
     return(NA_character_)
   }
   
-  # ADD
   # To avoid doubles, replace some words or characters
   valid_val = str_replace_all(valid_val, c("ô" = "o", "English" = "Anglais", "Autonomous" = "Autonome", "French" = "Français"))
   valid_val = str_replace_all(valid_val, c("Communication Skills" = "Communication", "Curious" = "Curiosité", "Artificial intelligence" = "Intelligence artificielle"))
   valid_val = str_replace_all(valid_val, c("Base de donnée" = "Database", "Bases de donnée" = "Database"))
-  # ADD END
   
   # Count occurrences of each value
   val_counts = table(valid_val)
