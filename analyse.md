@@ -16,8 +16,7 @@
 <br> <br>
 
 Analyse du premier wordcloud (secteurs pondérés par les salaires) : 
-- Pour ce premier wordcloud, les secteurs "Transport" et "Logistique" dominent largement, ils sont donc identifiés comme offrant des salaires compétitifs.
-En effet, les secteurs liés à la gestion et à la chaîne d'approvisionnement (logistique, transport, distribution) sont mis en avant, démontrant une forte valorisation salariale. Cela peut être dû à la demande croissante pour ces secteurs dans une économie mondialisée.
+- Pour ce premier wordcloud, les secteurs "Transport" et "Logistique" dominent largement, ils sont donc identifiés comme offrant des salaires compétitifs. En effet, les secteurs liés à la gestion et à la chaîne d'approvisionnement (logistique, transport, distribution) sont mis en avant, démontrant une forte valorisation salariale. Cela peut être dû à la demande croissante pour ces secteurs dans une économie mondialisée.
 
 <br>
 
@@ -27,8 +26,7 @@ Analyse du deuxième wordcloud (secteurs pondérés par les brevets - innovation
 <br>
 
 Conclusion : 
-- Le premier wordcloud met davantage l'accent sur des secteurs orientés vers les services (ex. Logistique, Services aux entreprises).
-tandis que le deuxième wordcloud valorise des secteurs orientés vers l'industrie et la technologie (ex. Aérospatial, Biotechnologie, Mécanique).
+- Le premier wordcloud met davantage l'accent sur des secteurs orientés vers les services (ex. Logistique, Services aux entreprises), tandis que le deuxième wordcloud valorise des secteurs orientés vers l'industrie et la technologie (ex. Aérospatial, Biotechnologie, Mécanique). \
 Le transport et la logistique, dominants pour les salaires, sont beaucoup moins représentés en termes d'innovation, tandis que des secteurs comme l'automobile et l'aéronautique sont les leaders en innovation mais moins proéminents en termes de salaires.
 - Pour un professionnel ou une entreprise, investir dans l'innovation dans des secteurs technologiques est clé pour rester compétitif sur le long terme. Cependant, les secteurs logistiques et de transport peuvent offrir des opportunités financières immédiates. Un équilibre entre innovation et valeur économique peut être trouvé dans des secteurs comme l'aéronautique, qui figurent dans les deux dimensions.
 
@@ -74,13 +72,15 @@ Pour maximiser à la fois innovation et rémunération, une combinaison de comp�
 
 <br>
 
-### 1. 
+### 1. Salaires moyens par code IPC
 
 <br>
 
 <p align="center">
-  <img src="ipc_salaires.png" alt="Description de l'image" width="80%" />
+  <img src="ipc_salaires_sans_legende.png" alt="Description de l'image" width="80%" />
 </p>
+
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; **Salaires moyens des offres d'emploi par code IPC**
 
 <br>
 
@@ -88,24 +88,57 @@ Les catégories A (Nécessités courantes de la vie), H (Électricité), et D (T
 Les secteurs comme E (Constructions fixes) et F (Mécanique, éclairage, chauffage), bien que représentant des domaines techniques importants, montrent des salaires plus modestes.
 Cela indique que les métiers liés aux domaines essentiels ou technologiques avancés (comme l’électricité) offrent de meilleures rémunérations.
 
-2. Répartition des offres d’emploi par code IPC
-- La répartition montre une forte concentration des offres dans les catégories A (Nécessités courantes de la vie) et H (Électricité), reflétant leur poids économique.
+<br> <br>
+
+### 2. Répartition des offres d’emploi par code IPC
+
+<br>
+
+<p align="center">
+  <img src="ipc_offres_sansNA_60porcent_sans_legende.png" alt="Description de l'image" width="80%" />
+</p>
+
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; **Répartition des offres d'emploi selon le code IPC**
+
+<br>
+
+La répartition montre une forte concentration des offres dans les catégories A (Nécessités courantes de la vie) et H (Électricité), reflétant leur poids économique.
 Les catégories comme D (Textiles, papier) et E (Constructions fixes) ont une faible part des offres, suggérant une spécialisation plus limitée ou une demande réduite.
-Ce graphique ne prend cependant pas en compte la plupart des entreprises pour lesquelles nous n'avions pas de données sur les codes IPC, cela représente plus de 50% des entreprises. 
+Ce graphique ne prend cependant pas en compte la plupart des entreprises, pour lesquelles nous n'avions pas de données sur les codes IPC, ce qui représente plus de 50% des entreprises. 
 
-3. Nombre de brevets par code IPC
-- Les brevets sont largement dominés par les catégories A (Nécessités courantes de la vie), H (Électricité), et B (Techniques industrielles, transports).
-- Ces catégories reflètent des domaines où l’innovation est particulièrement active, répondant à des besoins fondamentaux (catégorie A) ou soutenant des secteurs technologiques et industriels clés (catégories B et H).
-- La catégorie G (Physique) et d'autres domaines techniques suivent, mais avec un volume de brevets moindre comparé aux trois catégories dominantes.
-- Les catégories A et H se démarquent non seulement par leur volume élevé de brevets, mais également par leurs salaires moyens très élevés, montrant une forte valorisation de ces secteurs sur le marché du travail. En revanche, la catégorie B, bien qu’innovante, ne figure pas parmi les secteurs offrant les rémunérations les plus élevées.
+<br> <br>
 
-Conclusion
+### 3. Nombre de brevets par code IPC
+
+<br> 
+
+<p align="center">
+  <img src="ipc_n_patents_sans_legende.png" alt="Description de l'image" width="80%" />
+</p>
+
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; **Nombre de brevets déposés par code IPC**
+
+<br>
+
+Les brevets sont largement dominés par les catégories A (Nécessités courantes de la vie), H (Électricité), et B (Techniques industrielles, transports).
+Ces catégories reflètent des domaines où l’innovation est particulièrement active, répondant à des besoins fondamentaux (catégorie A) ou soutenant des secteurs technologiques et industriels clés (catégories B et H).
+La catégorie G (Physique) et d'autres domaines techniques suivent, mais avec un volume de brevets moindre comparé aux trois catégories dominantes.
+Les catégories A et H se démarquent non seulement par leur volume élevé de brevets, mais également par leurs salaires moyens très élevés, montrant une forte valorisation de ces secteurs sur le marché du travail. En revanche, la catégorie B, bien qu’innovante, ne figure pas parmi les secteurs offrant les rémunérations les plus élevées.
+
+<br> <br>
+
+### Conclusion
+
+<br> 
 
 L’analyse des salaires, des offres d’emploi et des brevets par code IPC met en lumière des dynamiques intéressantes :
 - Les catégories A (Nécessités courantes de la vie) et H (Électricité) se distinguent comme des secteurs particulièrement valorisés, combinant des salaires moyens très élevés, une forte demande sur le marché de l’emploi, et un volume important de brevets. Cela reflète leur double rôle économique, à la fois dans la satisfaction des besoins essentiels et dans les avancées technologiques.
 - La catégorie B (Techniques industrielles, transports), bien qu’innovante avec un grand nombre de brevets, n’offre pas des rémunérations aussi élevées, suggérant une valorisation plus technologique qu’économique sur le marché.
 - Les catégories E (Constructions fixes) et F (Mécanique, éclairage, chauffage), pourtant fondamentales dans les infrastructures et l’industrie, montrent une présence plus modeste en termes de salaires et d’offres d’emploi, ce qui peut s’expliquer par une spécialisation plus restreinte ou une dynamique de marché différente.
 - Enfin, la proportion importante d’entreprises sans données IPC (plus de 50 %) souligne une limite dans l’analyse des offres d’emploi, mais n’affecte pas les tendances générales observées dans les secteurs bien représentés.
+
+
+<br><br><br>
 
 
 GRAPHIQUES EN BARRE AU SUJET DES VILLES : 
