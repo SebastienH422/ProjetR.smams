@@ -74,7 +74,7 @@ Pour maximiser à la fois innovation et rémunération, une combinaison de comp�
 
 <br>
 
-### 1. Salaires moyens par code IPC
+### 1. 
 
 <br>
 
