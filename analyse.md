@@ -6,6 +6,7 @@ plein de graphiques trop beaux
 
 
 WORDCLOUDS VERTS :
+
 Compétences pondérée par l'innovation ; Compétences pondérées par le salaire 
 Ce qui saute aux yeux en observant ces deux wordclouds est le fait que, quelle que soit la pondération choisie, la compétence la plus mise en avant reste la même : "équipe". Cette compétence renvoie à la capacité d'une personne à collaborer efficacement au sein d'un groupe, à contribuer à des objectifs communs et à interagir harmonieusement avec ses collègues. Cela souligne que, malgré la diversité des compétences techniques ou comportementales recherchées, la capacité à travailler en équipe est un fondement incontournable dans les environnements professionnels. Que ce soit pour atteindre des objectifs financiers (salaires élevés) ou pour repousser les limites de l'innovation, la collaboration reste le pivot des dynamiques organisationnelles modernes.
 
