@@ -1,25 +1,25 @@
 #
 # Simon Fraile, Matilin Periat, Ahina Durrieu, Maina Boivent, Sébastien Hein
-#
-# Fichier smams_emploi.R
 # 
-# Création de la base de données base_emp
+# File smams_emploi.R
+# 
+# Creation of the base_emp database
 #
-# Fichiers requis dans le dossier DATA:
+# Required files in the DATA folder:
 # - base_brevets.csv
 # - base_emp.csv
 #
-#################################
-### Importation des libraries ###
-#################################
+###########################
+### Importing libraries ###
+###########################
 source("smams_src_utilities.R")
 library(data.table)
 library(stringr)
 
 # _________________________________________________________________________________________________________________________________
-###############################
-### Importation des données ###
-###############################
+######################
+### Importing data ###
+######################
 base_emp = fread("Data/base_emp.csv")
 base_brevets = fread("Data/base_brevets.csv")
 
@@ -29,7 +29,7 @@ base_brevets = fread("Data/base_brevets.csv")
 ### Merge ###
 #############
 
-# Création de id_firm_name dans les deux data table
+# Create id_firm_name in both data tables
 base_emp$id_firm_name = gsub(',','',iconv(tolower(word(base_emp$firm_name,1)), to = "ASCII//TRANSLIT"))
 base_brevets$id_firm_name = gsub(',','',iconv(tolower(word(base_brevets$firm_name,1)), to = "ASCII//TRANSLIT"))
 
@@ -39,7 +39,7 @@ base_emp_inno = merge(base_emp, base_brevets, all = TRUE)
 
 # _________________________________________________________________________________________________________________________________
 ###################
-### Aggrégation ###
+### Aggregation ###
 ###################
 
 base_emp_inno <- base_emp_inno[, {
@@ -59,20 +59,20 @@ base_emp_inno <- base_emp_inno[, {
     ipc_second_desc = as.character(choose_non_na(ipc_second_desc)),
     addr_city_main = as.character(choose_non_na(addr_city_main))
   )
-}, by = id_firm_name]
+}, by = id_firm_name] 
 
 # Remove the "id_firm_name" column
 base_emp_inno[, id_firm_name := NULL] 
 
 
 #___________________________________________________________________________________________________________________________________
-#############################################
-### Ecriture de la base de données en csv ###
-#############################################
+###################################
+### Writing the database to csv ###
+###################################
 
 fwrite(base_emp_inno, "Data/base_emp_inno.csv")
 
 #___________________________________________________________________________________________________________________________________
 ###########
-### FIN ###
+### END ###
 ###########

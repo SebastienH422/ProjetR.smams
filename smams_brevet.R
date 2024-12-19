@@ -1,11 +1,11 @@
 #
 # Simon Fraile, Matilin Periat, Ahina Durrieu, Maina Boivent, Sébastien Hein
-#
-# Fichier smams_brevet.R
 # 
-# Création de la base de données base_brevets
+# File smams_brevet.R
+#  
+# Creation of the base_brevets database
 #
-# Fichiers requis dans le dossier DATA:
+# Required files in the DATA folder:
 # - 202202_EPO_App_reg_small.txt
 # - 202202_EPO_IPC_small.txt
 # - EN_ipc_section_A_title_list_20120101.txt
@@ -18,84 +18,84 @@
 # - EN_ipc_section_H_title_list_20120101.txt
 #
 #
-#################################
-### Importation des libraries ###
-#################################
+###########################
+### Importing libraries ###
+###########################
 
 library(data.table)
 library(stringr)
 
 # _________________________________________________________________________________________________________________________________
-###############################
-### Importation des données ###
-###############################
+######################
+### Importing data ###
+######################
 
-brevets = data.table(read.csv(file = "Data/202202_EPO_App_reg_small.txt",
+brevets = data.table(read.csv(file = "DATA/202202_EPO_App_reg_small.txt",
                               head = TRUE,
                               sep = ","))
 
-ipc = data.table(read.csv(file = "Data/202202_EPO_IPC_small.txt",
+ipc = data.table(read.csv(file = "DATA/202202_EPO_IPC_small.txt",
                           head = TRUE,
                           sep = ","))
 
-# On se débarrasse des colonnes inutiles
+# Remove unnecessary columns
 brevets[, c("app_nbr", "pub_nbr", "person_id", "address", "reg_code", "reg_share", "app_share") := NULL]
 ipc[, app_year := NULL]
 
-# On formate les codes postales en numéros de département
+# Format postal codes to department numbers
 brevets[, postal_code := as.integer(substr(postal_code, 1, 2))]
 
 # _________________________________________________________________________________________________________________________________
-############################
-### Filtrage des données ###
-############################
+######################
+### Data filtering ###
+######################
 
-# 1er filtrage: Garder uniquement les entreprises françaises. 
+# 1st filter: Keep only French companies
 brevets = brevets[ctry_code == "FR"]
-# idem pour les données dans ipc
+# Same for ipc data
 ipc = ipc[appln_id %in% brevets[, appln_id]]  
-# On se débarrasse de la colonne ctry_code
+# Remove the ctry_code column
 brevets[, ctry_code := NULL]
 
-# 2ème filtrage: Garder uniquement les brevets déposés entre 2010 et 2020.
+# 2nd filter: Keep only patents filed between 2010 and 2020
 ipc = ipc[prio_year >= 2010 & prio_year <= 2020]
-# Idem pour les brevets
-brevets = brevets[appln_id %in% ipc[, appln_id]]   #prio_year >= 2010 & prio_year <= 2020
-# On n'a plus besoin de la variable prio-year
+# Same for patents
+brevets = brevets[appln_id %in% ipc[, appln_id]]
+# No longer need the prio_year variable
 ipc[, prio_year := NULL]
 
-# 3ème filtrage: Garder uniquement les 4 premiers caractères des ipc
-ipc$IPC = substr(ipc$IPC, 1 ,4)
+# 3rd filter: Keep only the first 4 characters of ipc
+ipc$IPC = substr(ipc$IPC, 1, 4)
 
 # _________________________________________________________________________________________________________________________________
-###########################
-### Modification du nom ###
-###########################
+#########################
+### Name modification ###
+#########################
 #
-# On crée la colonne firm_name contenant le nom de l'entreprise,
-# ainsi que id_firm_name permettant de rassembler les entreprises entre elles 
-# Par exemple, 'Peugeot' et 'Peugeot SA' sont les mêmes entreprises. Dans id_firm_name, la valeur sera 'peugeot' pour les deux.
+# Create the firm_name column containing the company name,
+# and id_firm_name to group companies together
+# For example, 'Peugeot' and 'Peugeot SA' are the same company. In id_firm_name, the value will be 'peugeot' for both.
 brevets$firm_name = brevets$app_name
-# On garde uniquement le premier mot, en minuscule, on supprime les accents, virgules et autres symboles
+# Keep only the first word, in lowercase, remove accents, commas, and other symbols
 brevets$id_firm_name = gsub(',','',iconv(tolower(word(brevets$app_name,1)), to = "ASCII//TRANSLIT"))
 brevets[, app_name := NULL]
 
 # _________________________________________________________________________________________________________________________________
-################################
-### Création de base_brevets ###
-################################
+#############################
+### Creating base_brevets ###
+#############################
 
-# Merge des deux data table
+# Merge the two data tables
 base_brevets = merge(brevets, ipc, by='appln_id')
-# Initialisation du nombre de brevet à 1
+# Initialize the number of patents to 1
 base_brevets[, n_patents := 1]
 
 #___________________________________________________________________________________________________________________________________
-#####################
-### Ajout des ipc ###
-#####################
+##################
+### Adding ipc ###
+##################
 
-# Ajouter les colonnes ipc_main_code et ipc_second_code
+# Add ipc_main_code and ipc_second_code columns
 base_brevets[, c("ipc_main_code", "ipc_second_code") := {
   top_ipc <- find_top_ipc(IPC)
   list(top_ipc[1], ifelse(length(top_ipc) > 1, top_ipc[2], NA))
@@ -105,11 +105,11 @@ base_brevets[, IPC := NULL]
 
 #___________________________________________________________________________________________________________________________________
 ###################
-### Aggrégation ###
+### Aggregation ###
 ###################
 
-# On agrège selon id_firm_name pour considérer que les noms d'entreprises telles que 'Peugeot SA' et 'peugeot' 
-# décrivent les mêmes entreprises
+# Aggregate by id_firm_name to consider that company names like 'Peugeot SA' and 'peugeot'
+# describe the same companies
 base_brevets = base_brevets[, .(
   firm_name = first(firm_name),
   n_patents = sum(n_patents),
@@ -119,38 +119,38 @@ base_brevets = base_brevets[, .(
   addr_dept_main = first(postal_code)
 ), by = id_firm_name]
 
-# On n'a plus besoin de id_firm_name
+# No longer need id_firm_name
 base_brevets[, id_firm_name := NULL]
 
 #___________________________________________________________________________________________________________________________________
-######################################
-### Ajout des descriptions des ipc ###
-######################################
+###############################
+### Adding ipc descriptions ###
+###############################
 
-# Nom des fichiers de description des ipc
-lettres = LETTERS[1:8] # vecteur avec A,B,..,H
-fichiers = paste0("Data/EN_ipc_section_", lettres, "_title_list_20120101.txt") # Description des IPC
+# Names of ipc description files
+lettres = LETTERS[1:8] # vector with A,B,..,H
+fichiers = paste0("DATA/EN_ipc_section_", lettres, "_title_list_20120101.txt") # IPC descriptions
 
-# Import des fichiers
+# Import files
 desc_separe = lapply(fichiers, function(f){
   data.table(read.csv(file = f, head = TRUE, sep = "\t"))
 })
 names(desc_separe) = LETTERS[1:8]
 
-# On va déterminer les ipc_main_desc. Il faut:
-# - isoler la première lettre de chaque ipc code, 
-# - aller chercher dans desc_separe$'X' la description associée,
-# - l'ajouter à la variable ipc_main_desc. 
+# Determine ipc_main_desc. Need to:
+# - isolate the first letter of each ipc code,
+# - look up the associated description in desc_separe$'X',
+# - add it to the ipc_main_desc variable.
 #
-# Et faire de même pour ipc_second_desc
+# Do the same for ipc_second_desc
 
-# On extrait la première lettre de chaque ipc_main_code
+# Extract the first letter of each ipc_main_code
 base_brevets[, first_letter_main := substr(ipc_main_code, 1, 1)]
 base_brevets[, first_letter_second := substr(ipc_second_code, 1, 1)]
-View(base_brevets)
-# Pour chaque première lettre, on fait une jointure avec la data table correspondante
+
+# For each first letter, join with the corresponding data table
 for (letter in LETTERS[1:8]) {
-  # On récupère le nom de la deuxième colonne
+  # Get the name of the second column
   desc_col = names(desc_separe[[letter]])[2]
   
   base_brevets[first_letter_main == letter, 
@@ -159,18 +159,18 @@ for (letter in LETTERS[1:8]) {
                ipc_second_desc := desc_separe[[letter]][.(ipc_second_code), get(desc_col), on=letter]]
 }
 
-# On supprime la colonne temporaire first_letter
+# Remove the temporary first_letter column
 base_brevets[, c('first_letter_main', 'first_letter_second') := NULL]
 
 
 #___________________________________________________________________________________________________________________________________
-#############################################
-### Ecriture de la base de données en csv ###
-#############################################
+###################################
+### Writing the database to csv ###
+###################################
 
-fwrite(base_brevets, "Data/base_brevets.csv") 
+fwrite(base_brevets, "DATA/base_brevets.csv") 
 
 #___________________________________________________________________________________________________________________________________
 ###########
-### FIN ###
+### END ###
 ###########

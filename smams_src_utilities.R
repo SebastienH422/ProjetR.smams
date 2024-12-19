@@ -1,11 +1,11 @@
 # _____________________________________________________________________________________________________________________________
 # _____________________________________________________________________________________________________________________________
 # _____________________________________________________________________________________________________________________________
-# Partie emploi
+# Employment section
 # _____________________________________________________________________________________________________________________________
 # _____________________________________________________________________________________________________________________________
-#
-# Fonctions annexes
+# 
+# Auxiliary functions
 
 # Function to clean up and process the competences list
 clean_competences = function(skills_text) {
@@ -16,12 +16,12 @@ clean_competences = function(skills_text) {
 
 # _____________________________________________________________________________________________________________________________
 # _____________________________________________________________________________________________________________________________
-# Fonctions pour construire les colonnes de base_emp
+# Functions to build base_emp columns
 # _____________________________________________________________________________________________________________________________
 # --> Used for top_skill_req         
 get_skills_req = function(line){ 
-  # IN: skills <string> nombre de compétence sous les différents formats qui apparraissent dans competences_requises
-  # OUT: <list of string> compétences requises, une compétence par string
+  # IN: skills <string> number of skills in various formats found in competences_requises
+  # OUT: <list of string> required skills, one skill per string
   if (!is.null(line['competences_requises'])) {
     skills = line['competences_requises']
   } else {
@@ -33,8 +33,8 @@ get_skills_req = function(line){
 # _____________________________________________________________________________________________________________________________
 # --> Used for sector_name       
 get_sector_name = function(line){ 
-  # IN: sector <string> nombre de compétence sous les différents formats qui apparraissent dans competences_requises
-  # OUT: <list of string> compétences requises, une compétence par string
+  # IN: sector <string> number of sectors in various formats found in competences_requises
+  # OUT: <list of string> required sectors, one sector per string
   if (!is.null(line['secteur'])) {
     sector = line['secteur']
   } else {
@@ -48,19 +48,18 @@ get_sector_name = function(line){
 # Used for avg_wage
 
 get_wage = function(wage) {
-  # IN: wage <string> Salaire ou fourchette de salaire sous les différents formats 
-  #                          qui apparraissent dans la colonne salaire
-  # OUT: <float> Salaire ou salaire moyen s'il s'agit d'une fourchette
+  # IN: wage <string> Salary or salary range in various formats found in the salaire column
+  # OUT: <float> Salary or average salary if it's a range
 
   if (is.na(wage) || wage == "") {
     return(NA_real_)
   }
   
-  # Nettoyer le texte du salaire
-  wage <- gsub(" ", "", wage)        # Supprimer les espaces
-  wage <- gsub(",", ".", wage)       # Convertir les virgules en points
+  # Clean the salary text
+  wage <- gsub(" ", "", wage)        # Remove spaces
+  wage <- gsub(",", ".", wage)       # Convert commas to dots
 
-  # Détecter les multiplicateurs et normaliser
+  # Detect multipliers and normalize
   multiplier <- 1
   if (grepl("K", wage, ignore.case = TRUE)) {
     multiplier <- 1000
@@ -70,17 +69,17 @@ get_wage = function(wage) {
     multiplier <- 1000
   }
   
-  # Extraire les nombres
+  # Extract numbers
   numbers <- as.numeric(unlist(str_extract_all(wage, "\\d+\\.?\\d*")))
 
   if (length(numbers) == 0 || any(is.na(numbers))) {
     return(NA_real_)
   }
   
-  # Calculer la moyenne en cas de fourchette
+  # Calculate the average if it's a range
   avg_wage <- mean(numbers) * multiplier
   
-  # Ajuster pour les périodes (jour, mois, semaine)
+  # Adjust for periods (day, month, week)
   if (str_detect(wage, "jour")) {
     avg_wage <- avg_wage * 365
   } else if (str_detect(wage, "mois")) {
@@ -90,21 +89,21 @@ get_wage = function(wage) {
   }
   
 
-  # Retourner avec 2 décimales
+  # Return with 2 decimals
   return(round(avg_wage, 2))
 }
 
 
 # _____________________________________________________________________________________________________________________________
 # _____________________________________________________________________________________________________________________________
-# Fonctions à appliquer après l'aggregation 
+# Functions to apply after aggregation 
 # _____________________________________________________________________________________________________________________________
 #
 set_firm_name = function(names) {
-  # IN: names <list of string> Noms des entreprises
-  # OUT: <string> Le premier nom, ou celui qui revient le plus souvent
+  # IN: names <list of string> Company names
+  # OUT: <string> The first name, or the most frequent one
   
-  # If there are no name, return NA
+  # If there are no names, return NA
   if (length(names) == 0) {
     return(NA)
   }
@@ -122,9 +121,9 @@ set_firm_name = function(names) {
 # _____________________________________________________________________________________________________________________________
 #
 get_top_val = function(val_list, n) {
-  # IN: val_lists <list> Liste de valeurs
-  #     n <int> nombre de secteurs voulus
-  # OUT: Liste des n valeurs qui reviennent le plus souvent
+  # IN: val_lists <list> List of values
+  #     n <int> number of desired sectors
+  # OUT: List of the n most frequent values
   
   # Ensure val_list is treated as a character vector
   val_list = as.character(val_list)
@@ -151,9 +150,9 @@ get_top_val = function(val_list, n) {
 }
 
 get_most_frequent = function(val_list) {
-  # IN: val_lists <list> Liste de valeurs (skills)
-  # OUT: Liste des valeurs qui reviennent le plus souvent (>1 apparition),
-  #      ou toutes les valeurs si elles apparaissent seulement une fois
+  # IN: val_lists <list> List of values (skills)
+  # OUT: List of the most frequent values (>1 occurrence),
+  #      or all values if they appear only once
   
   # Ensure val_list is treated as a character vector
   val_list = as.character(val_list)
@@ -168,6 +167,13 @@ get_most_frequent = function(val_list) {
   if (length(valid_val) == 0) {
     return(NA_character_)
   }
+  
+  # ADD
+  # To avoid doubles, replace some words or characters
+  valid_val = str_replace_all(valid_val, c("ô" = "o", "English" = "Anglais", "Autonomous" = "Autonome", "French" = "Français"))
+  valid_val = str_replace_all(valid_val, c("Communication Skills" = "Communication", "Curious" = "Curiosité", "Artificial intelligence" = "Intelligence artificielle"))
+  valid_val = str_replace_all(valid_val, c("Base de donnée" = "Database", "Bases de donnée" = "Database"))
+  # ADD END
   
   # Count occurrences of each value
   val_counts = table(valid_val)
@@ -195,9 +201,9 @@ get_most_frequent = function(val_list) {
 #
 get_id_firm = function(line) {
   if (!is.null(line['entreprise'])) {
-    name = line['entreprise'] # Nom de l'entreprise
+    name = line['entreprise'] # Company name
     
-    # Les mots suivant apparraissent souvent comme premier mot dans le nom d'entreprise, ils ne sont pas suffisant pour identifier l'entreprise, on les ignore pour construire l'identificateur id_firm_name
+    # The following words often appear as the first word in the company name, they are not sufficient to identify the company, we ignore them to build the id_firm_name identifier
     to_ignore = c('groupe', 'la', 'caisse', 'le', 'groupement', 'air', 'the', 'centre', 'direction', 'departement')
     name = tolower(name)
 
@@ -210,16 +216,16 @@ get_id_firm = function(line) {
       k = k + 1
     }
 
-    return (word(name, k, k)) # 4 premiers caractères
+    return (word(name, k, k)) # First 4 characters
   } else {
-    stop("La colonne 'entreprise' est manquante dans l'objet 'line'")
+    stop("The 'entreprise' column is missing in the 'line' object")
   }
 }
 
 # _____________________________________________________________________________________________________________________________
 # _____________________________________________________________________________________________________________________________
 # _____________________________________________________________________________________________________________________________
-# Partie brevet
+# Patent section
 # _____________________________________________________________________________________________________________________________
 # _____________________________________________________________________________________________________________________________
 #
@@ -227,24 +233,24 @@ find_top_ipc <- function(ipc_codes) {
   ipc_counts <- sort(table(ipc_codes), decreasing = TRUE)
   top_ipc <- names(ipc_counts)[1:2]
   return(top_ipc)
-}
+} 
 
 # _____________________________________________________________________________________________________________________________
 # _____________________________________________________________________________________________________________________________
 # _____________________________________________________________________________________________________________________________
-# Partie match
+# Match section
 # _____________________________________________________________________________________________________________________________
 # _____________________________________________________________________________________________________________________________
 #
 
 # _____________________________________________________________________________________________________________________________
-# Fonction helper pour choisir une valeur non-NA, ou au hasard si plusieurs valeurs non-NA
+# Helper function to choose a non-NA value, or randomly if multiple non-NA values
 #
   choose_non_na = function(x) {
-    # S'assurer que x est un vecteur du même type
+    # Ensure x is a vector of the same type
     x <- as.vector(x)
     x_unique <- unique(x[!is.na(x)])
-    if(length(x_unique) == 0) return(x[1])  # Retourne NA du bon type
+    if(length(x_unique) == 0) return(x[1])  # Return NA of the correct type
     if(length(x_unique) == 1) return(x_unique[1])
     return(sample(x_unique, 1))
   }
