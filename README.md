@@ -29,6 +29,7 @@ Une fois le "nettoyage" et le traitement des données effectués, nous essaieron
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Quels sont les secteurs qui rémunèrent le mieux ? Quels sont les secteurs les plus innovants ? <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Dans quels départements y a-t-il le plus d'entreprises qui ont déposées des brevets ? <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Grâce aux codes IPC, peut ont savoir quels sont les domaines qui recrutent le plus ? <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; et bien d'autres...
 </i></span><br>
 
 
