@@ -23,9 +23,17 @@
 Pour cela nous allons traiter plusieurs jeux de données à l'aide du logiciel RStudio. <br><br>
 Une fois le "nettoyage" et le traitement des données effectués, nous essaieront de répondre à différentes questions telles que : <br><br>
 !!!!!!!!!!!!!!!!!!!!! A MODIFIER !!!!!!!!!!!!!!!!!!!!! <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - quelle entreprise a déposé le plus de brevets ? <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Quelles compétences sont les plus mises en avant pour obtenir un bon salaire ? Et pour innover ? <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Quelles villes sont les plus attractives au niveau des salaires ? <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Quelles villes sont des pilliers de l'innovation ? <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Quels sont les secteurs qui rémunèrent le mieux ? Quels sont les secteurs les plus innovants ? <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Dans quels départements y a-t-il le plus d'entreprises qui ont déposées des brevets ? <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Grâce aux codes IPC, peut ont savoir quels sont les domaines qui recrutent le plus ? <br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - quele entreprise a déposé le plus de brevets ? <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - dans quel secteur retrouve-t-on le plus de brevets ? <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - dans quel département y a-t-il le plus d'entreprises qui ont déposé des brevets ? <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - quel secteur d'activité recrute le plus ? <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - dans quel département retrouve-t-on le plus d'offres d'emploi ? <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - quelle entreprise recrute le plus de data scientists ? <br>
