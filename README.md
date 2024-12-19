@@ -21,8 +21,9 @@
 
 <span style="font-size: 14px;">L'objectif de ce projet est de mettre en évidence des liens potentiels entre la performance d’innovation des entreprises (mesurée par les dépots de brevets), leurs demandes de compétences et le salaire moyen proposé pour leurs offres d'emploi.<br>
 Pour cela nous allons traiter plusieurs jeux de données à l'aide du logiciel RStudio. <br><br>
-Une fois le nettoyage et le traitement des données effectués, nous essaierons de répondre à différentes questions telles que : <br><br>
- <br>
+
+Une fois le nettoyage et le traitement des données effectués, nous essaierons de répondre à différentes questions telles que : 
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Quelles compétences sont les plus mises en avant pour obtenir un bon salaire ? Et pour innover ? <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Quelles villes sont les plus attractives au niveau des salaires ? <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Quelles villes sont des piliers de l'innovation ? <br>
