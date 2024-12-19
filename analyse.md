@@ -1,20 +1,24 @@
  # **Analyse des données**
 
 <p align="center">
-  <img src="graphiques/WordBleu_brevets_petit.png" alt="Secteurs pondérés par l'innovation" width="45%" />
   <img src="graphiques/WordBleu_salaire_petit.png" alt="Secteurs pondérés par le salaire moyen" width="45%" />
+  <img src="graphiques/WordBleu_brevets_petit.png" alt="Secteurs pondérés par l'innovation" width="45%" />
 </p>
 
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; **Secteurs pondérés par l'innovation** &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; **Secteurs pondérés par le salaire moyen**
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; **Secteurs pondérés par le salaire moyen** &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; **Secteurs pondérés par l'innovation**
 
 <br> <br>
 
-Analyse du premier wordcloud (secteurs pondérés par les salaires)
+Analyse du premier wordcloud (secteurs pondérés par les salaires) : 
 - Pour ce premier wordcloud, les secteurs "Transport" et "Logistique" dominent largement, ils sont donc identifiés comme offrant des salaires compétitifs.
 En effet, les secteurs liés à la gestion et à la chaîne d'approvisionnement (logistique, transport, distribution) sont mis en avant, démontrant une forte valorisation salariale. Cela peut être dû à la demande croissante pour ces secteurs dans une économie mondialisée.
 
-Analyse du deuxième wordcloud (secteurs pondérés par les brevets - innovation)
+<br>
+
+Analyse du deuxième wordcloud (secteurs pondérés par les brevets - innovation) :
 - Pour ce deuxième wordcloud nous remarquons une plus grande diversité au sujet des secteurs mis en avant. Les termes "Industrie Auto", "Industrie Aéronautique", "Mécanique (Meca)" et "Aérospatial" ressortent comme les leaders en innovation. Nous observons également des secteurs comme "Chimie", "Biotechnologie" et "Secteur Informatique", qui sont bien représentés, reflétant leur forte orientation vers la recherche et le développement. Nous pouvons en conclure que les secteurs industriels et technologiques sont les moteurs de l'innovation, où l'effort en R&D conduit à la production de brevets.
+
+<br>
 
 Conclusion
 - Le premier wordcloud met davantage l'accent sur des secteurs orientés vers les services (ex. Logistique, Services aux entreprises).
@@ -22,13 +26,27 @@ tandis que le deuxième wordcloud valorise des secteurs orientés vers l'industr
 Le transport et la logistique, dominants pour les salaires, sont beaucoup moins représentés en termes d'innovation, tandis que des secteurs comme l'automobile et l'aéronautique sont les leaders en innovation mais moins proéminents en termes de salaires.
 - Pour un professionnel ou une entreprise, investir dans l'innovation dans des secteurs technologiques est clé pour rester compétitif sur le long terme. Cependant, les secteurs logistiques et de transport peuvent offrir des opportunités financières immédiates. Un équilibre entre innovation et valeur économique peut être trouvé dans des secteurs comme l'aéronautique, qui figurent dans les deux dimensions.
 
-WORDCLOUDS VERTS : Compétences pondérées par l'innovation ; Compétences pondérées par le salaire 
+<br><br><br>
 
-Analyse du premier wordcloud (pondéré par les brevets - innovation)
+
+<p align="center">
+  <img src="graphiques/wordVert_Competences_Brevets_petit.png" alt="Compétences pondérées par l'innovation" width="45%" />
+  <img src="graphiques/WordVert_salaires_petit.png" alt="Compétences pondérées par le salaire moyen" width="45%" />
+</p>
+
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; **Compétences pondérés par l'innovation** &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; **Compétences pondérés par le salaire moyen**
+
+<br> <br>
+
+Analyse du premier wordcloud (compétences pondérées par les brevets - innovation)
 - Ce wordcloud met en avant des compétences techniques et comportementales qui distinguent l'innovation. L'association de l'autonomie avec la collaboration en équipe montre une importance de l'équilibre entre le travail individuel et collectif pour générer de nouvelles idées. Par ailleurs, la présence de « Deep Learning » et de « modélisation » indique que l'innovation se concentre sur des compétences en intelligence artificielle et en analyse de données, ce qui reflète très bien le contenu de nos données.
 
-Analyse du deuxième wordcloud (pondéré par le salaire moyen)
-- Sur ce wordcloud le terme "Statistique" domine largement, suivi de "Deep Learning", "Python" et "modélisation". Nous en déduisons aisément que les compétences mieux rémunérées se concentrent sur des compétences techniques spécifiques, notamment dans les domaines des données et du cloud. 
+<br>
+
+Analyse du deuxième wordcloud (compétences pondérées par le salaire moyen)
+- Sur ce wordcloud le terme "Statistique" domine largement, suivi de "Deep Learning", "Python" et "modélisation". Nous en déduisons aisément que les compétences mieux rémunérées se concentrent sur des compétences techniques spécifiques, notamment dans les domaines des données et du cloud.
+
+<br>
 
 Comparaison :
 - En prenant en compte les deux wordclouds nous pouvons relever que les compétences en Deep Learning et autonomie apparaissent dans les deux, confirmant leur importance à la fois pour l'innovation et pour les salaires élevés. Les compétences en collaboration d'équipe et communication sont également partagées, soulignant leur transversalité. Ces compétences semblent donc primordiales que ce soit pour atteindre des salaires conséquents ou bien performer dans l'innovation.
