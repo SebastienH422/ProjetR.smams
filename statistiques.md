@@ -16,7 +16,7 @@ Le nombre de brevets déposés par entreprise :
 - minimum : 1 brevet,
 - médiane : 4 brevets,
 - maximum : 18803 brevets,
-- moyenne : 12 brevets,
+- moyenne : 38 brevets,
 - écart-type : 474,
 - nombre de manquants : il n'y a pas de valeurs manquantes.
 
