@@ -19,7 +19,7 @@
 
 ## **Présentation du projet**  
 
-<span style="font-size: 14px;">L'ojectif de ce projet est de mettre en évidence des liens potentiels entre la performance d’innovation des entreprises (mesurée par les dépots de brevets), leur demande de compétences et le salaire moyen proposé pour leurs offres d'emploi.<br>
+<span style="font-size: 14px;">L'objectif de ce projet est de mettre en évidence des liens potentiels entre la performance d’innovation des entreprises (mesurée par les dépots de brevets), leur demande de compétences et le salaire moyen proposé pour leurs offres d'emploi.<br>
 Pour cela nous allons traiter plusieurs jeux de données à l'aide du logiciel RStudio. <br><br>
 Une fois le "nettoyage" et le traitement des données effectués, nous essaieront de répondre à différentes questions telles que : <br><br>
  <br>
