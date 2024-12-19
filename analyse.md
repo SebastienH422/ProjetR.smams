@@ -141,29 +141,62 @@ L’analyse des salaires, des offres d’emploi et des brevets par code IPC met 
 <br><br><br>
 
 
-GRAPHIQUES EN BARRE AU SUJET DES VILLES : 
+## Analyses sur les villes 
+
+<br>
 
 Constat général : Les deux graphiques montrent des disparités significatives entre les villes en termes de salaires moyens et d’innovation (pondérée par le nombre de brevets). Paris se démarque dans les deux contextes, mais est exclue du graphique des brevets pour permettre une meilleure lecture des autres villes.
 
-Top 30 des villes par salaires moyens :
+<br>
 
-- Chartrettes occupe une position exceptionnelle, avec un salaire moyen bien au-dessus des autres villes. Cependant, comme à l'habitude, les données concernant les salaires étant peu présentent, il faut conserver un esprit critique envers ces résultats.
+### 1. Top 30 des villes par salaires moyens
+
+<br>
+
+le graphique
+
+<br>
+
+Chartrettes occupe une position exceptionnelle, avec un salaire moyen bien au-dessus des autres villes. Cependant, comme à l'habitude, les données concernant les salaires étant peu présentent, il faut conserver un esprit critique envers ces résultats.
 Les villes comme Paris, Saint-Pal-de-Mons, et Ornans suivent, soulignant un équilibre entre zones urbaines et rurales.
 Les données révèlent une distribution géographique variée, avec des villes de différentes tailles représentées.
 
-Top 30 des villes les plus innovantes :
+<br> <br>
 
-- Les villes industrielles ou fortement technologiques comme Nancy, Boulogne-Billancourt, et Vélizy-Villacoublay dominent, avec un grand nombre de brevets déposés.
+### 2. Top 30 des villes les plus innovantes
+
+<br>
+
+<p align="center">
+  <img src="villes_n_patents_top30_sans_legende.png" alt="Description de l'image" width="80%" />
+</p>
+
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; **Les 30 villes les plus innovantes après Paris**
+
+<br>
+
+Les villes industrielles ou fortement technologiques comme Nancy, Boulogne-Billancourt, et Vélizy-Villacoublay dominent, avec un grand nombre de brevets déposés.
 On note une forte représentation des villes proches de grands centres économiques ou technologiques (par exemple, Grenoble pour la recherche technologique, Amiens pour les industries).
 Contrairement au graphique des salaires, l’innovation semble davantage concentrée dans des zones spécifiques, souvent liées à des écosystèmes industriels.
 
-Conclusion :
+<br> <br>
 
-- Les villes offrant les salaires moyens les plus élevés ne sont pas toujours les plus innovantes, suggérant que l’innovation et la rémunération ne sont pas systématiquement corrélées.
+### Conclusion
+
+Les villes offrant les salaires moyens les plus élevés ne sont pas toujours les plus innovantes, suggérant que l’innovation et la rémunération ne sont pas systématiquement corrélées.
 Les salaires élevés sont répartis de manière plus homogène entre les différentes régions, tandis que l’innovation est concentrée dans des pôles technologiques et industriels bien définis.
 
+<br> <br> <br>
 
-GRAPHIQUE DISTRIBUTION DES SALAIRES PAR DEPARTEMENT ET NIVEAU D'INNOVATION (VIOLET) :
+## Analyse sur les départements
+
+<br>
+
+<p align="center">
+  <img src="VIOLET(nsm).png" alt="Description de l'image" width="80%" />
+</p>
+
+<br>
 
 - Dans ce graphique nous pouvons voir que les salaires varient considérablement selon les départements, mais Paris (75) domine largement avec un salaire moyen supérieur à 120 000 euros par an, en moyenne.
 D'autres départements, tels que Lyon (69) et probablement des métropoles dynamiques comme Toulouse (31), se démarquent par des salaires compétitifs, bien qu'ils restent loin de Paris.
@@ -174,103 +207,5 @@ D'autres départements, tels que Lyon (69) et probablement des métropoles dynam
 - Ce graphique met en évidence qu'il ne semble pas avoir de corrélation directe et systématique entre le niveau d'innovation (mesuré par les brevets) et les salaires. Cependant, il est important de préciser que parmi les données que nous avons traitées, il manquait des informations concernant les salaires et les nombres de brevets déposés par entreprise ce qui peut limiter l'apparition de corrélation entre ces données. 
 
 - Ici, les différences salariales semblent être davantage liées à la concentration économique, à la structure des industries locales, et à la taille du marché de l'emploi (avec Paris en tête, suivi de Lyon). L'innovation, bien qu'importante, ne joue pas un rôle central et pourrait être un facteur parmi d'autres, elle ne suffit pas pour expliquer les écarts salariaux significatifs observés dans ce graphique.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
