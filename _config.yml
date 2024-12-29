@@ -1,3 +1,14 @@
-title: Mon Site Web
-description: Ce site est hébergé sur GitHub Pages avec un thème Jekyll.
-theme: minimal
+# Configuration du site
+title: Analyse de l'innovation et des salaires
+description: Projet d'analyse de données sur les brevets et les salaires
+baseurl: "" # le sous-chemin de votre site, par exemple /blog
+url: "" # l'URL de base de votre site
+
+# Configuration du thème
+remote_theme: pages-themes/minimal@v0.2.0
+plugins:
+  - jekyll-remote-theme
+  - jekyll-seo-tag
+
+# Paramètres de compilation
+markdown: kramdown
