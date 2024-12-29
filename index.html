@@ -1,31 +1,143 @@
----
-layout: default
-title: Accueil
----
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyse Innovation et Salaires</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #4169E1 0%, #8A2BE2 100%);
+            color: white;
+        }
 
-<div class="container">
-    <h1>Analyse de l'innovation et des salaires</h1>
-    
-    <p>{{ site.description }}</p>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
 
-    <h2>Sommaire</h2>
-    <nav>
-        <ul>
-            <li><a href="statistiques.html">Statistiques descriptives</a>
-                <ul>
-                    <li>Base de données des brevets (base_brevets)</li>
-                    <li>Base de données des entreprises (base_emp)</li>
-                    <li>Base de données de l'innovation dans les entreprises (base_emp_inno)</li>
-                </ul>
-            </li>
-            <li><a href="analyse.html">Analyse de données</a></li>
-            <li><a href="https://github.com/[votre-nom]/[votre-repo]/tree/main/code">Code source</a></li>
-        </ul>
-    </nav>
+        .header {
+            text-align: center;
+            padding: 2rem 0;
+        }
 
-    <h2>Présentation du projet</h2>
-    <p>L'objectif de ce projet est de mettre en évidence des liens potentiels entre la performance d'innovation des entreprises (mesurée par les dépôts de brevets), leurs demandes de compétences et le salaire moyen proposé pour leurs offres d'emploi.</p>
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
 
-    <h2>Méthodologie</h2>
-    <p>Pour cette analyse, nous utilisons RStudio pour traiter plusieurs jeux de données et répondre à diverses questions concernant les relations entre l'innovation, les compétences requises et les salaires dans différentes régions et secteurs.</p>
-</div>
+        .main-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-section {
+            margin-bottom: 2rem;
+        }
+
+        .nav-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            display: block;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-item h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .sub-list {
+            list-style: none;
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .section h2 {
+            color: #E0E7FF;
+            margin-top: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Analyse de l'innovation et des salaires</h1>
+            <p>Exploration des données sur l'innovation et les salaires</p>
+        </header>
+
+        <main class="main-card">
+            <div class="nav-section">
+                <h2>Sommaire</h2>
+                <a href="statistiques.html" class="nav-item">
+                    <h3>Statistiques descriptives</h3>
+                    <ul class="sub-list">
+                        <li>Base de données des brevets (base_brevets)</li>
+                        <li>Base de données des entreprises (base_emp)</li>
+                        <li>Base de données de l'innovation (base_emp_inno)</li>
+                    </ul>
+                </a>
+                <a href="analyse.html" class="nav-item">
+                    <h3>Analyse de données</h3>
+                </a>
+                <a href="code/" class="nav-item">
+                    <h3>Code source</h3>
+                </a>
+            </div>
+
+            <section class="section">
+                <h2>Présentation du projet</h2>
+                <p>
+                    L'objectif de ce projet est de mettre en évidence des liens potentiels entre la performance d'innovation des 
+                    entreprises (mesurée par les dépôts de brevets), leurs demandes de compétences et le salaire moyen proposé 
+                    pour leurs offres d'emploi.
+                </p>
+            </section>
+
+            <section class="section">
+                <h2>Méthodologie</h2>
+                <p>
+                    Pour cette analyse, nous utilisons RStudio pour traiter plusieurs jeux de données et répondre à diverses 
+                    questions concernant les relations entre l'innovation, les compétences requises et les salaires dans 
+                    différentes régions et secteurs.
+                </p>
+            </section>
+        </main>
+
+        <footer>
+            © 2024 - Analyse des données d'innovation
+        </footer>
+    </div>
+</body>
+</html>
