@@ -1,24 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mon Site Web</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header>
-    <h1>Bienvenue sur mon site web</h1>
-    <p>Un site simple et agréable grâce à GitHub Pages.</p>
-  </header>
-  <main>
-    <section>
-      <h2>Section 1</h2>
-      <p>Voici un paragraphe de texte dans cette section.</p>
-    </section>
-  </main>
-  <footer>
-    <p>&copy; 2024 Mon Site Web</p>
-  </footer>
-</body>
-</html>
+---
+layout: default
+title: Accueil
+---
+
+<div class="container">
+    <h1>Analyse de l'innovation et des salaires</h1>
+    
+    <p>{{ site.description }}</p>
+
+    <h2>Sommaire</h2>
+    <nav>
+        <ul>
+            <li><a href="statistiques.html">Statistiques descriptives</a>
+                <ul>
+                    <li>Base de données des brevets (base_brevets)</li>
+                    <li>Base de données des entreprises (base_emp)</li>
+                    <li>Base de données de l'innovation dans les entreprises (base_emp_inno)</li>
+                </ul>
+            </li>
+            <li><a href="analyse.html">Analyse de données</a></li>
+            <li><a href="https://github.com/[votre-nom]/[votre-repo]/tree/main/code">Code source</a></li>
+        </ul>
+    </nav>
+
+    <h2>Présentation du projet</h2>
+    <p>L'objectif de ce projet est de mettre en évidence des liens potentiels entre la performance d'innovation des entreprises (mesurée par les dépôts de brevets), leurs demandes de compétences et le salaire moyen proposé pour leurs offres d'emploi.</p>
+
+    <h2>Méthodologie</h2>
+    <p>Pour cette analyse, nous utilisons RStudio pour traiter plusieurs jeux de données et répondre à diverses questions concernant les relations entre l'innovation, les compétences requises et les salaires dans différentes régions et secteurs.</p>
+</div>
