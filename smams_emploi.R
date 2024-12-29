@@ -32,6 +32,11 @@ data = data.table(read.csv(file = "DATA/emp_offers_fmt.tsv", # Import
 # Keep only the following fields:
 # entreprise, secteur, experience_requise, competences_requises, salaire, departement
 offres = data[, .(entreprise, secteur, experience_requise, competences_requises, salaire, departement)]
+
+# Salaires corrected
+offres[, salaire := ifelse(salaire == "1 100 - 1 200 EUR par an", "1 100 - 1 200 EUR par mois", 
+                    ifelse(salaire == "40 - 60 EUR par an", "40K - 60K EUR par an", salaire))]
+
 # Apply the salary processing function
 offres[, avg_wage := sapply(salaire, get_wage)]
 # Clean competences_requises column before grouping
