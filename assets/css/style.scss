@@ -4,191 +4,105 @@
 @import "{{ site.theme }}";
 
 // Variables
-$primary-blue: #3B82F6;
-$primary-purple: #8B5CF6;
-$dark-blue: #1E40AF;
-$dark-purple: #6D28D9;
-$text-light: #F3F4F6;
-$text-dark: #1F2937;
+$primary-color: #6D28D9;
+$secondary-color: #3B82F6;
+$background-color: #f8fafc;
+$text-color: #1f2937;
 
-// Reset et styles de base
+// Styles généraux
 body {
-  background: linear-gradient(135deg, $dark-purple, $dark-blue);
-  color: $text-light;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background: $background-color;
+  color: $text-color;
+  font-family: -apple-system, system-ui, sans-serif;
   line-height: 1.6;
-  min-height: 100vh;
 }
 
 // En-tête
-header {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 1rem;
-  margin: 2rem 0;
-  padding: 2rem;
-  
-  h1 {
-    color: white;
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-  }
+.header-title {
+  color: $primary-color;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 4px solid $primary-color;
 }
 
-// Navigation
-nav {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(8px);
-  border-radius: 0.75rem;
-  padding: 1rem;
-  margin: 1rem 0;
+// Sections
+.section-title {
+  color: $secondary-color;
+  font-size: 2rem;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+}
 
+.subsection-title {
+  color: $primary-color;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}
+
+// Description du projet
+.project-description {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+// Liste des questions
+.questions-list {
   ul {
     list-style: none;
     padding: 0;
     
     li {
-      margin: 0.5rem 0;
+      background: white;
+      margin-bottom: 1rem;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      border-left: 4px solid $secondary-color;
       
-      a {
-        color: $text-light;
-        text-decoration: none;
-        transition: color 0.3s ease;
-        
-        &:hover {
-          color: $primary-purple;
-        }
+      &:hover {
+        transform: translateX(5px);
+        transition: transform 0.3s ease;
       }
     }
   }
 }
 
-// Sections principales
-.main-content {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 1rem;
-  padding: 2rem;
-  margin: 2rem 0;
-
-  h2 {
-    color: $primary-purple;
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-    border-bottom: 2px solid rgba(139, 92, 246, 0.3);
-    padding-bottom: 0.5rem;
-  }
-
-  h3 {
-    color: $primary-blue;
-    font-size: 1.4rem;
-    margin: 1.5rem 0 1rem;
-  }
-}
-
-// Liste des questions
-.questions-list {
-  li {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 0.5rem;
-    padding: 1rem;
-    margin: 0.75rem 0;
-    transition: transform 0.2s ease;
-
-    &:hover {
-      transform: translateX(0.5rem);
-    }
-  }
-}
-
-// Sommaire
-.summary {
+// Liste du sommaire
+.summary-list {
   ul {
     list-style: none;
-    padding-left: 1.5rem;
+    padding-left: 1rem;
     
     li {
-      position: relative;
       padding: 0.5rem 0;
+      position: relative;
       
       &::before {
         content: "•";
-        color: $primary-purple;
+        color: $primary-color;
         position: absolute;
-        left: -1.2rem;
+        left: -1rem;
       }
     }
-  }
-}
-
-// Liens
-a {
-  color: $primary-blue;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    color: $primary-purple;
-    text-decoration: underline;
   }
 }
 
 // Responsive design
 @media (max-width: 768px) {
-  header {
-    margin: 1rem;
-    padding: 1rem;
-    
-    h1 {
-      font-size: 2rem;
-    }
+  .header-title {
+    font-size: 2rem;
   }
   
-  .main-content {
-    margin: 1rem;
-    padding: 1rem;
+  .section-title {
+    font-size: 1.75rem;
   }
-}
-
-// Animation de fond
-@keyframes gradientAnimation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-// Effets de survol et transitions
-.card {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 0.75rem;
-  padding: 1.5rem;
-  margin: 1rem 0;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  }
-}
-
-// Pour les images et graphiques
-.graph-container {
-  background: white;
-  border-radius: 0.75rem;
-  padding: 1rem;
-  margin: 1.5rem 0;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  
-  img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 0.5rem;
+  .project-description {
+    padding: 1.5rem;
   }
 }
