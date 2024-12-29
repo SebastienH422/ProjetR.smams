@@ -23,6 +23,7 @@
         .header {
             text-align: center;
             padding: 2rem 0;
+            margin-bottom: 3rem; /* Ajout d'espace sous le titre */
         }
 
         .header h1 {
@@ -48,15 +49,23 @@
         h2 {
             color: #fff;
             margin-bottom: 1rem;
+            padding-left: 1rem; /* Indentation des titres */
+        }
+
+        h3 {
+            color: #fff;
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem; /* Indentation des sous-titres */
         }
 
         p, li {
             color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem; /* Plus d'espace entre les paragraphes */
         }
 
         ul {
             margin-top: 1rem;
-            padding-left: 1.5rem;
+            padding-left: 2rem;
         }
 
         .section {
@@ -83,16 +92,11 @@
             <h1>Statistiques Descriptives</h1>
         </header>
 
-        <br>
-        <br>
-
         <main>
             <!-- Bloc 1 -->
             <div class="block">
                 <h2>1) Base de données des brevets (base_brevets)</h2>
-                <br>
                 <h3>a) Variable numérique : n_patents</h3>
-                <br>
                 <p>Le nombre de brevets déposés par entreprise :</p>
                 <ul>
                     <li>Minimum : 1 brevet</li>
@@ -102,11 +106,8 @@
                     <li>Écart-type : 474</li>
                     <li>Nombre de manquants : il n'y a pas de valeurs manquantes.</li>
                 </ul>
-                <br>
-                <br>
 
                 <h3>b) Variables chaîne de caractères : firm_name, ipc_main_desc, addr_city_main, addr_dept_main</h3>
-                <br>
                 <p>Les 5 entreprises ayant déposé le plus de brevets sont :</p>
                 <ul>
                     <li>1. Commissariat à l'Énergie Atomique - CEA</li>
@@ -115,7 +116,6 @@
                     <li>4. Valeo Embrayages</li>
                     <li>5. Alcatel Lucent</li>
                 </ul>
-                <br>
 
                 <p>Les 5 descriptions de codes IPC ayant le plus de brevets sont :</p>
                 <ul>
@@ -125,10 +125,8 @@
                     <li>4. Pictorial communication, e.g. television (code IPC : H04N)</li>
                     <li>5. Non-portable lighting devices or systems thereof (code IPC : F21S)</li>
                 </ul>
-                <br>
 
                 <p>Les 5 villes ayant le plus de brevets sont :</p>
-                <br>
                 <ul>
                     <li>1. Paris</li>
                     <li>2. Nancy</li>
@@ -136,10 +134,8 @@
                     <li>4. Vélizy Villacoublay</li>
                     <li>5. Amiens</li>
                 </ul>
-                <br>
 
                 <p>Les 5 départements ayant le plus de brevets sont :</p>
-                <br>
                 <ul>
                     <li>75 : Paris</li>
                     <li>92 : Hauts-de-Seine</li>
@@ -147,8 +143,6 @@
                     <li>54 : Meurthe-et-Moselle</li>
                     <li>80 : Somme</li>
                 </ul>
-                <br>
-                <br>
             </div>
 
             <!-- Bloc 2 -->
