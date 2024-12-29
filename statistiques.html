@@ -62,6 +62,19 @@
         .section {
             margin-bottom: 2rem;
         }
+
+        .block {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .block h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
     </style>
 </head>
 <body>
@@ -70,8 +83,9 @@
             <h1>Statistiques Descriptives</h1>
         </header>
 
-        <main class="main-card">
-            <section class="section">
+        <main>
+            <!-- Bloc 1 -->
+            <div class="block">
                 <h2>1) Base de données des brevets (base_brevets)</h2>
                 <h3>a) Variable numérique : n_patents</h3>
                 <p>Le nombre de brevets déposés par entreprise :</p>
@@ -120,12 +134,13 @@
                     <li>54 : Meurthe-et-Moselle</li>
                     <li>80 : Somme</li>
                 </ul>
-            </section>
+            </div>
 
-            <section class="section">
+            <!-- Bloc 2 -->
+            <div class="block">
                 <h2>2) Base de données des entreprises (base_emp)</h2>
-                <p>(Les informations à inclure dans cette section seront détaillées si elles sont disponibles.)</p>
-            </section>
+                <p>Les informations concernant cette base seront ajoutées ici si elles sont disponibles.</p>
+            </div>
         </main>
     </div>
 </body>
