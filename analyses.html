@@ -1,1 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyse des données</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            font-family: Segoe UI, sans-serif;
+            background: linear-gradient(135deg, #4070E0 0%, #9020E0 100%);
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        .main-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        img {
+            width: 45%;
+            margin: 1rem;
+            border-radius: 10px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        ul {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Analyse des données</h1>
+        </header>
+
+        <main class="main-card">
+            <section class="section">
+                <h2>Analyse des données concernant les secteurs d'activité des entreprises</h2>
+                <p align="center">
+                    <img src="Images/WordBleu_salaire_petit.png" alt="Secteurs pondérés par le salaire moyen">
+                    <img src="Images/WordBleu_brevets_petit.png" alt="Secteurs pondérés par l'innovation">
+                </p>
+                <p><strong>Secteurs pondérés par le salaire moyen :</strong> Les secteurs "Transport" et "Logistique" dominent largement, offrant des salaires compétitifs. Ces secteurs, liés à la gestion et à la chaîne d'approvisionnement, sont valorisés dans une économie mondialisée.</p>
+                <p><strong>Secteurs pondérés par l'innovation :</strong> Une diversité plus grande est observée avec des secteurs comme "Industrie Auto", "Aéronautique", "Chimie", et "Informatique" qui se démarquent grâce à leur forte orientation R&D et leur production de brevets.</p>
+                <p><strong>Conclusion :</strong> Le premier wordcloud valorise les secteurs de services bien rémunérés, tandis que le second met en avant les secteurs industriels et technologiques leaders en innovation.</p>
+            </section>
+
+            <section class="section">
+                <h2>Analyse des données concernant les compétences demandées dans les offres d'emploi</h2>
+                <p align="center">
+                    <img src="Images/wordVert_Competences_Brevets_petit.png" alt="Compétences pondérées par l'innovation">
+                    <img src="Images/WordVert_salaires_petit.png" alt="Compétences pondérées par le salaire moyen">
+                </p>
+                <p><strong>Compétences pondérées par l'innovation :</strong> L'innovation met en avant des compétences techniques comme "Deep Learning" et "modélisation" ainsi que des soft skills comme l'autonomie et la collaboration.</p>
+                <p><strong>Compétences pondérées par le salaire :</strong> Les compétences techniques spécifiques comme "Python", "Statistique" et les outils cloud dominent pour obtenir des salaires élevés.</p>
+                <p><strong>Comparaison :</strong> Les compétences comme "Deep Learning" apparaissent dans les deux dimensions, indiquant leur importance tant pour l'innovation que pour des rémunérations élevées.</p>
+            </section>
+
+            <section class="section">
+                <h2>Analyse des données concernant les codes IPC des brevets</h2>
+                <p align="center">
+                    <img src="Images/ipc_salaires_sans_legende.png" alt="Salaires moyens par code IPC">
+                </p>
+                <p><strong>Salaires moyens :</strong> Les catégories A (Nécessités courantes de la vie) et H (Électricité) affichent les salaires les plus élevés, tandis que d'autres secteurs techniques montrent des rémunérations plus modestes.</p>
+                <p align="center">
+                    <img src="Images/ipc_offres_sansNA_60porcent_sans_legende.png" alt="Répartition des offres d'emploi par code IPC">
+                </p>
+                <p><strong>Répartition des offres :</strong> Une forte concentration est observée dans les catégories A et H, reflétant leur poids économique.</p>
+                <p align="center">
+                    <img src="Images/ipc_n_patents_good_sans_l.png" alt="Nombre de brevets par code IPC">
+                </p>
+                <p><strong>Nombre de brevets :</strong> Les brevets sont dominés par les catégories A, H, et B, qui répondent à des besoins fondamentaux ou soutiennent des secteurs clés.</p>
+            </section>
+
+            <section class="section">
+                <h2>Analyses sur les villes</h2>
+                <p>Les disparités entre villes montrent que Paris domine en termes de salaires et d'innovation, mais d'autres villes comme Nancy et Grenoble se démarquent également pour l'innovation.</p>
+            </section>
+
+            <section class="section">
+                <h2>Analyse sur les départements</h2>
+                <p align="center">
+                    <img src="Images/VIOLET(nsm).png" alt="Analyse des départements">
+                </p>
+                <p>Les salaires varient considérablement selon les départements. Paris domine avec les salaires les plus élevés, tandis que l'innovation, bien que présente, n'est pas systématiquement corrélée avec les rémunérations élevées.</p>
+            </section>
+        </main>
+
+        <footer>
+            © 2024 - Analyse des données
+        </footer>
+    </div>
+</body>
+</html>
 
