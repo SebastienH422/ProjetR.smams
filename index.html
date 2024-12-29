@@ -1,29 +1,66 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analyse de données</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
-</head>
-<body>
-    <header>
-        <h1>Analyse de données</h1>
-    </header>
+import React from 'react';
+import { ChevronRight } from 'lucide-react';
 
-    <nav>
-        <h2>Sommaire</h2>
-        <ul>
-            <li><a href="analyse.html">Analyse des données</a></li>
-            <li><a href="statistiques.html">Statistiques</a></li>
-            <li><a href="https://github.com/votre-username/mon-depot/tree/main/code">Code source</a></li>
+const LandingPage = () => {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 text-white p-8">
+      {/* Hero Section with Abstract Shape */}
+      <div className="relative overflow-hidden rounded-xl bg-gradient-to-r from-purple-600/20 to-blue-600/20 p-8 backdrop-blur-sm">
+        <div className="absolute top-0 left-0 w-full h-full">
+          <svg className="absolute transform -translate-y-1/2 opacity-20" viewBox="0 0 1000 1000">
+            <circle cx="500" cy="500" r="400" fill="none" stroke="currentColor" strokeWidth="100" className="text-purple-300" />
+            <circle cx="500" cy="500" r="300" fill="none" stroke="currentColor" strokeWidth="100" className="text-blue-300" />
+          </svg>
+        </div>
+        
+        <div className="relative z-10">
+          <h1 className="text-4xl font-bold mb-6">Présentation du projet</h1>
+          <p className="text-lg mb-8 leading-relaxed">
+            L'objectif de ce projet est de mettre en évidence des liens potentiels entre la performance d'innovation des entreprises (mesurée par les dépôts de brevets), leurs demandes de compétences et le salaire moyen proposé pour leurs offres d'emploi.
+            Pour cela nous allons traiter plusieurs jeux de données à l'aide du logiciel RStudio.
+          </p>
+        </div>
+      </div>
+
+      {/* Questions Section */}
+      <div className="mt-12 bg-white/10 rounded-xl p-8 backdrop-blur-sm">
+        <h2 className="text-2xl font-semibold mb-6">Questions de recherche</h2>
+        <ul className="space-y-4">
+          {[
+            "Quelles compétences sont les plus mises en avant pour obtenir un bon salaire ? Et pour innover ?",
+            "Quelles villes sont les plus attractives au niveau des salaires ?",
+            "Quelles villes sont des piliers de l'innovation ?",
+            "Quels sont les secteurs qui rémunèrent le mieux ? Quels sont les secteurs les plus innovants ?",
+            "Dans quels départements y a-t-il le plus d'entreprises qui ont déposé des brevets ?",
+            "Grâce aux codes IPC, peut-on savoir quels sont les domaines qui recrutent le plus ?"
+          ].map((question, index) => (
+            <li key={index} className="flex items-start">
+              <ChevronRight className="h-6 w-6 text-purple-300 flex-shrink-0 mt-1" />
+              <span className="ml-2">{question}</span>
+            </li>
+          ))}
         </ul>
-    </nav>
+      </div>
 
-    <main>
-        <p>Bienvenue sur ce site dédié à l'analyse de données.</p>
-        <p>Utilisez le sommaire ci-dessus pour naviguer entre les différentes sections.</p>
-    </main>
-</body>
-</html>
+      {/* Sommaire Section */}
+      <div className="mt-12 bg-white/10 rounded-xl p-8 backdrop-blur-sm">
+        <h2 className="text-2xl font-semibold mb-6">Sommaire</h2>
+        <div className="space-y-6">
+          <div>
+            <h3 className="text-xl font-medium mb-4 text-purple-300">1. Statistiques descriptives</h3>
+            <ul className="ml-6 space-y-2">
+              <li>• Base de données des brevets (base_brevets)</li>
+              <li>• Base de données des entreprises (base_emp)</li>
+              <li>• Base de données de l'innovation dans les entreprises (base_emp_inno)</li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-xl font-medium mb-4 text-purple-300">2. Analyse de données</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
+export default LandingPage;
