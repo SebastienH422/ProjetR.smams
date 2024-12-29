@@ -1,8 +1,8 @@
 # Configuration du site
-title: Analyse de l'innovation et des salaires
-description: Projet d'analyse de données sur les brevets et les salaires
-baseurl: "" # le sous-chemin de votre site, par exemple /blog
-url: "" # l'URL de base de votre site
+title: Analyse Innovation et Salaires
+description: Étude des liens entre innovation et salaires dans les entreprises
+baseurl: ""
+url: ""
 
 # Configuration du thème
 remote_theme: pages-themes/minimal@v0.2.0
@@ -12,3 +12,12 @@ plugins:
 
 # Paramètres de compilation
 markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids: true
+  
+# Exclusions
+exclude:
+  - Gemfile
+  - Gemfile.lock
