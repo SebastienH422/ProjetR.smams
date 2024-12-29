@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistiques Descriptives</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            font-family: Segoe UI, sans-serif;
+            background: linear-gradient(135deg, #4070E0 0%, #9020E0 100%);
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        .main-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        p, li {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        ul {
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Statistiques Descriptives</h1>
+        </header>
+
+        <main class="main-card">
+            <section class="section">
+                <h2>1) Base de données des brevets (base_brevets)</h2>
+                <h3>a) Variable numérique : n_patents</h3>
+                <p>Le nombre de brevets déposés par entreprise :</p>
+                <ul>
+                    <li>Minimum : 1 brevet</li>
+                    <li>Médiane : 4 brevets</li>
+                    <li>Maximum : 18 803 brevets</li>
+                    <li>Moyenne : 38 brevets</li>
+                    <li>Écart-type : 474</li>
+                    <li>Nombre de manquants : il n'y a pas de valeurs manquantes.</li>
+                </ul>
+
+                <h3>b) Variables chaîne de caractères : firm_name, ipc_main_desc, addr_city_main, addr_dept_main</h3>
+                <p>Les 5 entreprises ayant déposé le plus de brevets sont :</p>
+                <ul>
+                    <li>1. Commissariat à l'Énergie Atomique - CEA</li>
+                    <li>2. Université de Lorraine</li>
+                    <li>3. Centre National de la Recherche Scientifique (CNRS)</li>
+                    <li>4. Valeo Embrayages</li>
+                    <li>5. Alcatel Lucent</li>
+                </ul>
+
+                <p>Les 5 descriptions de codes IPC ayant le plus de brevets sont :</p>
+                <ul>
+                    <li>1. Preparations for medical, dental, or toilet purposes (code IPC : A61K)</li>
+                    <li>2. Semiconductor devices; electric solid state devices not otherwise provided for (code IPC : H01L)</li>
+                    <li>3. Wireless communication networks (code IPC : H04W)</li>
+                    <li>4. Pictorial communication, e.g. television (code IPC : H04N)</li>
+                    <li>5. Non-portable lighting devices or systems thereof (code IPC : F21S)</li>
+                </ul>
+
+                <p>Les 5 villes ayant le plus de brevets sont :</p>
+                <ul>
+                    <li>1. Paris</li>
+                    <li>2. Nancy</li>
+                    <li>3. Boulogne Billancourt</li>
+                    <li>4. Vélizy Villacoublay</li>
+                    <li>5. Amiens</li>
+                </ul>
+
+                <p>Les 5 départements ayant le plus de brevets sont :</p>
+                <ul>
+                    <li>75 : Paris</li>
+                    <li>92 : Hauts-de-Seine</li>
+                    <li>78 : Yvelines</li>
+                    <li>54 : Meurthe-et-Moselle</li>
+                    <li>80 : Somme</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h2>2) Base de données des entreprises (base_emp)</h2>
+                <p>(Les informations à inclure dans cette section seront détaillées si elles sont disponibles.)</p>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
