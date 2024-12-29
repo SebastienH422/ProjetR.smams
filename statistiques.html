@@ -88,7 +88,7 @@
 <body>
     <div class="container">
         <header class="header">
-            <h1 style="font-size: 2.5rem;">Statistiques Descriptives</h1>
+            <h1 style="font-size: 3.5rem;">Statistiques Descriptives</h1>
         </header>
 
         <main>
@@ -97,16 +97,16 @@
                 <h2 style="font-size: 2rem;">1) Base de données des brevets (base_brevets)</h2>
                 <h3 style="font-size: 1.5rem;">a) Variable numérique : n_patents</h3>
                 <p style="margin-left: 2.5rem;">Le nombre de brevets déposés par entreprise :</p>
-                <ol style="margin-left: 3.5rem;">
+                <ul style="margin-left: 3.5rem;">
                     <li>Minimum : 1 brevet</li>
                     <li>Médiane : 4 brevets</li>
                     <li>Maximum : 18 803 brevets</li>
                     <li>Moyenne : 38 brevets</li>
                     <li>Écart-type : 474</li>
                     <li>Nombre de manquants : il n'y a pas de valeurs manquantes.</li>
-                </ol>
+                </ul>
 
-                <h3 style="font-size: 1.5rem;">b) Variables chaîne de caractères : firm_name, ipc_main_desc, addr_city_main, addr_dept_main</h3>
+                <h3 style="font-size: 1.5rem;">b) Variables chaîne de caractère : firm_name, ipc_main_desc, addr_city_main, addr_dept_main</h3>
                 <p style="margin-left: 2.5rem;">Les 5 entreprises ayant déposé le plus de brevets sont :</p>
                 <ol style="margin-left: 3.5rem;">
                     <li> Commissariat à l'Énergie Atomique - CEA</li>
@@ -127,27 +127,110 @@
 
                 <p style="margin-left: 2.5rem;">Les 5 villes ayant le plus de brevets sont :</p>
                 <ol style ="margin-left: 3.5rem;">
-                    <li>1. Paris</li>
-                    <li>2. Nancy</li>
-                    <li>3. Boulogne Billancourt</li>
-                    <li>4. Vélizy Villacoublay</li>
-                    <li>5. Amiens</li>
+                    <li>Paris</li>
+                    <li>Nancy</li>
+                    <li>Boulogne Billancourt</li>
+                    <li>Vélizy Villacoublay</li>
+                    <li>Amiens</li>
                 </ol>
 
                 <p style="margin-left: 2.5rem;">Les 5 départements ayant le plus de brevets sont :</p>
                 <ol style ="margin-left: 3.5rem;">
-                    <li>75 : Paris</li>
-                    <li>92 : Hauts-de-Seine</li>
-                    <li>78 : Yvelines</li>
-                    <li>54 : Meurthe-et-Moselle</li>
-                    <li>80 : Somme</li>
+                    <li>Paris (75)</li>
+                    <li>Hauts-de-Seine (92)</li>
+                    <li>Yvelines (78)</li>
+                    <li>Meurthe-et-Moselle (54)</li>
+                    <li>Somme (80)</li>
                 </ol>
             </div>
 
             <!-- Bloc 2 -->
             <div class="block">
                 <h2 style="font-size: 2rem;">2) Base de données des entreprises (base_emp)</h2>
-                <p>Les informations concernant cette base seront ajoutées ici si elles sont disponibles.</p>
+                <h3 style="font-size: 1.5rem;">a) Variables numériques : n_offres, avg_wage</h3>
+                <p style="margin-left: 2.5rem;">Le nombre d'offres déposées par entreprise :</p>
+                <ul style="margin-left: 3.5rem;">
+                    <li>Minimum : 1 offre</li>
+                    <li>Médiane : 2 offres</li>
+                    <li>Maximum : 68 offres</li>
+                    <li>Moyenne : 5 offres</li>
+                    <li>Écart-type : 9</li>
+                    <li>Nombre de manquants : il n'y a pas de valeurs manquantes.</li>
+                </ul>
+
+                <p style="margin-left: 2.5rem;">Le salaire moyen en €/an par entreprise :</p>
+                <ul style="margin-left: 3.5rem;">
+                    <li>Minimum : 218 €</li>
+                    <li>Médiane : 46 000 €</li>
+                    <li>Maximum : 560 066 €</li>
+                    <li>Moyenne : 60 111 €</li>
+                    <li>Écart-type : 63 384</li>
+                    <li>Nombre de manquants : il y a 496 valeurs manquantes.</li>
+                </ul>
+
+
+                <h3 style="font-size: 1.5rem;">b) Variables chaîne de caractère : firm_name, sector_main, addr_dept_main</h3>
+                <p style="margin-left: 2.5rem;">Les 5 entreprises ayant le salaire moyen le plus élevé sont :</p>
+                <ol style="margin-left: 3.5rem;">
+                    <li> </li>
+                    <li> </li>
+                    <li> </li>
+                    <li> </li>
+                    <li> </li>
+                </ol>
+
+                <p style="margin-left: 2.5rem;">Les 5 secteurs ayant le salaire moyen le plus élevé sont :</p>
+                <ol style="margin-left: 3.5rem;">
+                    <li> </li>
+                    <li> </li>
+                    <li> </li>
+                    <li> </li>
+                    <li> </li>
+                </ol>
+
+                <p style="margin-left: 2.5rem;">Les 5 départements ayant le salaire moyen le plus élevé sont :</p>
+                <ol style="margin-left: 3.5rem;">
+                    <li> </li>
+                    <li> </li>
+                    <li> </li>
+                    <li> </li>
+                    <li> </li>
+                </ol>
+
+            <!-- Bloc 3 -->
+            <div class="block">
+                <h2 style="font-size: 2rem;">2) Base de données de l'innovation dans les entreprises (base_emp_inno)</h2>
+                <h3 style="font-size: 1.5rem;">a) Variables numériques : n_patents, n_offres, avg_wage</h3>
+                <p style="margin-left: 2.5rem;">Le nombre de brevets déposés par entreprise :</p>
+                <ul style="margin-left: 3.5rem;">
+                    <li>Minimum : 1 brevet</li>
+                    <li>Médiane : 4 brevets</li>
+                    <li>Maximum : 18 803 brevets</li>
+                    <li>Moyenne : 38 brevets</li>
+                    <li>Écart-type : 474</li>
+                    <li>Nombre de manquants : il y a 523 valeurs manquantes.</li>
+                </ul>
+
+                <p style="margin-left: 2.5rem;">Le nombre d'offres déposées par entreprise :</p>
+                <ul style="margin-left: 3.5rem;">
+                    <li>Minimum : 1 offre</li>
+                    <li>Médiane : 2 offres</li>
+                    <li>Maximum : 68 offres</li>
+                    <li>Moyenne : 5 offres</li>
+                    <li>Écart-type : 9</li>
+                    <li>Nombre de manquants : il y a 8 600 valeurs manquantes.</li>
+                </ul>
+
+                <p style="margin-left: 2.5rem;">Le salaire moyen en €/an par entreprise :</p>
+                <ul style="margin-left: 3.5rem;">
+                    <li>Minimum : 218 €</li>
+                    <li>Médiane : 46 000 €</li>
+                    <li>Maximum : 560 066 €</li>
+                    <li>Moyenne : 60 111 €</li>
+                    <li>Écart-type : 63 384</li>
+                    <li>Nombre de manquants : il y a 9 096 valeurs manquantes.</li>
+                </ul>
+
             </div>
         </main>
     </div>
