@@ -59,6 +59,7 @@ get_wage = function(wage) {
   }
   
   # Clean the salary text
+  wage <- gsub("[\u00A0\u202F]", "", wage, perl = TRUE)   # Remove non-breaking spaces, narrow no-break spaces
   wage <- gsub(" ", "", wage)        # Remove spaces
   wage <- gsub(",", ".", wage)       # Convert commas to dots
 
@@ -67,14 +68,10 @@ get_wage = function(wage) {
   if (grepl("K", wage, ignore.case = TRUE)) {
     multiplier <- 1000
     wage <- gsub("[Kk]", "", wage)
-  } else if (grepl("000", wage)) {
-    wage <- gsub("000", "", wage)
-    multiplier <- 1000
   }
   
   # Extract numbers
   numbers <- as.numeric(unlist(str_extract_all(wage, "\\d+\\.?\\d*")))
-
   if (length(numbers) == 0 || any(is.na(numbers))) {
     return(NA_real_)
   }
