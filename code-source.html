@@ -105,63 +105,50 @@
 <br>#
 <br># Required files in the DATA folder:
 <br># - 202202_EPO_App_reg_small.txt
-# - 202202_EPO_IPC_small.txt
-# - EN_ipc_section_A_title_list_20120101.txt
-# - EN_ipc_section_B_title_list_20120101.txt
-# - EN_ipc_section_C_title_list_20120101.txt
-# - EN_ipc_section_D_title_list_20120101.txt
-# - EN_ipc_section_E_title_list_20120101.txt
-# - EN_ipc_section_F_title_list_20120101.txt
-# - EN_ipc_section_G_title_list_20120101.txt
-# - EN_ipc_section_H_title_list_20120101.txt
-#
-#
-###########################
-### Importing libraries ###
-###########################
-
-source("smams_src_utilities.R")
-library(data.table)
-library(stringr)
-
-# _________________________________________________________________________________________________________________________________
-######################
-### Importing data ###
-######################
-
-brevets = data.table(read.csv(file = "DATA/202202_EPO_App_reg_small.txt",
-                              head = TRUE,
-                              sep = ","))
-
-ipc = data.table(read.csv(file = "DATA/202202_EPO_IPC_small.txt",
-                          head = TRUE,
-                          sep = ","))
-
-# Remove unnecessary columns
-brevets[, c("app_nbr", "pub_nbr", "person_id", "address", "reg_code", "reg_share", "app_share") := NULL]
-ipc[, app_year := NULL]
-
-# Format postal codes to department numbers
-brevets[, postal_code := as.integer(substr(postal_code, 1, 2))]
-
-# _________________________________________________________________________________________________________________________________
-######################
-### Data filtering ###
-######################
-
-# 1st filter: Keep only French companies
-brevets = brevets[ctry_code == "FR"]
-# Same for ipc data
-ipc = ipc[appln_id %in% brevets[, appln_id]]  
-# Remove the ctry_code column
-brevets[, ctry_code := NULL]
-
-# 2nd filter: Keep only patents filed between 2010 and 2020
-ipc = ipc[prio_year >= 2010 & prio_year <= 2020]
-# Same for patents
-brevets = brevets[appln_id %in% ipc[, appln_id]]
-# No longer need the prio_year variable
-ipc[, prio_year := NULL]
+<br># - 202202_EPO_IPC_small.txt
+<br># - EN_ipc_section_A_title_list_20120101.txt
+<br># - EN_ipc_section_B_title_list_20120101.txt
+<br># - EN_ipc_section_C_title_list_20120101.txt
+<br># - EN_ipc_section_D_title_list_20120101.txt
+<br># - EN_ipc_section_E_title_list_20120101.txt
+<br># - EN_ipc_section_F_title_list_20120101.txt
+<br># - EN_ipc_section_G_title_list_20120101.txt
+<br># - EN_ipc_section_H_title_list_20120101.txt
+<br>#
+<br>#
+<br>###########################
+<br>### Importing libraries ###
+<br>###########################
+<br>source("smams_src_utilities.R")
+<br>library(data.table)
+<br>library(stringr)
+<br># _________________________________________________________________________________________________________________________________
+<br>######################
+<br>### Importing data ###
+<br>######################
+<br>brevets = data.table(read.csv(file = "DATA/202202_EPO_App_reg_small.txt",head = TRUE, sep = ","))
+<br>ipc = data.table(read.csv(file = "DATA/202202_EPO_IPC_small.txt", head = TRUE, sep = ","))
+<br># Remove unnecessary columns
+<br>brevets[, c("app_nbr", "pub_nbr", "person_id", "address", "reg_code", "reg_share", "app_share") := NULL]
+<br>ipc[, app_year := NULL]
+<br># Format postal codes to department numbers
+<br>brevets[, postal_code := as.integer(substr(postal_code, 1, 2))]
+<br># _________________________________________________________________________________________________________________________________
+<br>######################
+<br>### Data filtering ###
+<br>######################
+<br># 1st filter: Keep only French companies
+<br>brevets = brevets[ctry_code == "FR"]
+<br># Same for ipc data
+<br>ipc = ipc[appln_id %in% brevets[, appln_id]]  
+<br># Remove the ctry_code column
+<br>brevets[, ctry_code := NULL]
+<br># 2nd filter: Keep only patents filed between 2010 and 2020
+<br>ipc = ipc[prio_year >= 2010 & prio_year <= 2020]
+<br># Same for patents
+<br>brevets = brevets[appln_id %in% ipc[, appln_id]]
+<br># No longer need the prio_year variable
+<br>ipc[, prio_year := NULL]
 
 # 3rd filter: Keep only the first 4 characters of ipc
 ipc$IPC = substr(ipc$IPC, 1, 4)
