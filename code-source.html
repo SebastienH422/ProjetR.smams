@@ -208,10 +208,10 @@
 <br>base_brevets[, first_letter_second := substr(ipc_second_code, 1, 1)]
 <br># For each first letter, join with the corresponding data table
 <br>for (letter in LETTERS[1:8]) {
-<br># Get the name of the second column
-<br>&nbsp;&nbsp;desc_col = names(desc_separe[[letter]])[2]
-<br>&nbsp;&nbsp;base_brevets[first_letter_main == letter, ipc_main_desc := desc_separe[[letter]][.(ipc_main_code), get(desc_col), on=letter]]
-<br>&nbsp;&nbsp;base_brevets[first_letter_second == letter, ipc_second_desc := desc_separe[[letter]][.(ipc_second_code), get(desc_col), on=letter]]}
+<br>&nbsp;&nbsp;&nbsp;&nbsp;# Get the name of the second column
+<br>&nbsp;&nbsp;&nbsp;&nbsp;desc_col = names(desc_separe[[letter]])[2]
+<br>&nbsp;&nbsp;&nbsp;&nbsp;base_brevets[first_letter_main == letter, ipc_main_desc := desc_separe[[letter]][.(ipc_main_code), get(desc_col), on=letter]]
+<br>&nbsp;&nbsp;&nbsp;&nbsp;base_brevets[first_letter_second == letter, ipc_second_desc := desc_separe[[letter]][.(ipc_second_code), get(desc_col), on=letter]]}
 <br># Remove the temporary first_letter column
 <br>base_brevets[, c('first_letter_main', 'first_letter_second') := NULL]
 <br>#___________________________________________________________________________________________________________________________________
