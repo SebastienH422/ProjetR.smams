@@ -302,6 +302,75 @@
 <br>### END ###
 <br>###########</p>
             </section>
+            <section class="section block">
+                <h2>smams_match.R</h2>
+                <p>
+<br>#
+<br># Simon Fraile, Matilin Periat, Ahina Durrieu, Maina Boivent, Sébastien Hein
+<br># 
+<br># File smams_match.R
+<br># 
+<br># Creation of the base_emp_inno database
+<br>#
+<br># Required files in the DATA folder:
+<br># - base_brevets.csv
+<br># - base_emp.csv
+<br>#
+<br>###########################
+<br>### Importing libraries ###
+<br>###########################
+<br>source("smams_src_utilities.R")
+<br>library(data.table)
+<br>library(stringr)
+<br># _________________________________________________________________________________________________________________________________
+<br>######################
+<br>### Importing data ###
+<br>######################
+<br>base_emp = fread("DATA/base_emp.csv")
+<br>base_brevets = fread("DATA/base_brevets.csv")
+<br># _________________________________________________________________________________________________________________________________
+<br>#############
+<br>### Merge ###
+<br>#############
+<br># Create id_firm_name in both data tables
+<br>base_emp$id_firm_name = gsub(',','',iconv(tolower(word(base_emp$firm_name,1)), to = "ASCII//TRANSLIT"))
+<br>base_brevets$id_firm_name = gsub(',','',iconv(tolower(word(base_brevets$firm_name,1)), to = "ASCII//TRANSLIT"))
+<br># Merge
+<br>base_emp_inno = merge(base_emp, base_brevets, all = TRUE)
+<br># _________________________________________________________________________________________________________________________________
+<br>###################
+<br>### Aggregation ###
+<br>###################
+<br>base_emp_inno <- base_emp_inno[, {
+<br>&nbsp;&nbsp;list(
+<br>&nbsp;&nbsp;&nbsp;&nbsp;firm_name = first(firm_name),  
+<br>&nbsp;&nbsp;&nbsp;&nbsp;addr_dept_main = as.character(choose_non_na(addr_dept_main)),
+<br>&nbsp;&nbsp;&nbsp;&nbsp;n_offres = choose_non_na(n_offres),
+<br>&nbsp;&nbsp;&nbsp;&nbsp;sector_main = as.character(choose_non_na(sector_main)),
+<br>&nbsp;&nbsp;&nbsp;&nbsp;avg_req_exp = choose_non_na(avg_req_exp),
+<br>&nbsp;&nbsp;&nbsp;&nbsp;avg_wage = choose_non_na(avg_wage),
+<br>&nbsp;&nbsp;&nbsp;&nbsp;top_skill_req = as.character(choose_non_na(top_skill_req)),
+<br>&nbsp;&nbsp;&nbsp;&nbsp;n_patents = choose_non_na(n_patents),
+<br>&nbsp;&nbsp;&nbsp;&nbsp;ipc_main_code = as.character(choose_non_na(ipc_main_code)),
+<br>&nbsp;&nbsp;&nbsp;&nbsp;ipc_main_desc = as.character(choose_non_na(ipc_main_desc)),
+<br>&nbsp;&nbsp;&nbsp;&nbsp;ipc_second_code = as.character(choose_non_na(ipc_second_code)),
+<br>&nbsp;&nbsp;&nbsp;&nbsp;ipc_second_desc = as.character(choose_non_na(ipc_second_desc)),
+<br>&nbsp;&nbsp;&nbsp;&nbsp;addr_city_main = as.character(choose_non_na(addr_city_main))
+<br>&nbsp;&nbsp;)
+<br>}, by = id_firm_name] 
+<br># Remove the "id_firm_name" column
+<br>base_emp_inno[, id_firm_name := NULL] 
+<br>#___________________________________________________________________________________________________________________________________
+<br>###################################
+<br>### Writing the database to csv ###
+<br>###################################
+<br>fwrite(base_emp_inno, "DATA/base_emp_inno.csv")
+<br>#___________________________________________________________________________________________________________________________________
+<br>###########
+<br>### END ###
+<br>###########            
+                </p>
+            </section>
 
         </main>
 
