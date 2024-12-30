@@ -224,7 +224,83 @@
 <br>### END ###
 <br>###########
                 </p>
-
+            </section>
+            <section class="section block">
+                <h2>smams_emploi.R</h2>
+                <p>
+<br>#
+<br># Simon Fraile, Matilin Periat, Ahina Durrieu, Maina Boivent, Sébastien Hein
+<br># 
+<br># File smams_emploi.R 
+<br># 
+<br># Creation of the base_emp database
+<br>#
+<br># Required files in the DATA folder:
+<br># - emp_offers_fmt.tsv
+<br>#
+<br>#
+<br>###########################
+<br>### Importing libraries ###
+<br>###########################
+<br>source("smams_src_utilities.R")
+<br>library(data.table)
+<br>library(stringr)
+<br># _________________________________________________________________________________________________________________________________
+<br>######################
+<br>### Importing data ###
+<br>######################
+<br>data = data.table(read.csv(file = "DATA/emp_offers_fmt.tsv", # Import
+<br>&nbsp;&nbsp;&nbsp;&nbsp;head = TRUE,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;sep = ","))
+<br># _________________________________________________________________________________________________________________________________
+<br>######################
+<br>### Data filtering ###
+<br>######################
+<br># Keep only the following fields:
+<br># entreprise, secteur, experience_requise, competences_requises, salaire, departement
+<br>offres = data[, .(entreprise, secteur, experience_requise, competences_requises, salaire, departement)]
+<br># Salaires corrected
+<br>offres[, salaire := ifelse(salaire == "1 100 - 1 200 EUR par an", "1 100 - 1 200 EUR par mois", ifelse(salaire == "40 - 60 EUR par an", "40K - 60K EUR par an", salaire))]
+<br># Apply the salary processing function
+<br>offres[, avg_wage := sapply(salaire, get_wage)]
+<br># Clean competences_requises column before grouping
+<br>offres[, competences_requises := sapply(competences_requises, clean_competences)]
+<br># _________________________________________________________________________________________________________________________________
+<br>#########################
+<br>### Name modification ###
+<br>#########################
+<br>#
+<br># Create the firm_name column containing the company name,
+<br># and id_firm_name to group companies together
+<br># For example, 'Peugeot' and 'Peugeot SA' are the same company. In id_firm_name, the value will be 'peugeot' for both.
+<br>offres$id_firm_name = gsub(',','',iconv(tolower(word(offres$entreprise,1)), to = "ASCII//TRANSLIT"))
+<br># _________________________________________________________________________________________________________________________________
+<br>############################
+<br>### Creating base_emploi ###
+<br>############################
+<br># Group by firm_name, and calculate all other columns
+<br>base_emp = offres[, .(
+<br>&nbsp;&nbsp;&nbsp;&nbsp;firm_name = get_top_val(entreprise, 1),                      # Firm name
+<br>&nbsp;&nbsp;&nbsp;&nbsp;n_offres = .N,                                              # Number of offers
+<br>&nbsp;&nbsp;&nbsp;&nbsp;sector_main = as.character(get_most_frequent(secteur)), # Most frequent sectors
+<br>&nbsp;&nbsp;&nbsp;&nbsp;avg_req_exp = ifelse(is.na(mean(experience_requise, na.rm = TRUE)), NA_real_, round(mean(experience_requise, na.rm = TRUE))), # Average experience, round 1
+<br>&nbsp;&nbsp;&nbsp;&nbsp;avg_wage = ifelse(is.nan(mean(avg_wage, na.rm = TRUE)), NA_real_, mean(avg_wage, na.rm = TRUE)), # Average annual salary
+<br>&nbsp;&nbsp;&nbsp;&nbsp;addr_dept_main = get_top_val(departement, 1),  # Most common department
+<br>&nbsp;&nbsp;&nbsp;&nbsp;top_skill_req = get_most_frequent(competences_requises)  # Most frequent skills
+<br>), by = id_firm_name]
+<br># Remove the "id_firm_name" column
+<br>base_emp[, id_firm_name := NULL]
+<br># Keep only companies with a name
+<br>base_emp = base_emp[firm_name != ""]
+<br>#___________________________________________________________________________________________________________________________________
+<br>###################################
+<br>### Writing the database to csv ###
+<br>###################################
+<br>fwrite(base_emp, "DATA/base_emp.csv")
+<br>#___________________________________________________________________________________________________________________________________
+<br>###########
+<br>### END ###
+<br>###########</p>
             </section>
 
         </main>
