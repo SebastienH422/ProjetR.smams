@@ -1,9 +1,9 @@
 #
 # Simon Fraile, Matilin Periat, Ahina Durrieu, Maina Boivent, Sébastien Hein
 # 
-# File smams_emploi.R
+# File smams_match.R
 # 
-# Creation of the base_emp database
+# Creation of the base_emp_inno database
 #
 # Required files in the DATA folder:
 # - base_brevets.csv
