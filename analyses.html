@@ -23,6 +23,19 @@
         .header {
             text-align: center;
             padding: 2rem 0;
+            margin-bottom: 3rem; /* Ajout d'espace sous le titre */
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .header {
+            text-align: center;
+            padding: 2rem 0;
+            margin-bottom: 3rem; /* Ajout d'espace sous le titre */
         }
 
         .header h1 {
@@ -52,17 +65,23 @@
         }
 
         h2 {
-            font-size: 2rem;
-            margin-top: 1.5rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            padding-left: 1rem; /* Indentation des titres */
         }
 
-        p {
-            font-size: 1.2rem;
-            line-height: 1.8;
+        h3 {
+            color: #fff;
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem; /* Indentation des sous-titres */
+        }
+
+        p, li {
+            color: rgba(255, 255, 255, 0.9);
         }
 
         ul {
-            margin: 1rem 0;
+            margin-top: 1rem;
             padding-left: 2rem;
         }
 
@@ -70,6 +89,10 @@
             text-align: center;
             padding: 1rem;
             color: rgba(255, 255, 255, 0.8);
+        }
+
+        .section {
+            margin-bottom: 2rem;
         }
 
         .block {
@@ -100,7 +123,7 @@
 
         <main>
             <section class="section block">
-                <h2>Analyse des données concernant les secteurs d'activité des entreprises</h2>
+                <h2 style="font-size: 2rem;">Analyse des données concernant les secteurs d'activité des entreprises</h2>
                 
                 <div style="display: flex; justify-content: center; align-items: flex-start; gap: 10px;">
                     <div style="text-align: center;">
@@ -114,19 +137,19 @@
                         <strong>Les secteurs pondérés par l'innovation</strong>
                     </div>
                 </div>
-                <h3>1. Analyse du premier wordcloud (secteurs pondérés par les salaires)</h3>
+                <h3 style="font-size: 1.5rem;">1. Analyse du premier wordcloud (secteurs pondérés par les salaires)</h3>
                 <p>Pour ce premier wordcloud, les secteurs "Transport" et "Logistique" dominent largement, ils sont donc identifiés comme offrant des salaires compétitifs. En effet, les secteurs liés à la gestion et à la chaîne d'approvisionnement (logistique, transport, distribution) sont mis en avant, démontrant une forte valorisation salariale. Cela peut être dû à la demande croissante pour ces secteurs dans une économie mondialisée.</p>
-                <h3>2. Analyse du deuxième wordcloud (secteurs pondérés par le nombre de brevets - innovation)</h3>
+                <h3 style="font-size: 1.5rem;">2. Analyse du deuxième wordcloud (secteurs pondérés par le nombre de brevets - innovation)</h3>
                 <p>Pour ce deuxième wordcloud nous remarquons une plus grande diversité au sujet des secteurs mis en avant. Les termes "Industrie Auto", "Industrie Aéronautique", "Mécanique (Meca)" et "Aérospatial" ressortent comme les leaders en innovation. Nous observons également des secteurs comme "Chimie", "Biotechnologie" et "Secteur Informatique", qui sont bien représentés, reflétant leur forte orientation vers la recherche et le développement. Nous pouvons en conclure que les secteurs industriels et technologiques sont les moteurs de l'innovation, où l'effort en R&D conduit à la production de brevets.
 </p>
-                <h3>3. Conclusion</h3>
+                <h3 style="font-size: 1.5rem;">3. Conclusion</h3>
                 <p>Le premier wordcloud met davantage l'accent sur des secteurs orientés vers les services (ex. Logistique, Services aux entreprises), tandis que le deuxième wordcloud valorise des secteurs orientés vers l'industrie et la technologie (ex. Aérospatial, Biotechnologie, Mécanique). \
 Le transport et la logistique, offrant de meilleurs salaires, sont beaucoup moins représentés en termes d'innovation, tandis que des secteurs comme l'automobile et l'aéronautique sont les leaders en innovation mais moins proéminents en terme de salaires.
 Pour un professionnel ou une entreprise, investir dans l'innovation dans des secteurs technologiques est clé pour rester compétitif sur le long terme. Cependant, les secteurs de la logistique et du transport peuvent offrir des opportunités financières immédiates. Un équilibre entre innovation et valeur économique peut être trouvé dans des secteurs comme l'aéronautique, qui figurent dans les deux dimensions.</p>
             </section>
 
             <section class="section block">
-                <h2>Analyse des données concernant les compétences demandées dans les offres d'emploi</h2>
+                <h2 style="font-size: 2rem;">Analyse des données concernant les compétences demandées dans les offres d'emploi</h2>
                 <div style="display: flex; justify-content: center; align-items: flex-start; gap: 10px;">
                     <div style="text-align: center;">
                         <img src="Images/wordcloud_competences_salaire.png" alt="Compétences pondérées par le salaire moyen" style="width: 500px; height: auto;">
@@ -139,11 +162,11 @@ Pour un professionnel ou une entreprise, investir dans l'innovation dans des sec
                         <strong>Les compétences pondérées par l'innovation</strong>
                     </div>
                 </div>
-                <h3>1. Analyse du premier wordcloud (compétences pondérées par le salaire moyen)</h3>
+                <h3 style="font-size: 1.5rem;">1. Analyse du premier wordcloud (compétences pondérées par le salaire moyen)</h3>
                 <p>Sur ce wordcloud le terme "Statistique" domine largement, suivi de "Deep Learning", "Python" et "modélisation". Nous en déduisons aisément que les compétences mieux rémunérées se concentrent sur des compétences techniques spécifiques, notamment dans les domaines des données et du cloud.</p>
-                <h3>2. Analyse du deuxième wordcloud (compétences pondérées par le nombre de brevets - innovation)</h3>
+                <h3 style="font-size: 1.5rem;">2. Analyse du deuxième wordcloud (compétences pondérées par le nombre de brevets - innovation)</h3>
                 <p>Ce wordcloud met en avant des compétences techniques et comportementales qui distinguent l'innovation. L'association de l'autonomie avec la collaboration en équipe montre une importance de l'équilibre entre le travail individuel et collectif pour générer de nouvelles idées. Par ailleurs, la présence de « Deep Learning » et de « modélisation » indique que l'innovation se concentre sur des compétences en intelligence artificielle et en analyse de données, ce qui reflète très bien le contenu de nos données.</p>
-                <h3>3. Conclusion</h3>
+                <h3 style="font-size: 1.5rem;">3. Conclusion</h3>
                 <p>En prenant en compte les deux wordclouds nous pouvons relever que les compétences en Deep Learning et autonomie apparaissent dans les deux, confirmant leur importance à la fois pour l'innovation et pour les salaires élevés. Les compétences en collaboration d'équipe et communication sont également partagées, soulignant leur transversalité. Ces compétences semblent donc primordiales que ce soit pour atteindre des salaires conséquents ou bien performer dans l'innovation.
 Cependant, il y a tout de même des différences notables puisque, le wordcloud pondérés par les brevets mets davantage l'accent sur des qualités générales comme "Autonome" et "équipe" tandis que dans le wordcloud pondéré par les salaires il y a une forte mise en avant de "Statistique", "Python" et des outils liés aux bases de données et au cloud, des compétences plus techniques et spécialisées.
 Les brevets mettent davantage l'accent sur l'impact collectif ou comportemental, tandis que les salaires mettent en valeur des compétences directement monétisables et techniques. </p>
@@ -153,8 +176,8 @@ Pour maximiser à la fois innovation et rémunération, une combinaison de comp�
             
 
             <section class="section block">
-                <h2>Analyse des données concernant les codes IPC des brevets</h2>
-                <h3>1. Salaires moyens par codes IPC</h3>
+                <h2 style="font-size: 2rem;">Analyse des données concernant les codes IPC des brevets</h2>
+                <h3 style="font-size: 1.5rem;">1. Salaires moyens par codes IPC</h3>
                 <p align="center">
                     <img src="Images/code_ipc_salaire.png" alt="Salaires moyens par code IPC" class="large-image">
                     <br>
@@ -163,7 +186,7 @@ Pour maximiser à la fois innovation et rémunération, une combinaison de comp�
                 <p> Les catégories A (Nécessités courantes de la vie), H (Électricité), et D (Textiles, papier) affichent des salaires moyens largement plus élevés que pour les autres catégories.
 Les secteurs comme E (Constructions fixes) et F (Mécanique, éclairage, chauffage), bien que représentant des domaines techniques importants, montrent des salaires plus modestes.
 Cela indique que les métiers liés aux domaines essentiels ou technologiques avancés (comme l’électricité) offrent de meilleures rémunérations.</p>
-                <h3>2. Répartition des offres d'emploi par code IPC</h3>
+                <h3 style="font-size: 1.5rem;">2. Répartition des offres d'emploi par code IPC</h3>
                 <p align="center">
                     <img src="Images/code_ipc_offres.png" alt="Répartition des offres d'emploi par code IPC" class="large-image">
                     <br>
@@ -172,7 +195,7 @@ Cela indique que les métiers liés aux domaines essentiels ou technologiques av
                 <p>La répartition montre une forte concentration des offres dans les catégories A (Nécessités courantes de la vie) et H (Électricité), reflétant leur poids économique.
 Les catégories comme D (Textiles, papier) et E (Constructions fixes) ont une faible part des offres, suggérant une spécialisation plus limitée ou une demande réduite.
 Ce graphique ne prend cependant pas en compte la plupart des entreprises, pour lesquelles nous n'avions pas de données sur les codes IPC, ce qui représente plus de 50% des entreprises. </p>
-                <h3>3. Nombre de brevets par code IPC</h3>
+                <h3 style="font-size: 1.5rem;">3. Nombre de brevets par code IPC</h3>
                 <p align="center">
                     <img src="Images/code_ipc_innovation.png" alt="Nombre de brevets par code IPC" class="large-image">
                     <br>
@@ -182,7 +205,7 @@ Ce graphique ne prend cependant pas en compte la plupart des entreprises, pour l
 Ces catégories reflètent des domaines où l’innovation est particulièrement active, répondant à des besoins fondamentaux (catégorie A) ou soutenant des secteurs technologiques et industriels clés (catégories B et H).
 La catégorie G (Physique) et d'autres domaines techniques suivent, mais avec un volume de brevets moindre comparé aux trois catégories dominantes.
 Les catégories A et H se démarquent non seulement par leur volume élevé de brevets, mais également par leurs salaires moyens très élevés, montrant une forte valorisation de ces secteurs sur le marché du travail. En revanche, la catégorie B, bien qu’innovante, ne figure pas parmi les secteurs offrant les rémunérations les plus élevées.</p>
-                <h3>4. Conclusion</h3>
+                <h3 style="font-size: 1.5rem;">4. Conclusion</h3>
                 <p> L’analyse des salaires, des offres d’emploi et des brevets par code IPC met en lumière des dynamiques intéressantes :<br>
 <br>- Les catégories A (Nécessités courantes de la vie) et H (Électricité) se distinguent comme des secteurs particulièrement valorisés, combinant des salaires moyens très élevés, une forte demande sur le marché de l’emploi, et un volume important de brevets. Cela reflète leur double rôle économique, à la fois dans la satisfaction des besoins essentiels et dans les avancées technologiques.
 <br>
@@ -194,7 +217,7 @@ Les catégories A et H se démarquent non seulement par leur volume élevé de b
             </section>
 
             <section class="section block">
-                <h2>Analyses sur les villes</h2>
+                <h2 style="font-size: 2rem;">Analyses sur les villes</h2>
                 <p>Les disparités entre villes montrent que Paris domine en termes de salaires et d'innovation, mais d'autres villes comme Nancy et Grenoble se démarquent également pour l'innovation.</p>
                 <p align="center">
                     <img src="Images/villes_salaire_innov.png" alt="Analyses sur les villes">
@@ -203,14 +226,14 @@ Les catégories A et H se démarquent non seulement par leur volume élevé de b
                 </p>
                 <p>Les villes industrielles ou fortement technologiques comme Nancy, Boulogne-Billancourt, et Vélizy-Villacoublay dominent, avec un grand nombre de brevets déposés. On note une forte représentation des villes proches de grands centres économiques ou technologiques (par exemple, Grenoble pour la recherche technologique, Amiens pour les industries). Contrairement au graphique des salaires, l’innovation semble davantage concentrée dans des zones spécifiques, souvent liées à des écosystèmes industriels.</p>
 
-            <h3>Conclusion</h3>
+            <h3 style="font-size: 1.5rem;">Conclusion</h3>
                 <p>Les villes offrant les salaires moyens les plus élevés ne sont pas toujours les plus innovantes, suggérant que l’innovation et la rémunération ne sont pas systématiquement corrélées. Les salaires élevés sont répartis de manière plus homogène entre les différentes régions, tandis que l’innovation est concentrée dans des pôles technologiques et industriels bien définis.
 
 </p>
             </section>
 
             <section class="section block">
-                <h2>Analyse sur les départements</h2>
+                <h2 style="font-size: 2rem;">Analyse sur les départements</h2>
                 <p align="center">
                     <img src="Images/dept_salaire_innov.png" alt="Analyse des départements" class="large-image">
                 </p>
@@ -229,7 +252,7 @@ Les catégories A et H se démarquent non seulement par leur volume élevé de b
 
             
             <section class="section block">
-                <h2>Analyse sur les compétences et les années d'expérience demandées</h2>
+                <h2 style="font-size: 2rem;">Analyse sur les compétences et les années d'expérience demandées</h2>
                 <p align="center">
                     <img src="Images/offres_competences_experience.png" alt="offres compétences années" class="large-image">
                     <br>
