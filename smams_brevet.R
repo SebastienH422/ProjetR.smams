@@ -22,6 +22,7 @@
 ### Importing libraries ###
 ###########################
 
+source("smams_src_utilities.R")
 library(data.table)
 library(stringr)
 
@@ -93,7 +94,7 @@ base_brevets[, n_patents := 1]
 #___________________________________________________________________________________________________________________________________
 ##################
 ### Adding ipc ###
-##################
+################## 
 
 # Add ipc_main_code and ipc_second_code columns
 base_brevets[, c("ipc_main_code", "ipc_second_code") := {
@@ -174,3 +175,4 @@ fwrite(base_brevets, "DATA/base_brevets.csv")
 ###########
 ### END ###
 ###########
+

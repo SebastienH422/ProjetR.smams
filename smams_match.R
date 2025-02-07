@@ -20,8 +20,8 @@ library(stringr)
 ######################
 ### Importing data ###
 ######################
-base_emp = fread("Data/base_emp.csv")
-base_brevets = fread("Data/base_brevets.csv")
+base_emp = fread("DATA/base_emp.csv")
+base_brevets = fread("DATA/base_brevets.csv")
 
 
 # _________________________________________________________________________________________________________________________________
@@ -70,7 +70,7 @@ base_emp_inno[, id_firm_name := NULL]
 ### Writing the database to csv ###
 ###################################
 
-fwrite(base_emp_inno, "Data/base_emp_inno.csv")
+fwrite(base_emp_inno, "DATA/base_emp_inno.csv")
 
 #___________________________________________________________________________________________________________________________________
 ###########

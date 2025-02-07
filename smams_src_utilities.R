@@ -1,3 +1,6 @@
+#
+# Simon Fraile, Matilin Periat, Ahina Durrieu, Maina Boivent, Sébastien Hein
+# 
 # _____________________________________________________________________________________________________________________________
 # _____________________________________________________________________________________________________________________________
 # _____________________________________________________________________________________________________________________________
@@ -56,6 +59,7 @@ get_wage = function(wage) {
   }
   
   # Clean the salary text
+  wage <- gsub("[\u00A0\u202F]", "", wage, perl = TRUE)   # Remove non-breaking spaces, narrow no-break spaces
   wage <- gsub(" ", "", wage)        # Remove spaces
   wage <- gsub(",", ".", wage)       # Convert commas to dots
 
@@ -64,14 +68,10 @@ get_wage = function(wage) {
   if (grepl("K", wage, ignore.case = TRUE)) {
     multiplier <- 1000
     wage <- gsub("[Kk]", "", wage)
-  } else if (grepl("000", wage)) {
-    wage <- gsub("000", "", wage)
-    multiplier <- 1000
   }
   
   # Extract numbers
   numbers <- as.numeric(unlist(str_extract_all(wage, "\\d+\\.?\\d*")))
-
   if (length(numbers) == 0 || any(is.na(numbers))) {
     return(NA_real_)
   }
@@ -168,12 +168,10 @@ get_most_frequent = function(val_list) {
     return(NA_character_)
   }
   
-  # ADD
   # To avoid doubles, replace some words or characters
   valid_val = str_replace_all(valid_val, c("ô" = "o", "English" = "Anglais", "Autonomous" = "Autonome", "French" = "Français"))
   valid_val = str_replace_all(valid_val, c("Communication Skills" = "Communication", "Curious" = "Curiosité", "Artificial intelligence" = "Intelligence artificielle"))
   valid_val = str_replace_all(valid_val, c("Base de donnée" = "Database", "Bases de donnée" = "Database"))
-  # ADD END
   
   # Count occurrences of each value
   val_counts = table(valid_val)
@@ -246,11 +244,11 @@ find_top_ipc <- function(ipc_codes) {
 # _____________________________________________________________________________________________________________________________
 # Helper function to choose a non-NA value, or randomly if multiple non-NA values
 #
-  choose_non_na = function(x) {
-    # Ensure x is a vector of the same type
-    x <- as.vector(x)
-    x_unique <- unique(x[!is.na(x)])
-    if(length(x_unique) == 0) return(x[1])  # Return NA of the correct type
-    if(length(x_unique) == 1) return(x_unique[1])
-    return(sample(x_unique, 1))
-  }
+choose_non_na = function(x) {
+  # Ensure x is a vector of the same type
+  x <- as.vector(x)
+  x_unique <- unique(x[!is.na(x)])
+  if(length(x_unique) == 0) return(x[1])  # Return NA of the correct type
+  if(length(x_unique) == 1) return(x_unique[1])
+  return(sample(x_unique, 1))
+}
