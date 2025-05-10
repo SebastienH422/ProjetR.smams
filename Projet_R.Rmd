@@ -1,0 +1,102 @@
+---
+title: "projet_R"
+output: html_document
+date: "2024-11-24"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+Si besoin de vérifier l'emplacement du projet, ainsi que les fichiers dans DATA, executer ci-dessous.
+
+```{r}
+getwd()
+list.files("DATA")
+```
+
+```{r}
+library(data.table)
+library(stringr)
+
+data = data.table(read.csv(file = "DATA/emp_offers_fmt.tsv",
+                  head = TRUE,
+                  sep = ","))
+names(data)
+
+```
+```{r}
+
+brevets = data.table(read.csv(file = "DATA/202202_EPO_App_reg_small.txt",
+                  head = TRUE,
+                  sep = ","))
+names(brevets)
+head(brevets)
+brevets
+```
+
+
+
+```{r}
+ipc = data.table(read.csv(file = "DATA/202202_EPO_IPC_small.txt",
+                  head = TRUE,
+                  sep = ","))
+names(ipc)
+head(ipc)
+```
+Question 1: 
+
+1ère restriction: garder uniquement les entreprises françaises. 
+Donc il suffit d'appliquer un filtre selon la variable ctry_code:
+
+```{r}
+brevets = brevets[ctry_code == "FR"]
+brevets
+```
+
+2ème restriction: garder uniquement les brevets déposés entre 2010 et 2020: 
+même raisonnement que ci-dessus, mais cette fois-ci, on doit travailler sur la data table 'ipc'
+
+```{r}
+ipc = ipc[prio_year >= 2010 & prio_year <= 2020]
+ipc
+```
+
+ensuite, nous devons modifier les codes ipc et les tronquer à 4 caractères. 
+
+```{r}
+ipc$IPC = substr(ipc$IPC, 1 ,4)
+ipc
+```
+
+OK. Ici ,tous les codes ipc sont maintenant de taille 4. 
+
+On va essayer de filtrer un peu les noms d'entreprises. essayons de stocker dans un vecteur le premier mot de chaque entreprise.
+
+
+La cellule ci-dessou fait deux choses. word('string', 1) conserve uniquement les charactères avant le premier espace. tolower() permet de mettre tous les noms d'entreprises en minuscules. 
+
+```{r}
+brevets$app_name = tolower(word(brevets$app_name,1))
+brevets
+```
+
+En plus de cela, on enlève les accents. Je vais utiliser 'iconv' qui est une fonction de base de R. 
+iconv permet de convertir une chaine de charactère.ASCII ne gère pas les accents donc si on transcrit nos noms d'entreprises en ASCII, les accents disparaissent.  
+
+```{r}
+brevets$app_name = iconv(brevets$app_name, to = "ASCII//TRANSLIT")
+brevets
+```
+
+Enfin, certains noms d'entreprises comportaient des virgules collées aux premiers mots ce qui fait qu'on les a conservées. On le supprime également.
+
+```{r}
+brevets$app_name = gsub(',','',brevets$app_name)
+brevets
+```
+Maintenant qu'on a filtré les noms d'entreprises, on regarde le nombre de chaque IPC déposé par les entreprises. 
+
+
+
